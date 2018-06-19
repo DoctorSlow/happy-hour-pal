@@ -1,10 +1,11 @@
-var db = require("./models");
+// var db = require("./models");
 var bodyParser = require('body-parser');
 var express = require('express');
 var mongoose = require("mongoose");
 var logger = require('morgan');
-var passport = require('passport')
-var session = require('express-session')
+var passport = require('passport');
+var session = require('express-session');
+var routes = require("./routes");
 var env = require('dotenv').load();
 
 var app = express();
@@ -24,12 +25,14 @@ app.use(passport.initialize());
 // persistent login sessions
 app.use(passport.session());
 
-// var routes = require("");
-
-app.use(routes(passport));
-
+// app.use(routes(passport));
+app.use(routes);
 // require('./config/passport/passport.js')(passport, db.user);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/happy-hour-pal", function (err) {
+
+// Connect to the deployed or local Mongo DB
+var MongoDB = process.env.MONGODB_URI || "mongodb://localhost/nytreact";
+
+mongoose.connect(MongoDB, function (err) {
 	console.log(err || 'CONNECTED!');
 });
