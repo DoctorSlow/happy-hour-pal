@@ -7,9 +7,9 @@ import MapResults from "./pages/MapResults/MapResults";
 import Wrapper from "./components/Wrapper";
 
 const App = () => (
-  <Router>
-    <div>
-      <Wrapper>
+  <Router class="mapHeight">
+    <div class="mapHeight">
+      <Wrapper class="mapHeight">
         <Route exact path="/" component={ListResults} />
         <Route exact path="/loading" component={Loading} />
         <Route exact path="/access" component={Access} />

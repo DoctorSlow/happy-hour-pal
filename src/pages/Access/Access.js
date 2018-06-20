@@ -11,7 +11,7 @@ const Access = () => (
       <Row>
         <Col size="md-12">
           <h5 className="access-note">
-          Allow access to location services for faster and more accurate results.
+            Allow access to Geolocation services for faster and more accurate results.
           </h5>
         </Col>
       </Row>

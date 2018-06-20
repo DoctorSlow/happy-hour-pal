@@ -1,4 +1,3 @@
-var db = require("./models");
 var bodyParser = require('body-parser');
 var express = require('express');
 var mongoose = require("mongoose");
@@ -7,16 +6,22 @@ var passport = require('passport')
 var session = require('express-session')
 var env = require('dotenv').load();
 
-var app = express();
+var db = require("./models");
 var PORT = process.env.PORT || 3000;
+var app = express();
 
 app.use(logger("dev"));
-app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static('public'));
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/happy-hour-pal", function (err) {
+	console.log(err || 'CONNECTED!');
+});
 
 //Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
 
 // For Passport 
 app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
@@ -29,7 +34,3 @@ app.use(passport.session());
 app.use(routes(passport));
 
 // require('./config/passport/passport.js')(passport, db.user);
-
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/happy-hour-pal", function (err) {
-	console.log(err || 'CONNECTED!');
-});
