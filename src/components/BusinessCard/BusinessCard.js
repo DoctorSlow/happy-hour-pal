@@ -1,22 +1,13 @@
 import React from "react";
 import "./BusinessCard.css";
+import { BusinessNameCard, DealCard } from "../../components/Business";
 
 // Business card component for List Results
-const BusinessCard = props => (
-    <div
-      className="business-card"
-    >
-
-      {/* Add component: Business name */}
-        {/* Links to Business Details Page */}
-
-      {/* Add component: Happy Hour rating, add later on */}
-
-      {/* Add component: DealCards */}
-        {/* Time range */}
-        {/* Deal description */}
-
+const BusinessCard = props => ( 
+    <div className="business-card">
+     {props.children}
     </div>
+   
   );
 
 export default BusinessCard;

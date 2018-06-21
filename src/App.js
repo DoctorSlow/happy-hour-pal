@@ -5,6 +5,7 @@ import Access from "./pages/Access/Access";
 import ListResults from "./pages/ListResults/ListResults";
 import MapResults from "./pages/MapResults/MapResults";
 import Wrapper from "./components/Wrapper";
+import BusinessDetails from "./pages/BusinessDetails/BusinessDetails"
 
 const App = () => (
   <Router>
@@ -15,6 +16,7 @@ const App = () => (
         <Route exact path="/access" component={Access} />
         <Route exact path="/listresults" component={ListResults} />
         <Route exact path="/mapresults" component={MapResults} />
+        <Route exact path="/businessdetails" component={BusinessDetails} />
       </Wrapper>
     </div>
   </Router>

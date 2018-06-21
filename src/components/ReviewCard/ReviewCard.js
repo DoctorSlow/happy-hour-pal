@@ -1,18 +1,18 @@
 import React from "react";
 import { CardText, CardBody,
   CardTitle, CardSubtitle } from 'reactstrap';
-import "./DealCard.css";
+import "./ReviewCard.css";
 
 // Business card component for List Results
-const DealCard = props => (
-    <div className="deal-card">
+const ReviewCard = props => (
+    <div className="review-card">
   
           <CardBody>
             <CardTitle>
-              {props.day}
+              {props.username}
             </CardTitle>
             <CardSubtitle>
-              {props.beginTime}-{props.endTime}
+              {props.date}
             </CardSubtitle>
             <CardText>
               <p></p>
@@ -25,4 +25,4 @@ const DealCard = props => (
     </div>
   );
 
-export default DealCard;
+export default ReviewCard;
