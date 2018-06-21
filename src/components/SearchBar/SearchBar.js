@@ -4,7 +4,7 @@ import "./SearchBar.css";
 
 // SearchBar for Results pages
 const SearchBar = props => (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light navStyle">
         <Link className="navbar-brand" to="/">
             Happy Hour Pal
         </Link>
@@ -18,7 +18,7 @@ const SearchBar = props => (
         {/* Add Search options here */}
 
         {/* Add button to access Map/List option here */}
-        
+
     </nav>
 );
 

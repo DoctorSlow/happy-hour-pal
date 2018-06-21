@@ -1,0 +1,6 @@
+.navStyle {
+    position: absolute;
+    width: 100%; 
+    padding-bottom: 20px;
+    z-index: 1;
+}
