@@ -8,6 +8,7 @@ import ListResults from "./pages/ListResults/ListResults";
 import MapResults from "./pages/MapResults/MapResults";
 import Wrapper from "./components/Wrapper";
 import BusinessDetails from "./pages/BusinessDetails/BusinessDetails"
+import AddBusiness from "./pages/AddBusiness/AddBusiness";
 
 const App = () => (
   <Router class="mapHeight">
@@ -21,6 +22,7 @@ const App = () => (
         <Route exact path="/listresults" component={ListResults} />
         <Route exact path="/mapresults" component={MapResults} />
         <Route exact path="/businessdetails" component={BusinessDetails} />
+        <Route exact path="/addbusiness" component={AddBusiness} />
       </Wrapper>
     </div>
   </Router>
