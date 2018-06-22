@@ -5,7 +5,7 @@ import deals from "../../deals.json";
 // import reviews from "../../reviews.json";
 import {BusinessCard, BusinessNameCard, DealCard} from "../../components/Business";
 
-// import BusinessCard from "../../components/BusinessCard";
+import SearchBar from "../../components/SearchBar";
 // import  BusinessNameCard from "../../components/BusinessNameCard";
 // import DealCard from "../../components/DealCard";
 
@@ -31,8 +31,10 @@ class Results extends Component {
 
     return (
       <div>
+        <SearchBar />
         <Row>
           <Col sm="4">
+          {/* <SearchBar /> */}
             <BusinessCard>
               <BusinessNameCard 
               name={this.state.name} 
