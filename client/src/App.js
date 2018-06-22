@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
 import Loading from "./pages/Loading/Loading";
 import Access from "./pages/Access/Access";
 import BusinessListings from "./pages/BusinessListings/BusinessListings";
@@ -11,6 +12,7 @@ import BusinessDetails from "./pages/BusinessDetails/BusinessDetails"
 const App = () => (
   <Router class="mapHeight">
     <div class="mapHeight">
+      <Navbar />
       <Wrapper class="mapHeight">
         <Route exact path="/" component={ListResults} />
         <Route exact path="/loading" component={Loading} />

@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "day": "Monday",
+        "beginTime": [
+            "11am",
+            "5am"
+        ],
+        "endTime": [
+            "6pm",
+            "11am"
+        ],
+        "info": [
+            "$10 burger and a beer",
+            "$6 wine by the glass"
+        ]
+    },
+    {
+        "id": 2,
+        "day": "Tuesday",
+        "beginTime": [
+            "4pm"
+        ],
+        "endTime": [
+            "6pm"
+        ],
+        "info": [
+            "$6 wine by the glass"
+        ]
+    },
+    {
+        "id": 3,
+        "day": "Friday",
+        "beginTime": [
+            "9pm"
+        ],
+        "endTime": [
+            "2am"
+        ],
+        "info": [
+            "Late night menu!"
+        ]
+    }
+]
