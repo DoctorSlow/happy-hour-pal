@@ -1,0 +1,28 @@
+/* Page title */
+.title {
+    margin-top: 20px;
+}
+
+/* Select days buttons */
+#days-div {
+    height: 50px;
+    overflow: auto;
+}
+#days {
+    width: 800px;
+}
+.days-btn {
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+/* Select time spacing */
+.timeframe {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* Description box */
+textarea.form-control {
+    height: 100px;
+  }

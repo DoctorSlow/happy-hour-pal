@@ -77,6 +77,17 @@ const Navbar = props => (
             Business Details
           </Link>
         </li>
+        <li
+          className={
+            window.location.pathname === "/addbusiness"
+              ? "nav-item active"
+              : "nav-item"
+          }
+        >
+          <Link to="/addbusiness" className="nav-link">
+            Add Business
+          </Link>
+        </li>
       </ul>
     </div>
   </nav>
