@@ -1,3 +1,3 @@
-// export * from "./BusinessCard";
-// export * from "./BusinessNameCard";
-// export * from "./DealCard";
+export {BusinessCard} from "./BusinessCard";
+export {BusinessNameCard} from "./BusinessNameCard";
+export {DealCard} from "./DealCard";

@@ -1,8 +1,8 @@
 import React from "react";
 import "./BusinessCard.css";
-import { BusinessNameCard, DealCard } from "../../components/Business";
 
-// Business card component for List Results
+
+// Business card component 
 const BusinessCard = props => ( 
     <div className="business-card">
      {props.children}

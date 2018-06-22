@@ -3,13 +3,10 @@ import { Card, Row, Col } from 'reactstrap';
 // import API from "../utils/API";
 import deals from "../../deals.json";
 import reviews from "../../reviews.json";
-// import { BusinessCard, BusinessNameCard, DealCard } from "../../components/Business";
-
-import BusinessCard from "../../components/BusinessCard";
-import  BusinessNameCard from "../../components/BusinessNameCard";
-import DealCard from "../../components/DealCard";
-import ReviewCard from "../../components/ReviewCard";
-import ReviewsContainer from "../../components/ReviewsContainer";
+import { BusinessCard, BusinessNameCard, DealCard } from "../../components/Business";
+import { ReviewCard, ReviewsContainer } from "../../components/Reviews";
+// import ReviewCard from "../../components/ReviewCard";
+// import ReviewsContainer from "../../components/ReviewsContainer";
 // import { BackBtn, ReportDealBtn, RateDealBtn, ViewAllBtn, SuggestEditBtn } from "../../../components/Buttons";
 
 
