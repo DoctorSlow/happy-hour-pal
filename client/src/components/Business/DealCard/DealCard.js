@@ -11,13 +11,19 @@ const DealCard = props => (
             <CardTitle>
               {props.day}
             </CardTitle>
-            <CardSubtitle>
-              {props.beginTime}-{props.endTime}
-            </CardSubtitle>
-            <CardText>
-              <p></p>
-              {props.info}
-            </CardText>
+          {props.beginTime.map((element, index) => {
+            return(
+            <div>
+              <CardSubtitle>
+                {props.beginTime[index]}-{props.endTime[index]}
+              </CardSubtitle>
+              <CardText>
+                <p></p>
+                {props.info[index]}
+              </CardText>
+            </div>
+          )})
+          }
           </CardBody>
      
     
