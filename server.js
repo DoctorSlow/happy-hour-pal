@@ -9,7 +9,7 @@ var routes = require("./routes");
 var env = require('dotenv').load();
 
 var db = require("./models");
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3001;
 var app = express();
 
 app.use(logger("dev"));
@@ -33,3 +33,8 @@ app.use(passport.session());
 // app.use(routes(passport));
 app.use(routes);
 // require('./config/passport/passport.js')(passport, db.user);
+
+// Start the API server
+app.listen(PORT, function() {
+	console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+});
