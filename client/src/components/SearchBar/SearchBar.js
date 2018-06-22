@@ -4,7 +4,7 @@ import "./SearchBar.css";
 
 // SearchBar for Results pages
 const SearchBar = props => (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light navStyle">
+    <nav className="navbar navbar-expand-lg navbar-primary bg-light navStyle">
         <Link className="navbar-brand" to="/">
             Happy Hour Pal
         </Link>
