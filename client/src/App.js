@@ -8,19 +8,23 @@ import ListResults from "./pages/ListResults/ListResults";
 import MapResults from "./pages/MapResults/MapResults";
 import Wrapper from "./components/Wrapper";
 import BusinessDetails from "./pages/BusinessDetails/BusinessDetails"
+import LogIn from "./pages/LogIn/LogIn"
+import SignUp from "./pages/SignUp/SignUp"
 
 const App = () => (
   <Router class="mapHeight">
     <div class="mapHeight">
-      <Wrapper class="mapHeight">
       <Navbar />
-        <Route exact path="/" component={ListResults} />
+      <Wrapper class="mapHeight">
+        <Route exact path="/" component={Loading} />
         <Route exact path="/loading" component={Loading} />
         <Route exact path="/access" component={Access} />
         <Route exact path="/businessListings" component={BusinessListings} />
         <Route exact path="/listresults" component={ListResults} />
         <Route exact path="/mapresults" component={MapResults} />
         <Route exact path="/businessdetails" component={BusinessDetails} />
+        <Route exact path="/signin" component={LogIn} />
+        <Route exact path="/signup" component={SignUp} />
       </Wrapper>
     </div>
   </Router>
