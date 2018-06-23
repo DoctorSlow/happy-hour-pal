@@ -43,7 +43,9 @@ class AddBusiness extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.name) {
+    if (! this.state.name || ! this.state.day || ! this.state.info) {
+      alert("All fields must be filled out");
+    } else {
       API.saveBusiness({
         name: this.state.name,
         day: this.state.day,
@@ -51,7 +53,19 @@ class AddBusiness extends Component {
         endTime: this.state.endTime,
         info: this.state.info
       })
-        .then(console.log("ok"))
+        .then(
+          function (newDeal) {
+            console.log(newDeal.data);
+            alert("Thanks for the info, pal!")
+          },
+          this.setState({
+              name: "",
+              day: "",
+              beginTime: "",
+              endTime: "",
+              info: ""
+          })
+        )
         .catch(err => console.log(err));
     }
   };
