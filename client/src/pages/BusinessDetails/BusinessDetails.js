@@ -12,6 +12,7 @@ import { ReviewCard, ReviewsContainer } from "../../components/Reviews";
 
 class Results extends Component {
   state = {
+    visibility: "hidden",
     reviews,
     deals,
     name: "Ermanos",
@@ -46,6 +47,7 @@ class Results extends Component {
               beginTime={deal.beginTime}
               endTime={deal.endTime}
               info={deal.info}
+              visibility={this.state.visibility}
        />
           ))}
 
