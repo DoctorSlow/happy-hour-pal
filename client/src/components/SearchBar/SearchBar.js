@@ -5,26 +5,6 @@ import API from "../../utils/API";
 
 
 // SearchBar for Results pages
-<<<<<<< HEAD
-const SearchBar = props => (
-    <nav className="navbar navbar-expand-lg navbar-primary bg-light navStyle">
-        <Link className="navbar-brand" to="/">
-            Happy Hour Pal
-        </Link>
-        <div>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Current Location" aria-label="Search" />
-                <button class="btn btn-dark my-2 my-sm-0" type="submit">Go</button>
-            </form>
-        </div>
-
-        {/* Add Search options here */}
-
-        {/* Add button to access Map/List option here */}
-
-    </nav>
-);
-=======
 // const SearchBar = props => (
 //     <nav className="navbar navbar-expand-lg navbar-light bg-light navStyle">
 //         <Link className="navbar-brand" to="/">
@@ -92,6 +72,5 @@ class SearchBar extends Component {
         )
     }
 }
->>>>>>> d60eb866abfddf5ea2e217708685fd39b678cc8a
 
 export default SearchBar;

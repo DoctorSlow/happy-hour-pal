@@ -8,36 +8,25 @@ import ListResults from "./pages/ListResults/ListResults";
 import MapResults from "./pages/MapResults/MapResults";
 import Wrapper from "./components/Wrapper";
 import BusinessDetails from "./pages/BusinessDetails/BusinessDetails"
-<<<<<<< HEAD
 import LogIn from "./pages/LogIn/LogIn"
 import SignUp from "./pages/SignUp/SignUp"
-=======
 import AddBusiness from "./pages/AddBusiness/AddBusiness";
->>>>>>> d60eb866abfddf5ea2e217708685fd39b678cc8a
 
 const App = () => (
   <Router className="mapHeight">
     <div className="mapHeight">
       <Navbar />
-<<<<<<< HEAD
       <Wrapper class="mapHeight">
         <Route exact path="/" component={Loading} />
-=======
-      <Wrapper className="mapHeight">
-        <Route exact path="/" component={ListResults} />
->>>>>>> d60eb866abfddf5ea2e217708685fd39b678cc8a
         <Route exact path="/loading" component={Loading} />
         <Route exact path="/access" component={Access} />
         <Route exact path="/businessListings" component={BusinessListings} />
         <Route exact path="/listresults" component={ListResults} />
         <Route exact path="/mapresults" component={MapResults} />
         <Route exact path="/businessdetails" component={BusinessDetails} />
-<<<<<<< HEAD
         <Route exact path="/signin" component={LogIn} />
         <Route exact path="/signup" component={SignUp} />
-=======
         <Route exact path="/addbusiness" component={AddBusiness} />
->>>>>>> d60eb866abfddf5ea2e217708685fd39b678cc8a
       </Wrapper>
     </div>
   </Router>
