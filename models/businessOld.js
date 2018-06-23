@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 var businessSchema = new Schema({
     name: { type: String, required: true },
-    day: { type: String, required: true },
-    beginTime: { type: String, required: true },
-    endTime: { type: String, required: true },
-    info: { type: String, required: true },
+    address: { type: String, required: true },
+    phone: { type: String, required: true },
+    link: String,
+    description: String,
     updated_date: { type: Date, default: Date.now },
 });
 

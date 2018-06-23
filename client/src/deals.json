@@ -40,5 +40,31 @@
         "info": [
             "Late night menu!"
         ]
+    },
+    {
+        "id": 4,
+        "day": "Saturday",
+        "beginTime": [
+            "9am"
+        ],
+        "endTime": [
+            "12pm"
+        ],
+        "info": [
+            "Uncooked eggs"
+        ]
+    },
+    {
+        "id": 5,
+        "day": "Saturday",
+        "beginTime": [
+            "2pm"
+        ],
+        "endTime": [
+            "6pm"
+        ],
+        "info": [
+            "Food scraps!"
+        ]
     }
 ]

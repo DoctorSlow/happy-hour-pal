@@ -6,9 +6,9 @@ import SearchBar from "../../components/SearchBar";
 import "./MapResults.css";
 
 const MapResults = () => (
-  <div class="mapHeight">
+  <div className="mapHeight">
     <SearchBar />
-    <div class="mapHeight" id="map"></div>
+    <div className="mapHeight" id="map"></div>
   </div>
 );
 
