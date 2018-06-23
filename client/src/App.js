@@ -11,10 +11,10 @@ import BusinessDetails from "./pages/BusinessDetails/BusinessDetails"
 import AddBusiness from "./pages/AddBusiness/AddBusiness";
 
 const App = () => (
-  <Router class="mapHeight">
-    <div class="mapHeight">
+  <Router className="mapHeight">
+    <div className="mapHeight">
       <Navbar />
-      <Wrapper class="mapHeight">
+      <Wrapper className="mapHeight">
         <Route exact path="/" component={ListResults} />
         <Route exact path="/loading" component={Loading} />
         <Route exact path="/access" component={Access} />

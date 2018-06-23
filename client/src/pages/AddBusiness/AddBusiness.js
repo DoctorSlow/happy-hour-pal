@@ -8,45 +8,50 @@ import API from "../../utils/API";
 import "./AddBusiness.css";
 
 class AddBusiness extends Component {
-  state = {
-    businesses: [],
-    name: "",
-    days: [], // Not sure if this should be an array - Stef
-    start: "", // Not sure how to input if there are multiple start and end times (multiple happy hours in a day) - Stef
-    end: "",
-    description: ""
-  };
 
-  componentDidMount() {
-    this.loadBusinesses();
+  constructor () {
+    super ();
+    this.state = {
+      name: "",
+      day: "",
+      beginTime: "",
+      endTime: "",
+      info: ""
+    };
+    this.handleInputChange.bind(this);
   }
 
-  loadBusinesses = () => {
-    API.getBusinesses()
-      .then(res =>
-        this.setState({ businesses: res.data, name: "", address: "", phone: "", link: "", description: "" })
-      )
-      .catch(err => console.log(err));
-  };
+  // state = {
+  //   businesses: [],
+  //   name: "",
+  //   // days: [], // Not sure if this should be an array - Stef
+  //   day: "",
+  //   beginTime: "", // Not sure how to input if there are multiple start and end times (multiple happy hours in a day) - Stef
+  //   endTime: "",
+  //   info: ""
+  // };
+
+  componentDidMount() {
+    console.log("loaded");
+  }
 
   handleInputChange = event => {
-    const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [event.target.name]: event.target.value
     });
   };
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.name && this.state.address && this.state.phone) {
+    if (this.state.name) {
       API.saveBusiness({
         name: this.state.name,
-        address: this.state.address,
-        start: this.state.start,
-        end: this.state.end,
-        description: this.state.description
+        day: this.state.day,
+        beginTime: this.state.beginTime,
+        endTime: this.state.endTime,
+        info: this.state.info
       })
-        .then(res => this.loadBusinesses())
+        .then(console.log("ok"))
         .catch(err => console.log(err));
     }
   };
@@ -61,7 +66,7 @@ class AddBusiness extends Component {
             <h5 className="title">Add New Business</h5>
             <form>
 
-              <label for="businessName">Enter business name.</label>
+              <label htmlFor="businessName">Enter business name.</label>
               <Input
                 value={this.state.name}
                 onChange={this.handleInputChange}
@@ -69,56 +74,65 @@ class AddBusiness extends Component {
                 placeholder="Business Name"
               />
 
-              <label for="dealDays">Select the day(s) the deal is available.</label>
-              <div id="days-div">
-                <div id="days">
-                    <button type="button" class="btn btn-dark days-btn">Monday</button>
-                    <button type="button" class="btn btn-dark days-btn">Tuesday</button>
-                    <button type="button" class="btn btn-dark days-btn">Tuesday</button>
-                    <button type="button" class="btn btn-dark days-btn">Wednesday</button>
-                    <button type="button" class="btn btn-dark days-btn">Thursday</button>
-                    <button type="button" class="btn btn-dark days-btn">Friday</button>
-                    <button type="button" class="btn btn-dark days-btn">Saturday</button>
-                    <button type="button" class="btn btn-dark">Sunday</button>
-                </div>
-              </div>            
+              <label>
+                Choose a day from this list:
+                <select
+                  name="day"
+                  type="select"
+                  value={this.state.day}
+                  selected={this.state.day}
+                  onChange={this.handleInputChange}
+                >
+                  <option value="Sunday">Sunday</option>
+                  <option value="Monday">Monday</option>
+                  <option value="Tuesday">Tuesday</option>
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                  <option value="Saturday">Saturday</option>
+                </select>
+              </label>
 
-              <label for="dealTimes">Select the start and end times of the deal.</label>
+              <label htmlFor="dealTimes">Select the start and end times of the deal.</label>
               <div className="form-row">
-                <Input                 
-                    value={this.state.start}
+                <Input
+                    value={this.state.beginTime}
                     onChange={this.handleInputChange}
-                    type="time" 
-                    id="appt-time" 
-                    name="appt-time" 
-                    min="9:00" 
-                    max="18:00" 
+                    type="time"
+                    id="appt-time"
+                    name="beginTime"
+                    min="9:00"
+                    max="18:00"
                     required
                 />
                 <p className="timeframe">to</p>
-                <Input                 
-                    value={this.state.end}
+                <Input
+                    value={this.state.endTime}
                     onChange={this.handleInputChange}
-                    type="time" 
-                    id="appt-time" 
-                    name="appt-time" 
-                    min="9:00" 
-                    max="18:00" 
+                    type="time"
+                    id="appt-time"
+                    name="endTime"
+                    min="9:00"
+                    max="18:00"
                     required
                 />
               </div>
 
-              <label for="description">Enter a description of the deal.</label>
+              <label htmlFor="description">Enter a description of the deal.</label>
               <TextArea
                 // className="description"
-                value={this.state.description}
-                onChange={this.handleInputChange}
-                name="description"
+                name="info"
                 placeholder="Description"
+                type="textarea"
+                value={this.state.info}
+                onChange={this.handleInputChange}
               />
 
-              <FormBtn className="btn-primary" onClick={this.handleFormSubmit} >
-                Submit New Business
+              <FormBtn
+                className="btn-primary"
+                onClick={this.handleFormSubmit}
+              >
+                Submit New Happy Hour Special
               </FormBtn>
 
             </form>
