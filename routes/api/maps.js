@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const mapsController = require("../../controllers/mapsController");
 
-// Matches with "/api/businesses"
+// Matches with "/api/map"
 router.route("/:query")
 	.get(mapsController.queryMap);
 
