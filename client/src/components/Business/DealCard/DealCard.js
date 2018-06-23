@@ -1,5 +1,5 @@
 import React from "react";
-import { CardText, CardBody,
+import { Button, CardText, CardBody,
   CardTitle, CardSubtitle } from 'reactstrap';
 import "./DealCard.css";
 
@@ -7,7 +7,7 @@ import "./DealCard.css";
 const DealCard = props => (
   <div className="deal-card">
 
-    {/* New Deal card to pull from MongoDB */}
+   {/* New Deal card to pull from MongoDB */}
     <CardBody>
       <CardTitle>
         {props.day}
@@ -18,6 +18,9 @@ const DealCard = props => (
       <CardText>
         {props.info}
       </CardText>
+      <Button color="primary" className="update" style={{visibility:(props.showButton ? "visible" : "hidden")}}>
+        Update
+      </Button>
 
       {/* Old Deal Card - only for deals.json */}
       {/* {props.beginTime.map((element, index) => {
@@ -33,7 +36,7 @@ const DealCard = props => (
           </div>
         )})
       } */}
-
+  
     </CardBody>
   </div>
 );
