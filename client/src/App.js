@@ -9,6 +9,7 @@ import MapResults from "./pages/MapResults/MapResults";
 import Wrapper from "./components/Wrapper";
 import BusinessDetails from "./pages/BusinessDetails/BusinessDetails"
 import AddBusiness from "./pages/AddBusiness/AddBusiness";
+import EditBusiness from "./pages/EditBusiness/EditBusiness";
 
 const App = () => (
   <Router className="mapHeight">
@@ -23,6 +24,7 @@ const App = () => (
         <Route exact path="/mapresults" component={MapResults} />
         <Route exact path="/businessdetails" component={BusinessDetails} />
         <Route exact path="/addbusiness" component={AddBusiness} />
+        <Route exact path="/editbusiness" component={EditBusiness} />
       </Wrapper>
     </div>
   </Router>
