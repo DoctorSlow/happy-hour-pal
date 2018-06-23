@@ -44,9 +44,10 @@ class SearchBar extends Component {
     };
 
     searchGoogle(query) {
+        console.log("google has been searched")
         API.getPlaces(query)
             .then(res =>
-                this.setState({ results: res.data }))
+                this.setState({ results: res.data.candidates }))
             .catch(err => console.log(err));
     };
 
