@@ -17,7 +17,7 @@ const App = () => (
   <Router className="mapHeight">
     <div className="mapHeight">
       <Navbar />
-      <Wrapper class="mapHeight">
+      <Wrapper className="mapHeight">
         <Route exact path="/" component={Loading} />
         <Route exact path="/loading" component={Loading} />
         <Route exact path="/access" component={Access} />

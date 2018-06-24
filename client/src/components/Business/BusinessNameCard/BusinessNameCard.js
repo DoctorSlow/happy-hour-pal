@@ -1,6 +1,6 @@
 import React from "react";
 import "./BusinessNameCard.css";
-import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+// import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 
 // Business card component for List Results
 const BusinessNameCard = props => (

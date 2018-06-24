@@ -8,7 +8,7 @@ const DealCard = props => (
   <div className="deal-card">
 
    {/* New Deal card to pull from MongoDB */}
-    <CardBody>
+    <CardBody {... props._id}>
       <CardTitle>
         {props.day}
       </CardTitle>
@@ -33,10 +33,13 @@ const DealCard = props => (
               <p></p>
               {props.info[index]}
             </CardText>
+            <Button color="primary" className="update" style={{visibility:(props.showButton ? "visible" : "hidden")}}>
+                Update
+            </Button>
           </div>
         )})
       } */}
-  
+
     </CardBody>
   </div>
 );

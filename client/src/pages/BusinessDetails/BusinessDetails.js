@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Card, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 // import deals from "../../deals.json";
 // import Deals from "./Deals";
 import reviews from "../../reviews.json";
-import { BusinessCard, BusinessNameCard, DealCard, Deals } from "../../components/Business";
+import { BusinessCard, BusinessNameCard, Deals } from "../../components/Business";
 import { ReviewCard, ReviewsContainer } from "../../components/Reviews";
 // import ReviewCard from "../../components/ReviewCard";
 // import ReviewsContainer from "../../components/ReviewsContainer";

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 // import API from "../utils/API";
 import deals from "../../deals.json";
 // import reviews from "../../reviews.json";
@@ -14,13 +14,13 @@ import SearchBar from "../../components/SearchBar";
 
 class Results extends Component {
   state = {
-    
+
     deals,
     name: "Ermanos",
     address: "http://www.ermanosbrew.com/",
     stars: "****"
 
-   
+
   };
 
   
