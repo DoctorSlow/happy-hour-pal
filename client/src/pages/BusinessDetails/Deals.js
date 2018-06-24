@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Row, Col } from 'reactstrap';
+// import { Card, Row, Col } from 'reactstrap';
 import API from "../../utils/API";
 import deals from "../../deals.json";
 import reviews from "../../reviews.json";
@@ -17,6 +17,7 @@ class Deals extends Component {
     beginTime: "",
     endTime: "",
     info: "",
+    visibility: "hidden"
   };
 
   componentDidMount() {
@@ -49,6 +50,7 @@ class Deals extends Component {
             beginTime={business.beginTime}
             endTime={business.endTime}
             info={business.info}
+            visibility={this.state.visibility}
           />
         ))}
       </div>

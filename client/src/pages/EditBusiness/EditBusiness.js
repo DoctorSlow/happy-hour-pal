@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Container from "../../components/Container";
-import { Col, Row, Card, Button } from 'reactstrap';
-import {BusinessCard, BusinessNameCard, DealCard} from "../../components/Business";
+// import Container from "../../components/Container";
+import { Col, Row } from 'reactstrap';
+import {BusinessCard, BusinessNameCard, DealCard, Deals} from "../../components/Business";
 import deals from "../../deals.json";
 // import API from "../../utils/API";
 import "./EditBusiness.css";
@@ -26,15 +26,22 @@ class EditBusiness extends Component {
             <div>
             <Row>
                 <Col sm="4">
+
                     {/* <BackBtn /> */}
+
                     <BusinessCard>
-                        <BusinessNameCard 
-                            name={this.state.name} 
-                            address={this.state.address} 
-                            stars={this.state.stars} 
+
+                        <BusinessNameCard
+                            name={this.state.name}
+                            address={this.state.address}
+                            stars={this.state.stars}
                         />
 
-                        {this.state.deals.map(deal => (   
+                        {/* New Deal Card Component */}
+                        <Deals />
+
+                        {/* Old Deal Card logic reading deals.json */}
+                        {/* {this.state.deals.map(deal => (
                             <DealCard
                                 // onClick={() => this.handleClickEvent(pic.id)}
                                 id={deal.id}
@@ -47,7 +54,8 @@ class EditBusiness extends Component {
                                 // visibility={this.state.visible}
                                 showButton={true}
                             />
-                        ))}
+                        ))} */}
+
                     </BusinessCard>
                 </Col>
             </Row>
@@ -56,4 +64,4 @@ class EditBusiness extends Component {
     }
 }
 
-export default EditBusiness; 
+export default EditBusiness;

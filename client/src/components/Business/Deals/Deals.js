@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Row, Col } from 'reactstrap';
+// import { Card, Row, Col } from 'reactstrap';
 import API from "../../../utils/API";
 import DealCard from "../DealCard/DealCard";
 
@@ -10,6 +10,7 @@ class Deals extends Component {
     beginTime: "",
     endTime: "",
     info: "",
+    visibility: "hidden",
   };
 
   componentDidMount() {
@@ -36,12 +37,13 @@ class Deals extends Component {
         {this.state.businesses.map(business => (
           <DealCard
             // onClick={() => this.handleClickEvent(pic.id)}
-            id={business.id}
-            key={business.id}
+            id={business._id}
+            key={business._id}
             day={business.day}
             beginTime={business.beginTime}
             endTime={business.endTime}
             info={business.info}
+            visibility={this.state.visibility}
           />
         ))}
       </div>
