@@ -18,7 +18,7 @@ const DealCard = props => (
       <CardText>
         {props.info}
       </CardText>
-      <Button color="primary" className="update" style={{visibility:(props.showButton ? "visible" : "hidden")}}>
+      <Button color="primary" className="update" style={{visibility:(props.showButton ? "visible" : "hidden")}} id={props.id}>
         Update
       </Button>
 
