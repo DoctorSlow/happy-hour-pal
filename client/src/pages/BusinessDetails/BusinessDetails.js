@@ -1,22 +1,44 @@
 import React, { Component } from "react";
-import { Card, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 // import deals from "../../deals.json";
-// import Deals from "./Deals";
 import reviews from "../../reviews.json";
-import { BusinessCard, BusinessNameCard, DealCard, Deals } from "../../components/Business";
+import { BusinessCard, BusinessNameCard, DealCard } from "../../components/Business";
 import { ReviewCard, ReviewsContainer } from "../../components/Reviews";
+import API from "../../utils/API";
 // import ReviewCard from "../../components/ReviewCard";
 // import ReviewsContainer from "../../components/ReviewsContainer";
 // import { BackBtn, ReportDealBtn, RateDealBtn, ViewAllBtn, SuggestEditBtn } from "../../../components/Buttons";
 
 class Results extends Component {
   state = {
-    visibility: "hidden",
+    businesses: [],
+    day: "",
+    beginTime: "",
+    endTime: "",
+    info: "",
     reviews,
-    // deals,
+    visibility: "hidden",
     name: "Ermanos",
     address: "http://www.ermanosbrew.com/",
     stars: "****"
+  };
+
+  componentDidMount() {
+    this.loadBusinesses();
+  }
+
+  loadBusinesses = () => {
+    API.getBusinesses()
+      .then(res =>
+        this.setState({
+          businesses: res.data,
+          day: "",
+          beginTime: "",
+          endTime: "",
+          info: ""
+        })
+      )
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -35,22 +57,20 @@ class Results extends Component {
                 stars={this.state.stars}
               />
 
-              {/* New Deal Card Component*/}
-              <Deals />
-
-              {/* Old Deal Card logic reading deals.json */}
-              {/* {this.state.deals.map(deal => (
+              {this.state.businesses.map(business => (
                 <DealCard
                   // onClick={() => this.handleClickEvent(pic.id)}
-                  id={deal.id}
-                  key={deal.id}
-                  day={deal.day}
-                  beginTime={deal.beginTime}
-                  endTime={deal.endTime}
-                  info={deal.info}
-                  visibility={this.state.visibility}
+                  id={business._id}
+                  key={business._id}
+                  day={business.day}
+                  beginTime={business.beginTime}
+                  endTime={business.endTime}
+                  info={business.info}
+                  // canEdit={this.state.canEdit}
+                  // visibility={this.state.visibility}
+                  showButton={false}
                 />
-              ))} */}
+              ))}
 
             </BusinessCard>
 
