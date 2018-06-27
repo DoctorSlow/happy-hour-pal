@@ -14,10 +14,6 @@ class MapResults extends Component {
     super(props);
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
-    // this.state = {
-    //   results: [],
-    //   search: ""
-    // };
 
   }
 
