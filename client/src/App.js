@@ -11,12 +11,13 @@ import BusinessDetails from "./pages/BusinessDetails/BusinessDetails"
 import LogIn from "./pages/LogIn/LogIn"
 import SignUp from "./pages/SignUp/SignUp"
 import AddBusiness from "./pages/AddBusiness/AddBusiness";
+import EditBusiness from "./pages/EditBusiness/EditBusiness";
 
 const App = () => (
   <Router className="mapHeight">
     <div className="mapHeight">
       <Navbar />
-      <Wrapper class="mapHeight">
+      <Wrapper className="mapHeight">
         <Route exact path="/" component={Loading} />
         <Route exact path="/loading" component={Loading} />
         <Route exact path="/access" component={Access} />
@@ -27,6 +28,7 @@ const App = () => (
         <Route exact path="/signin" component={LogIn} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/addbusiness" component={AddBusiness} />
+        <Route exact path="/editbusiness" component={EditBusiness} />
       </Wrapper>
     </div>
   </Router>
