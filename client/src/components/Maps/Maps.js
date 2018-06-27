@@ -6,9 +6,9 @@ import "./Maps.css";
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
     defaultZoom={13}
-    defaultCenter={{ lat: -34.397, lng: 150.644 }}
+    defaultCenter={{ lat: 32.2226, lng: -110.9747 }}
   >
-    {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
+    {props.isMarkerShown && <Marker position={{ lat: 32.2226, lng: -110.9747 }} />}
   </GoogleMap>
 ))
 

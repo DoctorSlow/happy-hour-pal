@@ -21,13 +21,12 @@ const App = () => (
         <Route exact path="/" component={Loading} />
         <Route exact path="/loading" component={Loading} />
         <Route exact path="/access" component={Access} />
-        <Route exact path="/businessListings" component={BusinessListings} />
+        <Route exact path="/addbusiness" component={AddBusiness} />
         <Route exact path="/listresults" component={ListResults} />
         <Route exact path="/mapresults" component={MapResults} />
         <Route exact path="/businessdetails" component={BusinessDetails} />
         <Route exact path="/signin" component={LogIn} />
         <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/addbusiness" component={AddBusiness} />
         <Route exact path="/editbusiness" component={EditBusiness} />
       </Wrapper>
     </div>
