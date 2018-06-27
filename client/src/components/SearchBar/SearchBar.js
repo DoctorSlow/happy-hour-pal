@@ -12,8 +12,8 @@ const SearchBar = props => (
         </Link>
         <div>
             <form className="form-inline my-2 my-lg-0">
-                <input onChange={props.onChange} className="form-control mr-sm-2" type="search" placeholder="Current Location" aria-label="Search" />
-                <button onClick={props.onClick} className="btn btn-dark my-2 my-sm-0" type="submit">Go</button>
+                <input onChange={this.props.onChange} className="form-control mr-sm-2" type="search" placeholder="Current Location" aria-label="Search" />
+                <button onClick={this.props.onClick} className="btn btn-dark my-2 my-sm-0" type="submit">Go</button>
             </form>
         </div>
 

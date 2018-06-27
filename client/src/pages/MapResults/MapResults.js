@@ -10,12 +10,16 @@ import "./MapResults.css";
 
 class MapResults extends Component {
 
-  // constructor(props) {
-  //   super(props);
-  //   this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
-  //   this.handleInputChange = this.handleInputChange.bind(this);
+  constructor(props) {
+    super(props);
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    // this.state = {
+    //   results: [],
+    //   search: ""
+    // };
 
-  // }
+  }
 
   state = {
     results: [],
@@ -51,7 +55,7 @@ class MapResults extends Component {
 
     return (
       <div className="mapHeight">
-        <SearchBar onClick={this.handleSearchSubmit.bind(this)} onChange={this.handleInputChange.bind(this)} />
+        <SearchBar onClick={this.handleSearchSubmit} onChange={this.handleInputChange} />
         <div className="mapHeight" id="map"></div>
       </div>
     )
