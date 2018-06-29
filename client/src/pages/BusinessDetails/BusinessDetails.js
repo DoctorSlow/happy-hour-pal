@@ -16,11 +16,11 @@ class Results extends Component {
     beginTime: "",
     endTime: "",
     info: "",
-    reviews,
+    reviews: [],
     visibility: "hidden",
-    name: "Ermanos",
-    address: "http://www.ermanosbrew.com/",
-    stars: "****"
+    name: "",
+    address: "",
+    stars: "",
   };
 
   componentDidMount() {
@@ -32,6 +32,7 @@ class Results extends Component {
       .then(res =>
         this.setState({
           businesses: res.data,
+          name: "The Shanty",
           day: "",
           beginTime: "",
           endTime: "",
@@ -61,6 +62,7 @@ class Results extends Component {
                 <DealCard
                   // onClick={() => this.handleClickEvent(pic.id)}
                   id={business._id}
+                  name={this.state.name}
                   key={business._id}
                   day={business.day}
                   beginTime={business.beginTime}

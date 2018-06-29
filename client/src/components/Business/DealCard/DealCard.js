@@ -1,14 +1,16 @@
 import React from "react";
-import { Button, CardText, CardBody,
-  CardTitle, CardSubtitle } from 'reactstrap';
+import {
+  Button, CardText, CardBody,
+  CardTitle, CardSubtitle
+} from 'reactstrap';
 import "./DealCard.css";
 
 // Business card component for List Results
 const DealCard = props => (
   <div className="deal-card">
 
-   {/* New Deal card to pull from MongoDB */}
-    <CardBody {... props._id}>
+    {/* New Deal card to pull from MongoDB */}
+    <CardBody {...props._id}>
       <CardTitle>
         {props.day}
       </CardTitle>
@@ -18,7 +20,7 @@ const DealCard = props => (
       <CardText>
         {props.info}
       </CardText>
-      <Button color="primary" className="update" style={{visibility:(props.showButton ? "visible" : "hidden")}} id={props.id}>
+      <Button color="primary" className="update" style={{ visibility: (props.showButton ? "visible" : "hidden") }} id={props.id}>
         Update
       </Button>
 

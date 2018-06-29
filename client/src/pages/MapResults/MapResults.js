@@ -1,15 +1,68 @@
-import React from "react";
+import React, { Component } from "react";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 // import Container from "../../components/Container";
 // import Row from "../../components/Row";
 // import Col from "../../components/Col";
 import SearchBar from "../../components/SearchBar";
+import MyMapComponent from "../../components/Maps";
+import API from "../../utils/API";
 import "./MapResults.css";
 
-const MapResults = () => (
-  <div className="mapHeight">
-    <SearchBar />
-    <div className="mapHeight" id="map"></div>
-  </div>
-);
+class MapResults extends Component {
+  //this component will be refactored to contain a method that stores state for google api results
+
+  constructor(props) {
+    super(props);
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+
+  }
+
+  state = {
+    results: [],
+    search: ""
+  };
+
+  //allows state changes(right now just the search parameter) to be updated live
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleSearchSubmit = event => {
+    event.preventDefault();
+    this.searchGoogle(this.state.search);
+  };
+
+  searchGoogle(query) {
+    console.log("google has been searched")
+    API.getPlaces(query)
+      .then(res =>
+        this.setState({ results: res.data.results })
+      // if(this.props.onSearch) {
+      //     this.props.onSearch(res.data.results);
+      // }
+      )
+      .catch(err => console.log(err));
+  };
+
+  render() {
+
+    return (
+      <div className="mapHeight">
+        <SearchBar onClick={this.handleSearchSubmit} onChange={this.handleInputChange} />
+        < MyMapComponent
+          isMarkerShown
+          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_2mmRZkUnIuOqeIxJRjKZjDadVGB1i0E"
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `100%` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+        />
+      </div>
+    )
+  };
+}
 
 export default MapResults;
