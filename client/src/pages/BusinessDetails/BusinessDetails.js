@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 // import deals from "../../deals.json";
 import reviews from "../../reviews.json";
 import { BusinessCard, BusinessNameCard, DealCard } from "../../components/Business";
@@ -22,6 +22,14 @@ class Results extends Component {
     address: "",
     stars: "",
   };
+
+  handleClickEvent = () => {
+    if (this.props.loggedIn) {
+      this.props.history.push("/editbusiness");
+    } else {
+      this.props.history.push("/login");
+    }
+  }
 
   componentDidMount() {
     this.loadBusinesses();
@@ -73,7 +81,7 @@ class Results extends Component {
                   showButton={false}
                 />
               ))}
-
+              <Button color="primary" onClick={this.handleClickEvent}>Suggest Edit</Button>
             </BusinessCard>
 
             {/* <ReportDealBtn /> */}
