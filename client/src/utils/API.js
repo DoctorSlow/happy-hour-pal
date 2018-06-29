@@ -3,8 +3,6 @@ import axios from "axios";
 export default {
   // Place search API call
   getPlaces: function (query) {
-    alert("Hey you! You've succesfully queried the google api. Good on ya.");
-    // return axios.get("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + query + "&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:2000" + LATLONG + "&key=" + APIKEY);
     return axios.get('/api/maps/' + query);
   },
   // Gets all businesses
