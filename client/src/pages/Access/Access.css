@@ -1,4 +1,33 @@
+/* Matching all parent divs to height of page */
+.mapHeight, .App {
+    height: 100%;
+}
+
+/* Background */
+.access-page {
+    background-color: #2296a2ff;
+    height: 100%;
+}
+
+/* Display width */
+.width {
+    max-width: 330px;
+    margin: 0 auto;
+}
+
+/* Logo */
+.map-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 175px;
+    height: 100px;
+}
+
+/* Text */
 .access-note {
     text-align: center;
-    margin-top: 200px;
+    color: #fff;
+    margin-top: 40px;
+    line-height: 1.5em;
 }
