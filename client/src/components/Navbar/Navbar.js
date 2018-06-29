@@ -110,6 +110,17 @@ const Navbar = props => (
             Edit Business
           </Link>
         </li>
+        <li
+          className={
+            window.location.pathname === "/submitedit"
+              ? "nav-item active"
+              : "nav-item"
+          }
+        >
+          <Link to="/submitedit" className="nav-link">
+            Submit Edit
+          </Link>
+        </li>
       </ul>
     </div>
   </nav>

@@ -1,9 +1,29 @@
-.welcome-message {
-    text-align: center;
-    margin-top: 200px;
-    margin-bottom: 30px;
+/* Matching all parent divs to height of page */
+.mapHeight, .App {
+    height: 100%;
 }
 
+/* Background */
+.loading-page {
+    background-color: #e9b521ff;
+    height: 100%;
+}
+
+/* Logo */
+.quail-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
+    height: 150px;
+}
+
+/* Text */
+.welcome-message {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
 .slogan {
     text-align: center;
 }

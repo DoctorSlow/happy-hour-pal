@@ -13,6 +13,8 @@ import LoginForm from "./pages/LogIn/LogIn";
 import SignupForm from "./pages/SignUp/SignUp";
 import AddBusiness from "./pages/AddBusiness/AddBusiness";
 import EditBusiness from "./pages/EditBusiness/EditBusiness";
+import SubmitEdit from "./pages/SubmitEdit/SubmitEdit";
+
 
 // Function for which links to display if signed in
 const DisplayLinks = props => {
@@ -58,8 +60,8 @@ class App extends Component {
 		}
 		this._logout = this._logout.bind(this)
 		this._login = this._login.bind(this)
-  }
-  
+	}
+
 	componentDidMount() {
 		axios.get('/auth/user').then(response => {
 			console.log(response.data)
@@ -114,27 +116,32 @@ class App extends Component {
 		return (
 			<div className="App">
 				<Router className="mapHeight">
-				<div className="mapHeight">
-					<Navbar />
-					<Wrapper className="mapHeight">
-					<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
-					<Route exact path="/" component={Loading} />
-					<Route exact path="/loading" component={Loading} />
-					<Route exact path="/access" component={Access} />
-					<Route exact path="/businessListings" component={BusinessListings} />
-					<Route exact path="/listresults" component={ListResults} />
-					<Route exact path="/mapresults" component={MapResults} />
-					<Route exact path="/businessdetails" component={BusinessDetails} />
-					<Route exact path="/login" render={() =>
-						<LoginForm
-							_login={this._login}
-						/>
-					}/>
-					<Route exact path="/signup" component={SignupForm} />
-					<Route exact path="/addbusiness" component={AddBusiness} />
-					<Route exact path="/editbusiness" component={EditBusiness} />
-					</Wrapper>
-				</div>
+					<div className="mapHeight">
+						<Navbar />
+						<Wrapper className="mapHeight">
+							<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
+							<Route exact path="/" component={Loading} />
+							<Route exact path="/loading" component={Loading} />
+							<Route exact path="/access" component={Access} />
+							<Route exact path="/businessListings" component={BusinessListings} />
+							<Route exact path="/listresults" component={ListResults} />
+							<Route exact path="/mapresults" component={MapResults} />
+							<Route exact path="/businessdetails" render={
+								(props) => {
+									return (<BusinessDetails {...props} loggedIn={this.state.loggedIn} />)
+								}
+							} />
+							<Route exact path="/login" render={() =>
+								<LoginForm
+									_login={this._login}
+								/>
+							} />
+							<Route exact path="/signup" component={SignupForm} />
+							<Route exact path="/addbusiness" component={AddBusiness} />
+							<Route exact path="/editbusiness" component={EditBusiness} />
+							<Route exact path="/submitedit" component={SubmitEdit} />
+						</Wrapper>
+					</div>
 				</Router>
 			</div>
 		)
