@@ -1,9 +1,5 @@
 import axios from "axios";
 
-// const USERSEARCH = "bar";
-// const LATLONG = "@47.6918452,-122.2226413";
-// const APIKEY = "AIzaSyD_2mmRZkUnIuOqeIxJRjKZjDadVGB1i0E";
-
 export default {
   // Place search API call
   getPlaces: function (query) {
