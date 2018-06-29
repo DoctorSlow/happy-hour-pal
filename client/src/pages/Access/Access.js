@@ -6,13 +6,16 @@ import "./Access.css";
 
 // Inform user location services allows better user experience
 const Access = () => (
-  <div>
+  <div className="access-page">
     <Container>
       <Row>
         <Col size="md-12">
-          <h5 className="access-note">
-            Allow access to Geolocation services for faster and more accurate results.
-          </h5>
+          <div className="width">
+            <img className="map-logo" src="/assets/images/maplogo.png" alt="map-logo" />
+            <h5 className="access-note">
+              Allow access to Geolocation services for faster and more accurate results.
+            </h5>
+          </div>
         </Col>
       </Row>
     </Container>
