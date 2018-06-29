@@ -14,7 +14,6 @@ import SignupForm from "./pages/SignUp/SignUp";
 import AddBusiness from "./pages/AddBusiness/AddBusiness";
 import EditBusiness from "./pages/EditBusiness/EditBusiness";
 
-<<<<<<< HEAD
 // Function for which links to display if signed in
 const DisplayLinks = props => {
 	if (props.loggedIn) {
@@ -141,26 +140,5 @@ class App extends Component {
 		)
 	}
 }
-=======
-const App = () => (
-  <Router className="mapHeight">
-    <div className="mapHeight">
-      <Navbar />
-      <Wrapper className="mapHeight">
-        <Route exact path="/" component={Loading} />
-        <Route exact path="/loading" component={Loading} />
-        <Route exact path="/access" component={Access} />
-        <Route exact path="/addbusiness" component={AddBusiness} />
-        <Route exact path="/listresults" component={ListResults} />
-        <Route exact path="/mapresults" component={MapResults} />
-        <Route exact path="/businessdetails" component={BusinessDetails} />
-        <Route exact path="/signin" component={LogIn} />
-        <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/editbusiness" component={EditBusiness} />
-      </Wrapper>
-    </div>
-  </Router>
-);
->>>>>>> 682f867157b7972d9de4d617478e6018beb0f25f
 
 export default App;
