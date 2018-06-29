@@ -22,7 +22,20 @@ class MapResults extends Component {
 
   state = {
     results: [],
-    search: ""
+    search: "",
+    center: null
+  };
+
+  //automatically grab current location 
+  componentWillMount() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.setState({
+        center: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        }
+      });
+    });
   };
 
   //allows state changes(right now just the search parameter) to be updated live
@@ -55,12 +68,13 @@ class MapResults extends Component {
     return (
       <div className="mapHeight">
         <SearchBar onClick={this.handleSearchSubmit} onChange={this.handleInputChange} />
-        < MyMapComponent
+        <MyMapComponent
           isMarkerShown
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_2mmRZkUnIuOqeIxJRjKZjDadVGB1i0E"
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `100%` }} />}
           mapElement={<div style={{ height: `100%` }} />}
+          center={this.state.center}
         />
       </div>
     )
