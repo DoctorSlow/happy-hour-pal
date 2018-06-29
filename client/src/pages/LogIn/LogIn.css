@@ -1,0 +1,42 @@
+/************************
+FORM
+************************/
+
+/* Size */
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+/* Greeting */
+.form-signin-heading {
+    margin-bottom: 30px;
+    text-align: center;
+    color: #4d4d4dff;
+}
+
+/* Button */
+.login-btn, .login-btn:hover, .login-btn:active, .login-btn:visited  {
+    background-color: #2296a2ff !important;
+    margin-bottom: 30px;
+}
+
+
+
+/************************
+REDIRECT OPTION
+************************/
+
+/* Text */
+p {
+    color: #4d4d4dff;
+    font-size: .9em;
+    text-align: center;
+}
+
+/* Link */
+.link, .link:hover {
+    color: #2296a2ff;
+    font-weight: bold;
+}

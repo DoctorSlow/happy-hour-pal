@@ -32,7 +32,7 @@ app.use(passport.session());
 
 // app.use(routes(passport));
 app.use(routes);
-// require('./config/passport/passport.js')(passport, db.user);
+require('./config/passport/passport.js')(passport, db.user);
 
 // Start the API server
 app.listen(PORT, function() {

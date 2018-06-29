@@ -1,0 +1,42 @@
+/************************
+FORM
+************************/
+
+/* Size */
+.form-signup {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+/* Greeting */
+.form-signup-heading {
+    margin-bottom: 30px;
+    text-align: center;
+    color: #4d4d4dff;
+}
+
+/* Button */
+.signup-btn, .signup-btn:hover, .signup-btn:active, .signup-btn:visited  {
+    background-color: #2296a2ff !important;
+    margin-bottom: 30px;
+}
+
+
+
+/************************
+REDIRECT OPTION
+************************/
+
+/* Text */
+p {
+    color: #4d4d4dff;
+    font-size: .9em;
+    text-align: center;
+}
+
+/* Link */
+.link, .link:hover {
+    color: #2296a2ff;
+    font-weight: bold;
+}

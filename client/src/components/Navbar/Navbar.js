@@ -79,12 +79,12 @@ const Navbar = props => (
         </li>
         <li
           className={
-            window.location.pathname === "/signin"
+            window.location.pathname === "/login"
               ? "nav-item active"
               : "nav-item"
           }
         >
-          <Link to="/signin" className="nav-link">
+          <Link to="/login" className="nav-link">
             Sign In
           </Link>
         </li>
@@ -108,6 +108,17 @@ const Navbar = props => (
         >
           <Link to="/editbusiness" className="nav-link">
             Edit Business
+          </Link>
+        </li>
+        <li
+          className={
+            window.location.pathname === "/submitedit"
+              ? "nav-item active"
+              : "nav-item"
+          }
+        >
+          <Link to="/submitedit" className="nav-link">
+            Submit Edit
           </Link>
         </li>
       </ul>
