@@ -13,6 +13,8 @@ import LoginForm from "./pages/LogIn/LogIn";
 import SignupForm from "./pages/SignUp/SignUp";
 import AddBusiness from "./pages/AddBusiness/AddBusiness";
 import EditBusiness from "./pages/EditBusiness/EditBusiness";
+import SubmitEdit from "./pages/SubmitEdit/SubmitEdit";
+
 
 // Function for which links to display if signed in
 const DisplayLinks = props => {
@@ -137,6 +139,7 @@ class App extends Component {
 							<Route exact path="/signup" component={SignupForm} />
 							<Route exact path="/addbusiness" component={AddBusiness} />
 							<Route exact path="/editbusiness" component={EditBusiness} />
+							<Route exact path="/submitedit" component={SubmitEdit} />
 						</Wrapper>
 					</div>
 				</Router>
