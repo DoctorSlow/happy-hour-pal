@@ -1,23 +1,39 @@
-var express = require('express');
-var router = express.Router();
-var auth = require("../controllers/AuthController.js");
+var authController = require('../controllers/authcontroller.js');
+ 
+module.exports = function(app, passport) {
+ 
+    app.get('/signup', authController.signup);
 
-// restrict index for logged in user only
-router.get('/', auth.home);
+    app.get('/signin', authController.signin);
 
-// route to register page
-router.get('/register', auth.register);
+    app.get('/dashboard',isLoggedIn, authController.dashboard);
 
-// route for register action
-router.post('/register', auth.doRegister);
+    app.post('/signup', passport.authenticate('local-signup', {
+        successRedirect: '/listResults',
+ 
+        failureRedirect: '/signup'
+    }
+ 
+    ));
 
-// route to login page
-router.get('/login', auth.login);
+    app.get('/logout',authController.logout);
 
-// route for login action
-router.post('/login', auth.doLogin);
+    function isLoggedIn(req, res, next) {
+ 
+    if (req.isAuthenticated())
+     
+        return next();
+         
+    res.redirect('/signin');
+ 
+    }
+    app.post('/signin', passport.authenticate('local-signin', {
+        successRedirect: '/listResults',
+ 
+        failureRedirect: '/signin'
+    }
+ 
+));
+ 
+}
 
-// route for logout action
-router.get('/logout', auth.logout);
-
-module.exports = router;
