@@ -25,6 +25,7 @@ class MapResults extends Component {
   //automatically grab current location 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position)
       this.setState({
         center: {
           lat: position.coords.latitude,
