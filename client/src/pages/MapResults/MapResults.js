@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
-// import Container from "../../components/Container";
-// import Row from "../../components/Row";
-// import Col from "../../components/Col";
 import SearchBar from "../../components/SearchBar";
 import MyMapComponent from "../../components/Maps";
 import API from "../../utils/API";
