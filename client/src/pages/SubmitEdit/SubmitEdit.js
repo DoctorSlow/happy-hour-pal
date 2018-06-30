@@ -12,7 +12,10 @@ class AddBusiness extends Component {
   constructor () {
     super ();
     this.state = {
+      business: [],
+      businesses: [],
       name: "",
+      googleID: "",
       day: "",
       beginTime: "",
       endTime: "",
@@ -21,18 +24,39 @@ class AddBusiness extends Component {
     this.handleInputChange.bind(this);
   }
 
-  // state = {
-  //   businesses: [],
-  //   name: "",
-  //   // days: [], // Not sure if this should be an array - Stef
-  //   day: "",
-  //   beginTime: "", // Not sure how to input if there are multiple start and end times (multiple happy hours in a day) - Stef
-  //   endTime: "",
-  //   info: ""
-  // };
-
   componentDidMount() {
-    console.log("loaded");
+    this.loadAllBusinesses();
+  }
+
+  // Retrieve all businesses to be displayed in select drop-down.
+  loadAllBusinesses = () => {
+    API.getBusinesses()
+      .then(res =>
+        this.setState({
+          businesses: res.data,
+          name: "",
+          googleID: "",
+          day: "",
+          beginTime: "",
+          endTime: "",
+          info: "",
+          // currentBusiness: []
+        })
+      )
+      .catch(err => console.log(err));
+  }
+
+  // Upon select, get info of selected business (by id).
+  handleSelectedOption = (event) => {
+    const select = event.target;
+    const selectedOption = select[select.selectedIndex];
+    const businessID = selectedOption.getAttribute('data-id')
+    const googleID = selectedOption.getAttribute('value')
+    this.setState({
+      businessID: businessID,
+      googleID: googleID
+    });
+    console.log(businessID, googleID);
   }
 
   handleInputChange = event => {
@@ -43,19 +67,23 @@ class AddBusiness extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (! this.state.name || ! this.state.day || ! this.state.info) {
+    if (! this.state.googleID || ! this.state.day || ! this.state.beginTime || ! this.state.endTime || ! this.state.info) {
       alert("All fields must be filled out");
     } else {
-      API.saveBusiness({
-        name: this.state.name,
+      const select = document.getElementById('businessSelect');
+      const selectedOption = select[select.selectedIndex];
+      const businessId = selectedOption.getAttribute('data-id');
+      console.log(businessId);
+      API.saveDeal( businessId, {
+        googleID: this.state.googleID,
         day: this.state.day,
         beginTime: this.state.beginTime,
         endTime: this.state.endTime,
         info: this.state.info
       })
         .then(
-          function (newDeal) {
-            console.log(newDeal.data);
+          function (dealData) {
+            console.log(dealData);
             alert("Thanks for the info, pal!")
           },
           this.setState({
@@ -81,9 +109,33 @@ class AddBusiness extends Component {
             <h5 className="title">Add New Deal</h5>
 
             {/* Display name of business here, get data from button then submit to db with form data */}
-            <h3>*Display business name here*</h3>
+            {/* <h3>*Display business name here*</h3> */}
 
             <form>
+
+              <div className="form-group">
+                <label htmlFor="business">Business Name:</label>
+                {/* If businesses exist in the database: */}
+                {this.state.businesses.length ? (
+                  // Selecting a business fires loadTargetBusiness.
+                  // <select onChange={this.state.loadTargetBusiness}>
+                  <select id="businessSelect" onChange={this.handleSelectedOption}>
+                    {this.state.businesses.map(business => (
+                      <option
+                        key={business._id}
+                        // value={business._id}
+                        data-id={business._id}
+                        value={business.googleID}
+                      >
+                        {business.name}
+                      </option>
+                    ))}
+                  </select>
+                // Default message if no business exists in the database.
+                ) : (
+                  <h3>No businesses to display</h3>
+                )}
+              </div>
 
               <label>
                 Choose a day from this list:
@@ -94,13 +146,13 @@ class AddBusiness extends Component {
                   selected={this.state.day}
                   onChange={this.handleInputChange}
                 >
-                  <option value="Sunday">Sunday</option>
-                  <option value="Monday">Monday</option>
-                  <option value="Tuesday">Tuesday</option>
-                  <option value="Wednesday">Wednesday</option>
-                  <option value="Thursday">Thursday</option>
-                  <option value="Friday">Friday</option>
-                  <option value="Saturday">Saturday</option>
+                  <option value="1">Sunday</option>
+                  <option value="2">Monday</option>
+                  <option value="3">Tuesday</option>
+                  <option value="4">Wednesday</option>
+                  <option value="5">Thursday</option>
+                  <option value="6">Friday</option>
+                  <option value="7">Saturday</option>
                 </select>
               </label>
 
@@ -112,8 +164,6 @@ class AddBusiness extends Component {
                     type="time"
                     id="appt-time"
                     name="beginTime"
-                    min="9:00"
-                    max="18:00"
                     required
                 />
                 <p className="timeframe">to</p>
@@ -123,8 +173,6 @@ class AddBusiness extends Component {
                     type="time"
                     id="appt-time"
                     name="endTime"
-                    min="9:00"
-                    max="18:00"
                     required
                 />
               </div>
