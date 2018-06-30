@@ -40,7 +40,8 @@ class LoginForm extends Component {
                     <Form>
                         <FormGroup>
                             <Label for="username" hidden>Username</Label>
-                            <Input 
+							<Input 
+								className="user-input"
                                 type="text"
                                 name="username"
                                 placeholder="username"
@@ -52,6 +53,7 @@ class LoginForm extends Component {
                         <FormGroup>
                             <Label for="password" hidden>Password</Label>
                             <Input
+								className="password-input"
                                 type="password"
                                 name="password"
                                 placeholder="password"
