@@ -8,6 +8,7 @@ class SignupForm extends Component {
 	constructor() {
 		super()
 		this.state = {
+			email: '',
 			username: '',
 			password: '',
 			confirmPassword: '',
@@ -33,6 +34,7 @@ class SignupForm extends Component {
         // Request to server
 		axios
 			.post('/auth/signup', {
+				email: this.state.email,
 				username: this.state.username,
 				password: this.state.password
 			})
@@ -61,8 +63,21 @@ class SignupForm extends Component {
 				<h5 className="form-signup-heading">Sign up and save</h5>
 				<Form>
 					<FormGroup>
+						<Label for="email" hidden>Email</Label>
+						<Input 
+							className="email-input"
+							type="text"
+							name="email"
+							placeholder="email"
+							value={this.state.email}
+							onChange={this.handleChange} 
+						/>
+					</FormGroup>
+					{' '}
+					<FormGroup>
 						<Label for="username" hidden>Username</Label>
 						<Input 
+							className="user-input"
 							type="text"
 							name="username"
 							placeholder="username"
@@ -74,6 +89,7 @@ class SignupForm extends Component {
 					<FormGroup>
 						<Label for="password" hidden>Password</Label>
 						<Input
+							className="password-input"
 							type="password"
 							name="password"
 							placeholder="password"
@@ -85,6 +101,7 @@ class SignupForm extends Component {
 					<FormGroup>
 						<Label for="confirmPassword" hidden>Password</Label>
 						<Input
+							className="password-input"
 							type="password"
 							name="confirmPassword"
 							placeholder="password"
