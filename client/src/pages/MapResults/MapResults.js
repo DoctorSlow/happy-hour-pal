@@ -1,3 +1,5 @@
+/* eslint react/no-multi-comp: 0, react/prop-types: 0 */
+
 import React, { Component } from "react";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 // import Container from "../../components/Container";
@@ -29,7 +31,7 @@ class MapResults extends Component {
   //automatically grab current location 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((position) => {
-      this.setState({
+      this.setState(this.refs.map, {
         center: {
           lat: position.coords.latitude,
           lng: position.coords.longitude
@@ -56,9 +58,9 @@ class MapResults extends Component {
     API.getPlaces(query)
       .then(res =>
         this.setState({ results: res.data.results })
-        // if(this.props.onSearch) {
-        //     this.props.onSearch(res.data.results);
-        // }
+      // if(this.props.onSearch) {
+      //     this.props.onSearch(res.data.results);
+      // }
       )
       .catch(err => console.log(err));
   };
