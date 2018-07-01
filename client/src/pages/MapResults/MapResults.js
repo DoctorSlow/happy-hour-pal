@@ -1,10 +1,6 @@
 /* eslint react/no-multi-comp: 0, react/prop-types: 0 */
 
 import React, { Component } from "react";
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
-// import Container from "../../components/Container";
-// import Row from "../../components/Row";
-// import Col from "../../components/Col";
 import SearchBar from "../../components/SearchBar";
 import MyMapComponent from "../../components/Maps";
 import API from "../../utils/API";
@@ -31,7 +27,8 @@ class MapResults extends Component {
   //automatically grab current location 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((position) => {
-      this.setState(this.refs.map, {
+      console.log(position)
+      this.setState({
         center: {
           lat: position.coords.latitude,
           lng: position.coords.longitude
@@ -77,6 +74,7 @@ class MapResults extends Component {
           containerElement={<div style={{ height: `100%` }} />}
           mapElement={<div style={{ height: `100%` }} />}
           center={this.state.center}
+          results={this.state.results}
         />
       </div>
     )

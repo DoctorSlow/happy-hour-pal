@@ -80,15 +80,16 @@ class AddBusiness extends Component {
         // endTime: this.state.endTime,
         // info: this.state.info
       })
-        // .then(
-        //   API.saveDeal({
-        //     googleID: this.state.googleID,
-        //     day: this.state.day,
-        //     beginTime: this.state.beginTime,
-        //     endTime: this.state.endTime,
-        //     info: this.state.info
-        //   })
-        // )
+      .catch(err => console.log(err))
+        .then(
+          API.saveDeal({
+            googleID: this.state.googleID,
+            day: this.state.day,
+            beginTime: this.state.beginTime,
+            endTime: this.state.endTime,
+            info: this.state.info
+          })
+        )
         .then(
           function (newDeal) {
             console.log(newDeal.data);

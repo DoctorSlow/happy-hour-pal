@@ -20,5 +20,12 @@ export default {
   // Saves a business to the database
   saveBusiness: function (businessData) {
     return axios.post("/api/businesses", businessData);
+  },
+  // Saves a deal to the Deals collection, populates it within the appropriate deals[] for a business document.
+  saveDeal: function (id, dealData) {
+    return axios.post("/api/businesses/" + id + "/deals", dealData);
   }
+  // saveDeal: function (id, dealData) {
+  //   return axios.post(`/api/businesses/${id}/deals`, dealData);
+  // }
 };
