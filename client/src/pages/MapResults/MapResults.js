@@ -45,12 +45,12 @@ class MapResults extends Component {
 
   handleSearchSubmit = event => {
     event.preventDefault();
-    this.searchGoogle(this.state.search);
+    this.searchGoogle(this.state.search, this.state.center);
   };
 
-  searchGoogle(query) {
+  searchGoogle(query, loc) {
     console.log("google has been searched")
-    API.getPlaces(query)
+    API.getPlaces(query, loc)
       .then(res =>
         this.setState({ results: res.data.results })
         // if(this.props.onSearch) {

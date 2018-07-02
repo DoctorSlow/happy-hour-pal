@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
   // Place search API call
-  getPlaces: function (query) {
+  getPlaces: function (query, loc) {
     return axios.get('/api/maps/' + query);
   },
   // Gets all businesses
