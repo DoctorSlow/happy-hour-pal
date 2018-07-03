@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default {
   // Place search API call
-  getPlaces: function (query, loc) {
-    return axios.get('/api/maps/' + query);
+  getPlaces: function (query, lat, lng) {
+    return axios.get('/api/maps/' + query + "/" + lat + "/" + lng);
   },
   // Gets all businesses
   getBusinesses: function () {
