@@ -34,23 +34,25 @@ class MapResults extends Component {
       });
     });
   };
-
   //allows state changes(right now just the search parameter) to be updated live
+  //this isnt necessary
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
     });
   };
-
+  //on sumbit take search and geo states to be entered in places search
   handleSearchSubmit = event => {
     event.preventDefault();
-    this.searchGoogle(this.state.search);
+    let lat = this.state.center.lat;
+    let lng = this.state.center.lng;
+    this.searchGoogle(this.state.search, lat, lng);
   };
-
-  searchGoogle(query) {
-    console.log("google has been searched")
-    API.getPlaces(query)
+  //queries the places api and loads results into this components result state
+  searchGoogle(query, lat, lng) {
+    console.log("google has been searched");
+    API.getPlaces(query, lat, lng)
       .then(res =>
         this.setState({ results: res.data.results })
         // if(this.props.onSearch) {
