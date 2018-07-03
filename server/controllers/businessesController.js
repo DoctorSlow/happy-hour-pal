@@ -12,6 +12,14 @@ module.exports = {
   findById: function(req, res) {
     db.Business
       .findById(req.params.id)
+      //.populate("deals")
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findDeals: function(req, res) {
+    db.Deal
+      .find({ googleID: req.params.id})
+      .sort({ day: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

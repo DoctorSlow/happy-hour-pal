@@ -22,11 +22,12 @@ class Results extends Component {
     info: "",
     reviews,
     visibility: "hidden",
-    name: "Ermanos",
+    name: "",
     address: "http://www.ermanosbrew.com/",
     stars: "****",
     search: "",
-    currentBusiness: []
+    currentBusiness: [],
+    currentBusinessDeals: []
   };
 
   handleClickEvent = () => {
@@ -47,10 +48,6 @@ class Results extends Component {
       .then(res =>
         this.setState({
           businesses: res.data,
-          day: "",
-          beginTime: "",
-          endTime: "",
-          info: "",
           // currentBusiness: []
         })
       )
@@ -63,34 +60,35 @@ class Results extends Component {
     const selectedOption = select[select.selectedIndex];
     API.getBusiness(selectedOption.getAttribute('value'))
     .then(res =>{
-      this.setState({currentBusiness: res.data});
+      this.setState({currentBusiness: res.data}),
+      console.log(res)
     })
+    .catch(err => console.log(err))
+    // Next, get the deals that go with the business (by same id).
+    .then(
+        API.getDeals(selectedOption.getAttribute('data-id'))
+        .then(results =>{
+          this.setState({currentBusinessDeals: results.data});
+          console.log(results.data)
+          console.log(this.state.currentBusinessDeals)
+        })
+    )
   }
 
-  // handleSelectedOption = event => {
-  //   this.setState({ search: event.target.value });
-  // };
+  // loadTargetDeals = (event) => {
+  //   const select = event.target;
+  //   const selectedOption = select[select.selectedIndex];
+  //   API.getDeals(selectedOption.getAttribute('value'))
+  //   .then(res =>{
+  //     this.setState({currentBusinessDeals: res.data});
+  //   })
+  // }
+
   handleSelectedOption = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
-  // Old way to get single business when search form is on same page.
-  // // Get back the info from a single business, by its id
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   API.getBusiness(this.state.search)
-  //   .then(res =>
-  //     this.setState({
-  //       businesses: res.data,
-  //       day: "",
-  //       beginTime: "",
-  //       endTime: "",
-  //       info: ""
-  //     })
-  //   )
-  //     .catch(err => this.setState({ error: err.message }));
-  // };
 
   render() {
 
@@ -105,28 +103,35 @@ class Results extends Component {
             {/* <BackBtn /> */}
 
             <BusinessCard>
-
-              <BusinessNameCard
-                name={this.state.name}
-                address={this.state.address}
-                stars={this.state.stars}
-              />
+              {currentBusiness &&
+                <BusinessNameCard
+                  name={currentBusiness.name}
+                  address={this.state.address}
+                  stars={this.state.stars}
+                />
+              }
 
               {/* Deal Card displays all data from business collection. */}
-              {this.state.businesses.map(business => (
-                <DealCard
-                  // onClick={() => this.handleClickEvent(pic.id)}
-                  id={business._id}
-                  key={business._id}
-                  day={business.day}
-                  beginTime={business.beginTime}
-                  endTime={business.endTime}
-                  info={business.info}
-                  // canEdit={this.state.canEdit}
-                  // visibility={this.state.visibility}
-                  showButton={false}
-                />
-              ))}
+              {this.state.currentBusinessDeals.length ? (
+                <div>
+                  {this.state.currentBusinessDeals.map(business => (
+                    <DealCard
+                      // onClick={() => this.handleClickEvent(pic.id)}
+                      id={business._id}
+                      key={business._id}
+                      day={business.day}
+                      beginTime={business.beginTime}
+                      endTime={business.endTime}
+                      info={business.info}
+                      // canEdit={this.state.canEdit}
+                      // visibility={this.state.visibility}
+                      showButton={false}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <h3>No current happy hour deals</h3>
+              )}
               <Button color="primary" onClick={this.handleClickEvent}>Suggest Edit</Button>
             </BusinessCard>
 
@@ -163,6 +168,7 @@ class Results extends Component {
               handleSelectedOption={this.handleSelectedOption}
               businesses={this.state.businesses}
               loadTargetBusiness={this.loadTargetBusiness}
+              // loadTargetDeals={this.loadTargetDeals}
             />
 
             {/* Option A ... Div to display business selected from SearchForm */}

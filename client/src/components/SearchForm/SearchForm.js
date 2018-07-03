@@ -15,6 +15,7 @@ const SearchForm = props => (
             <option
               key={business._id}
               value={business._id}
+              data-id={business.googleID}
             >
               {business.name}
             </option>
