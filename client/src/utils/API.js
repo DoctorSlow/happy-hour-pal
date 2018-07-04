@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default {
   // Place search API call
-  getPlaces: function (query) {
-    return axios.get('/api/maps/' + query);
+  getPlaces: function (query, lat, lng) {
+    return axios.get('/api/maps/' + query + "/" + lat + "/" + lng);
   },
   // Gets all businesses
   getBusinesses: function () {
@@ -20,5 +20,16 @@ export default {
   // Saves a business to the database
   saveBusiness: function (businessData) {
     return axios.post("/api/businesses", businessData);
+  },
+  // Saves a deal to the Deals collection, populates it within the appropriate deals[] for a business document.
+  saveDeal: function (id, dealData) {
+    return axios.post("/api/businesses/" + id + "/deals", dealData);
+  },
+  // saveDeal: function (id, dealData) {
+  //   return axios.post(`/api/businesses/${id}/deals`, dealData);
+  // }
+  // Get the deals with the given id
+  getDeals: function (id) {
+    return axios.get("/api/businesses/" + id + "/deals");
   }
 };

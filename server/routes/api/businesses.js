@@ -12,4 +12,9 @@ router.route("/:id")
   .put(businessesController.update)
   .delete(businessesController.remove);
 
+// Matches with "/api/businesses/:id"
+router.route("/:id/deals/")
+  .get(businessesController.findDeals)
+  .post(businessesController.createDeal);
+
 module.exports = router;

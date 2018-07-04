@@ -11,6 +11,8 @@ class AddBusiness extends Component {
 
   constructor () {
     super ();
+    // this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+    // this.handleInputChange = this.handleInputChange.bind(this);
     this.state = {
       googleID: "",
       name: "",
@@ -19,15 +21,24 @@ class AddBusiness extends Component {
       endTime: "",
       info: "",
       results: [],
-      search: ""
+      search: "",
+      center: null
     };
     this.handleInputChange.bind(this);
   }
 
+  //automatically grab current location 
   componentDidMount() {
-    console.log("loaded");
-    // Run API.getPlaces by current location + search term?
-  }
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position)
+      this.setState({
+        center: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        }
+      });
+    });
+  };
 
   handleInputChange = event => {
     this.setState({
@@ -49,20 +60,20 @@ class AddBusiness extends Component {
 
   handleSearchSubmit = event => {
     event.preventDefault();
-    this.searchGoogle(this.state.search);
+    let lat = this.state.center.lat;
+    let lng = this.state.center.lng;
+    this.searchGoogle(this.state.search, lat, lng);
   };
 
-  searchGoogle(query) {
-    console.log("google has been searched")
-    API.getPlaces(query)
-    // .then(
-    //   function (searchResults) {
-    //     console.log(searchResults.data);
-    //   })
-    .then(res =>
-        this.setState({
-          results: res.data.results
-        })
+  //queries the places api and loads results into this components result state
+  searchGoogle(query, lat, lng) {
+    console.log("google has been searched");
+    API.getPlaces(query, lat, lng)
+      .then(res =>
+        this.setState({ results: res.data.results })
+        // if(this.props.onSearch) {
+        //     this.props.onSearch(res.data.results);
+        // }
       )
       .catch(err => console.log(err));
   };
@@ -72,37 +83,38 @@ class AddBusiness extends Component {
     if (! this.state.name) {
       alert("All fields must be filled out");
     } else {
+      // First, save the business as a new document.
       API.saveBusiness({
         name: this.state.name,
         googleID: this.state.googleID
-        // day: this.state.day,
-        // beginTime: this.state.beginTime,
-        // endTime: this.state.endTime,
-        // info: this.state.info
       })
-        // .then(
-        //   API.saveDeal({
-        //     googleID: this.state.googleID,
-        //     day: this.state.day,
-        //     beginTime: this.state.beginTime,
-        //     endTime: this.state.endTime,
-        //     info: this.state.info
-        //   })
-        // )
-        .then(
-          function (newDeal) {
-            console.log(newDeal.data);
-            alert("Thanks for the info, pal!");
-          },
-          this.setState({
-              name: "",
-              day: "",
-              beginTime: "",
-              endTime: "",
-              info: ""
+      .catch(err => console.log(err))
+      .then(
+        function (newBusiness) {
+          console.log(newBusiness.data);
+          alert(newBusiness.data.name + " added");
+          const business = newBusiness.data;
+          const businessId = business._id;
+
+          const select = document.getElementById('daySelect');
+          const selectedOption = select[select.selectedIndex];
+          //const dealDay = selectedOption.getAttribute('value');
+          const dealDay = selectedOption.value;
+          const dealStart = document.getElementById('beginTime').value;
+          const dealEnd = document.getElementById('endTime').value;
+          const dealInfo = document.getElementById('info').value;
+
+          // Take the data from the new business to use for referencing the new deal for it.
+           return API.saveDeal( businessId, {
+            googleID: business.googleID,
+            day: dealDay,
+            beginTime: dealStart,
+            endTime: dealEnd,
+            info: dealInfo
           })
-        )
-        .catch(err => console.log(err));
+        }
+      )
+      .catch(err => console.log(err));
     }
   };
 
@@ -119,18 +131,9 @@ class AddBusiness extends Component {
             <h5 className="title">Add New Business</h5>
             <form>
 
-              {/* ***Input business name*** */}
-              {/* <label htmlFor="businessName">Enter business name.</label>
-              <Input
-                value={this.state.name}
-                onChange={this.handleInputChange}
-                name="name"
-                placeholder="Business Name"
-              /> */}
-
               {/* ***Select business name(after search)*** */}
               <div className="form-group">
-              <label htmlFor="business">Business Name:</label>
+              <label htmlFor="business">Business Name: </label>
               {/* If businesses exist in the database: */}
               {this.state.results.length ? (
                 <select onChange={this.handleSelectedOption} defaultValue="">
@@ -144,7 +147,7 @@ class AddBusiness extends Component {
                     </option>
                   ))}
                 </select>
-              // Default message if no business exists in the database.
+              // Default message before search..
               ) : (
                 <h3>Search for the name or type of the business.</h3>
               )}
@@ -152,14 +155,16 @@ class AddBusiness extends Component {
 
               {/* ***Select day of deal*** */}
               <label>
-                Choose a day from this list:
+                Choose a day from this list: 
                 <select
                   name="day"
                   type="select"
+                  id="daySelect"
                   value={this.state.day}
                   selected={this.state.day}
                   onChange={this.handleInputChange}
                 >
+                  <option value="" disabled>Select the day</option>
                   <option value="1">Sunday</option>
                   <option value="2">Monday</option>
                   <option value="3">Tuesday</option>
@@ -177,7 +182,7 @@ class AddBusiness extends Component {
                     value={this.state.beginTime}
                     onChange={this.handleInputChange}
                     type="time"
-                    id="appt-time"
+                    id="beginTime"
                     name="beginTime"
                     required
                 />
@@ -186,7 +191,7 @@ class AddBusiness extends Component {
                     value={this.state.endTime}
                     onChange={this.handleInputChange}
                     type="time"
-                    id="appt-time"
+                    id="endTime"
                     name="endTime"
                     required
                 />
@@ -197,6 +202,7 @@ class AddBusiness extends Component {
               <TextArea
                 // className="description"
                 name="info"
+                id="info"
                 placeholder="Description"
                 type="textarea"
                 value={this.state.info}

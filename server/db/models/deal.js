@@ -14,6 +14,7 @@ var DealSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User"
     },
+    googleID: { type: String },
     day: { type: Number, required: true },
     beginTime: { type: String, required: true },
     endTime: { type: String, required: true },
