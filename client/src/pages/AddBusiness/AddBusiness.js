@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import SearchBar from "../../components/SearchBar";
+import SearchInput from "../../components/SearchInput";
 import Container from "../../components/Container";
 import Col from "../../components/Col";
 import Row from "../../components/Row";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import { Input, TextArea } from "../../components/Form";
+import { Button, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import API from "../../utils/API";
 import "./AddBusiness.css";
 
@@ -121,106 +122,112 @@ class AddBusiness extends Component {
   render() {
     return (
       <div>
-      <SearchBar
-        onClick={this.handleSearchSubmit}
-        onChange={this.handleInputChange}
-      />
-      <Container>
-        <Row>
-          <Col size="md-6">
-            <h5 className="title">Add New Business</h5>
-            <form>
+        <div className="form-addbusiness">
+          <Container>
+            <Row>
+              <Col size="sm-12 md-12 lg-12">
 
-              {/* ***Select business name(after search)*** */}
-              <div className="form-group">
-              <label htmlFor="business">Business Name: </label>
-              {/* If businesses exist in the database: */}
-              {this.state.results.length ? (
-                <select onChange={this.handleSelectedOption} defaultValue="">
-                  <option value="" disabled>Select your option</option>
-                  {this.state.results.map(place => (
-                    <option
-                      key={place.id}
-                      value={[place.name,place.id]}
-                    >
-                      {place.name}
-                    </option>
-                  ))}
-                </select>
-              // Default message before search..
-              ) : (
-                <h3>Search for the name or type of the business.</h3>
-              )}
-              </div>
-
-              {/* ***Select day of deal*** */}
-              <label>
-                Choose a day from this list: 
-                <select
-                  name="day"
-                  type="select"
-                  id="daySelect"
-                  value={this.state.day}
-                  selected={this.state.day}
+                <label htmlFor="business">Enter business name or business type:</label>
+                <SearchInput
+                  className="search-input"
+                  onClick={this.handleSearchSubmit}
                   onChange={this.handleInputChange}
-                >
-                  <option value="" disabled>Select the day</option>
-                  <option value="1">Sunday</option>
-                  <option value="2">Monday</option>
-                  <option value="3">Tuesday</option>
-                  <option value="4">Wednesday</option>
-                  <option value="5">Thursday</option>
-                  <option value="6">Friday</option>
-                  <option value="7">Saturday</option>
-                </select>
-              </label>
-
-              {/* ***Input start & end times for the deal*** */}
-              <label htmlFor="dealTimes">Select the start and end times of the deal.</label>
-              <div className="form-row">
-                <Input
-                    value={this.state.beginTime}
-                    onChange={this.handleInputChange}
-                    type="time"
-                    id="beginTime"
-                    name="beginTime"
-                    required
                 />
-                <p className="timeframe">to</p>
-                <Input
-                    value={this.state.endTime}
+
+                <form>
+                  {/* ***Select business name(after search)*** */}
+                  <div className="form-group business-name">
+                  {/* <label className="business-name" htmlFor="business">Business Name: </label> */}
+                  {/* If businesses exist in the database: */}
+                  {this.state.results.length ? (
+                    <select onChange={this.handleSelectedOption} defaultValue="">
+                      <option value="" disabled>Select business</option>
+                      {this.state.results.map(place => (
+                        <option
+                          key={place.id}
+                          value={[place.name,place.id]}
+                        >
+                          {place.name}
+                        </option>
+                      ))}
+                    </select>
+                  // Default message before search..
+                  ) : (
+                    // <h3>Search for the name or type of the business.</h3>
+                    <h3></h3>
+                  )}
+                  </div>
+
+                  {/* ***Select day of deal*** */}
+                  <label className="day-input">
+                    Choose a day from this list: 
+                    <select
+                      className="select-day"
+                      name="day"
+                      type="select"
+                      id="daySelect"
+                      value={this.state.day}
+                      selected={this.state.day}
+                      onChange={this.handleInputChange}
+                    >
+                      <option value="" disabled>Select the day</option>
+                      <option value="1">Sunday</option>
+                      <option value="2">Monday</option>
+                      <option value="3">Tuesday</option>
+                      <option value="4">Wednesday</option>
+                      <option value="5">Thursday</option>
+                      <option value="6">Friday</option>
+                      <option value="7">Saturday</option>
+                    </select>
+                  </label>
+
+                  {/* ***Input start & end times for the deal*** */}
+                  <label htmlFor="dealTimes">Select the start and end times of the deal.</label>
+                  <div className="form-row time-input">
+                    <Input
+                        value={this.state.beginTime}
+                        onChange={this.handleInputChange}
+                        type="time"
+                        id="beginTime"
+                        name="beginTime"
+                        required
+                    />
+                    <p className="timeframe">to</p>
+                    <Input
+                        value={this.state.endTime}
+                        onChange={this.handleInputChange}
+                        type="time"
+                        id="endTime"
+                        name="endTime"
+                        required
+                    />
+                  </div>
+
+                  {/* ***Describe the deal*** */}
+                  <label htmlFor="description">Enter a description of the deal.</label>
+                  <TextArea
+                    // className="description"
+                    name="info"
+                    id="info"
+                    placeholder="Description"
+                    type="textarea"
+                    value={this.state.info}
                     onChange={this.handleInputChange}
-                    type="time"
-                    id="endTime"
-                    name="endTime"
-                    required
-                />
-              </div>
+                  />
 
-              {/* ***Describe the deal*** */}
-              <label htmlFor="description">Enter a description of the deal.</label>
-              <TextArea
-                // className="description"
-                name="info"
-                id="info"
-                placeholder="Description"
-                type="textarea"
-                value={this.state.info}
-                onChange={this.handleInputChange}
-              />
+                  {/* ***Submit the new business into the database with its first deal*** */}
+                  <Button
+                    className="btn-primary orange-btn btn-block"
+                    onClick={this.handleFormSubmit}
+                  >
+                    Submit New Happy Hour Special
+                  </Button>
 
-              {/* ***Submit the new business into the database with its first deal*** */}
-              <FormBtn
-                className="btn-primary"
-                onClick={this.handleFormSubmit}
-              >
-                Submit New Happy Hour Special
-              </FormBtn>
-
-            </form>
-          </Col>
-        </Row>
-      </Container>
+                </form>
+              </Col>
+            </Row>
+          </Container>
+        </div>
       </div>
     );
   }

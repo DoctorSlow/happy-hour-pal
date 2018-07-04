@@ -1,6 +1,31 @@
-/* Page title */
-.title {
+/************************
+FORM
+************************/
+
+/* Size */
+.form-addbusiness {
+    max-width: 400px;
+    padding: 15px;
+    margin: 0 auto;
+    margin-top: 2%;
+}
+
+/* Margin Spacing */
+.business-name {
     margin-top: 20px;
+}
+.search-input, .day-input {
+    margin-bottom: 20px;
+}
+.time-input {
+    margin-bottom: 5px;
+}
+.timeframe {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.select-day {
+    margin-left: 5px;
 }
 
 /* Select days buttons */
@@ -16,13 +41,14 @@
     margin-top: 3px;
 }
 
-/* Select time spacing */
-.timeframe {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
 /* Description box */
 textarea.form-control {
     height: 100px;
   }
+
+/* Buttons */
+.orange-btn, .orange-btn:hover, .orange-btn:active, .orange-btn:visited  {
+    color: #fff;
+    background-color: #d96d28ff !important;
+    margin-bottom: 30px;
+}
