@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { Col, Row } from 'reactstrap';
 // import deals from "../../deals.json";
-import {BusinessCard, BusinessNameCard, DealCard} from "../../components/Business";
+import { BusinessCard, BusinessNameCard, DealCard } from "../../components/Business";
 
 import API from "../../utils/API";
 import SearchForm from "../../components/SearchForm";
 import "./EditBusiness.css";
 
 class EditBusiness extends Component {
+
   state = {
     businesses: [],
     day: "",
@@ -21,6 +22,15 @@ class EditBusiness extends Component {
     currentBusiness: [],
     currentBusinessDeals: []
   };
+
+  handleClickEvent = () => {
+      // this.props.history.push("/submitedit");
+      if (this.props.loggedIn) {
+          this.props.history.push("/submitedit");
+      } else {
+          this.props.history.push("/login");
+      }
+  }
 
   // Load all businesses from the Business collection.
   componentDidMount() {
@@ -102,6 +112,7 @@ class EditBusiness extends Component {
                       // canEdit={this.state.canEdit}
                       // visibility={this.state.visibility}
                       showButton={true}
+                      handleClickEvent={this.handleClickEvent}
                     />
                   ))}
                 </div>

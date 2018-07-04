@@ -66,20 +66,20 @@ class Results extends Component {
     const select = event.target;
     const selectedOption = select[select.selectedIndex];
     API.getBusiness(selectedOption.getAttribute('value'))
-    .then(res =>{
-      this.setState({currentBusiness: res.data}),
-      console.log(res)
-    })
-    .catch(err => console.log(err))
-    // Next, get the deals that go with the business (by same id).
-    .then(
+      .then(res => {
+        this.setState({ currentBusiness: res.data }),
+          console.log(res)
+      })
+      .catch(err => console.log(err))
+      // Next, get the deals that go with the business (by same id).
+      .then(
         API.getDeals(selectedOption.getAttribute('data-id'))
-        .then(results =>{
-          this.setState({currentBusinessDeals: results.data});
-          console.log(results.data)
-          console.log(this.state.currentBusinessDeals)
-        })
-    )
+          .then(results => {
+            this.setState({ currentBusinessDeals: results.data });
+            console.log(results.data)
+            console.log(this.state.currentBusinessDeals)
+          })
+      )
   }
 
   // loadTargetDeals = (event) => {
@@ -94,7 +94,7 @@ class Results extends Component {
   render() {
 
     // Option A ... avoids declaring initially in state.
-    const {currentBusiness} = this.state
+    const { currentBusiness } = this.state
 
     return (
       <div>
@@ -131,9 +131,10 @@ class Results extends Component {
                   ))}
                 </div>
               ) : (
-                <h3>No current happy hour deals</h3>
-              )}
+                  <h3>No current happy hour deals</h3>
+                )}
               <Button color="primary" onClick={this.handleClickEvent}>Suggest Edit</Button>
+
             </BusinessCard>
 
             {/* <ReportDealBtn /> */}
@@ -169,7 +170,7 @@ class Results extends Component {
               handleSelectedOption={this.handleSelectedOption}
               businesses={this.state.businesses}
               loadTargetBusiness={this.loadTargetBusiness}
-              // loadTargetDeals={this.loadTargetDeals}
+            // loadTargetDeals={this.loadTargetDeals}
             />
 
             {/* Option A ... Div to display business selected from SearchForm */}
