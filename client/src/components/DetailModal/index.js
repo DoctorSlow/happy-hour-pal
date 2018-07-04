@@ -1,1 +1,1 @@
-// export { default } from "./DetailModal";
+export { default } from "./DetailModal";
