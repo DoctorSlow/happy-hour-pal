@@ -38,6 +38,7 @@ class Results extends Component {
     }
   }
 
+  // Load all businesses from the Business collection.
   componentDidMount() {
     this.loadAllBusinesses()
   }
@@ -53,6 +54,12 @@ class Results extends Component {
       )
       .catch(err => console.log(err));
   }
+
+  handleSelectedOption = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
 
   // Upon select, get info of selected business (by id).
   loadTargetBusiness = (event) => {
@@ -83,12 +90,6 @@ class Results extends Component {
   //     this.setState({currentBusinessDeals: res.data});
   //   })
   // }
-
-  handleSelectedOption = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
 
   render() {
 

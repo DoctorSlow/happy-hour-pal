@@ -4,76 +4,128 @@ import { Col, Row } from 'reactstrap';
 import {BusinessCard, BusinessNameCard, DealCard} from "../../components/Business";
 
 import API from "../../utils/API";
+import SearchForm from "../../components/SearchForm";
 import "./EditBusiness.css";
 
 class EditBusiness extends Component {
-    state = {
-        businesses: [],
-        day: "",
-        beginTime: "",
-        endTime: "",
-        info: "",
-        visibility: "visible",
-        name: "Ermanos",
-        address: "http://www.ermanosbrew.com/",
-        stars: "****"
-      };
+  state = {
+    businesses: [],
+    day: "",
+    beginTime: "",
+    endTime: "",
+    info: "",
+    visibility: "visible",
+    name: "",
+    address: "http://www.ermanosbrew.com/",
+    stars: "****",
+    currentBusiness: [],
+    currentBusinessDeals: []
+  };
 
-    componentDidMount() {
-        this.loadBusinesses();
-      }
+  // Load all businesses from the Business collection.
+  componentDidMount() {
+    this.loadBusinesses();
+  }
 
-      loadBusinesses = () => {
-        API.getBusinesses()
-          .then(res =>
-            this.setState({
-              businesses: res.data,
-              day: "",
-              beginTime: "",
-              endTime: "",
-              info: ""
-            })
-          )
-          .catch(err => console.log(err));
-      };
+  // Retrieve all businesses to be displayed in select drop-down.
+  loadBusinesses = () => {
+    API.getBusinesses()
+      .then(res =>
+        this.setState({
+          businesses: res.data,
+        })
+      )
+      .catch(err => console.log(err));
+  };
 
-    render() {
-        return (
-            <div>
-            <Row>
-                <Col sm="4">
+  handleSelectedOption = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
 
-                    {/* <BackBtn /> */}
+  // Upon select, get info of selected business (by id).
+  loadTargetBusiness = (event) => {
+    const select = event.target;
+    const selectedOption = select[select.selectedIndex];
+    API.getBusiness(selectedOption.getAttribute('value'))
+      .then(res =>{
+        this.setState({currentBusiness: res.data}),
+        console.log(res)
+      })
+      .catch(err => console.log(err))
 
-                    <BusinessCard>
+      // Next, get the deals that go with the business (by same id).
+      .then(
+        API.getDeals(selectedOption.getAttribute('data-id'))
+          .then(results =>{
+            this.setState({currentBusinessDeals: results.data});
+            console.log(results.data)
+            console.log(this.state.currentBusinessDeals)
+          })
+      )
+  }
 
-                        <BusinessNameCard
-                            name={this.state.name}
-                            address={this.state.address}
-                            stars={this.state.stars}
-                        />
+  render() {
 
-                        {this.state.businesses.map(business => (
-                            <DealCard
-                                // onClick={() => this.handleClickEvent(pic.id)}
-                                id={business._id}
-                                key={business._id}
-                                day={business.day}
-                                beginTime={business.beginTime}
-                                endTime={business.endTime}
-                                info={business.info}
-                                // canEdit={this.state.canEdit}
-                                // visibility={this.state.visibility}
-                                showButton={true}
-                            />
-                        ))}
+    // Option A ... avoids declaring initially in state.
+    const {currentBusiness} = this.state
 
-                    </BusinessCard>
-                </Col>
-            </Row>
-            </div>
-        );
-    }
+    return (
+      <div>
+        <Row>
+          <Col sm="4">
+
+            {/* <BackBtn /> */}
+
+            <BusinessCard>
+              {currentBusiness &&
+                <BusinessNameCard
+                  name={currentBusiness.name}
+                  address={this.state.address}
+                  stars={this.state.stars}
+                />
+              }
+
+              {/* Deal Card displays all data from business collection. */}
+              {this.state.currentBusinessDeals.length ? (
+                <div>
+                  {this.state.currentBusinessDeals.map(business => (
+                    <DealCard
+                      // onClick={() => this.handleClickEvent(pic.id)}
+                      id={business._id}
+                      key={business._id}
+                      day={business.day}
+                      beginTime={business.beginTime}
+                      endTime={business.endTime}
+                      info={business.info}
+                      // canEdit={this.state.canEdit}
+                      // visibility={this.state.visibility}
+                      showButton={true}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <h3>No current happy hour deals</h3>
+              )}
+
+            </BusinessCard>
+          </Col>
+          <Col sm="4">
+
+            {/* Component for drop-down business list. */}
+            <SearchForm
+              handleSelectedOption={this.handleSelectedOption}
+              businesses={this.state.businesses}
+              loadTargetBusiness={this.loadTargetBusiness}
+              // loadTargetDeals={this.loadTargetDeals}
+            />
+
+          </Col>
+        </Row>
+      </div>
+    );
+  }
 }
 
 export default EditBusiness;
