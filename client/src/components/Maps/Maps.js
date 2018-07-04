@@ -9,7 +9,7 @@ const MyMapComponent = withScriptjs(withGoogleMap(function (props) {
     defaultZoom={13.5}
     defaultCenter={props.center ? { lat: props.center.lat, lng: props.center.lng } : { lat: 32.2226, lng: -110.974 }}
   >
-    {props.isMarkerShown && <Marker position={props.center ? { lat: props.center.lat, lng: props.center.lng } : { lat: 32.2226, lng: -110.974 }} title="You are here" />}
+    {props.isMarkerShown && <Marker position={props.center ? { lat: props.center.lat, lng: props.center.lng } : { lat: 32.2226, lng: -110.974 }} title="You are here--happy hours are near!" />}
 
     {
       props.results.map(mark => (

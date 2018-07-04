@@ -12,7 +12,7 @@ module.exports = {
 
 	queryMap: function (req, res) {
 		// console.log(req);
-		axios.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=" + req.params.query + "&location=" + req.params.lat + "," + req.params.lng + "&radius=3200&key=" + APIKEY)
+		axios.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=" + req.params.query + "&location=" + req.params.lat + "," + req.params.lng + "&radius=15000&key=" + APIKEY)
 
 			.then((data) => {
 				console.log(data.data);
