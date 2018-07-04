@@ -4,9 +4,8 @@ import MyMapComponent from "../../components/Maps";
 import API from "../../utils/API";
 import "./MapResults.css";
 
-//NEXT STEPS: integrate geolocation(navigator) logic to function ComponentDidMount, then pass that to our search
-//will require new state and custom methods
-//this component will be refactored to contain a method that stores state for google api results
+//This component contains logic for both our google api search and sending those results to 
+//be generated on the map
 class MapResults extends Component {
 
   constructor(props) {
@@ -21,11 +20,9 @@ class MapResults extends Component {
     search: "",
     center: null
   };
-
   //automatically grab current location 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position)
       this.setState({
         center: {
           lat: position.coords.latitude,
@@ -51,13 +48,10 @@ class MapResults extends Component {
   };
   //queries the places api and loads results into this components result state
   searchGoogle(query, lat, lng) {
-    console.log("google has been searched");
+
     API.getPlaces(query, lat, lng)
       .then(res =>
         this.setState({ results: res.data.results })
-        // if(this.props.onSearch) {
-        //     this.props.onSearch(res.data.results);
-        // }
       )
       .catch(err => console.log(err));
   };
