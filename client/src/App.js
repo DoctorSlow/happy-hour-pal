@@ -124,12 +124,12 @@ class App extends Component {
 							<Route exact path="/loading" component={Loading} />
 							<Route exact path="/access" component={Access} />
 							<Route exact path="/businessListings" component={BusinessListings} />
-							<Route exact path="/listresults" component={ListResults} />
-							{/* <Route exact path="/listresults" render={
+							{/* <Route exact path="/listresults" component={ListResults} /> */}
+							<Route exact path="/listresults" render={
 								(props) => {
 									return (<ListResults {...props} loggedIn={this.state.loggedIn} />)
 								}
-							} /> */}
+							} />
 							<Route exact path="/mapresults" component={MapResults} />
 							<Route exact path="/businessdetails" render={
 								(props) => {
@@ -143,7 +143,12 @@ class App extends Component {
 							} />
 							<Route exact path="/signup" component={SignupForm} />
 							<Route exact path="/addbusiness" component={AddBusiness} />
-							<Route exact path="/editbusiness" component={EditBusiness} />
+							{/* <Route exact path="/editbusiness" component={EditBusiness} /> */}
+							<Route exact path="/editbusiness" render={
+								(props) => {
+									return (<EditBusiness {...props} loggedIn={this.state.loggedIn} />)
+								}
+							} />
 							<Route exact path="/submitedit" component={SubmitEdit} />
 						</Wrapper>
 					</div>

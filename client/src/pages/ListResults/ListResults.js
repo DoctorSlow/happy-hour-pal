@@ -24,12 +24,12 @@ class Results extends Component {
   };
 
   handleClickEvent = () => {
-    this.history.push("/addbusiness");
-    // if (this.props.loggedIn) {
-    //   this.props.history.push("/addbusiness");
-    // } else {
-    //   this.props.history.push("/login");
-    // }
+    // this.history.push("/addbusiness");
+    if (this.props.loggedIn) {
+      this.props.history.push("/addbusiness");
+    } else {
+      this.props.history.push("/login");
+    }
   }
 
 

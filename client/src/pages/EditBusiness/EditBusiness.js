@@ -20,12 +20,12 @@ class EditBusiness extends Component {
     };
 
     handleClickEvent = () => {
-        this.props.history.push("/submitedit");
-        // if (this.props.loggedIn) {
-        //     this.props.history.push("/submitedit");
-        // } else {
-        //     this.props.history.push("/login");
-        // }
+        // this.props.history.push("/submitedit");
+        if (this.props.loggedIn) {
+            this.props.history.push("/submitedit");
+        } else {
+            this.props.history.push("/login");
+        }
     }
 
     componentDidMount() {
