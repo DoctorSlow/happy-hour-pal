@@ -11,6 +11,8 @@ class AddBusiness extends Component {
 
   constructor () {
     super ();
+    // this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+    // this.handleInputChange = this.handleInputChange.bind(this);
     this.state = {
       googleID: "",
       name: "",
@@ -19,15 +21,24 @@ class AddBusiness extends Component {
       endTime: "",
       info: "",
       results: [],
-      search: ""
+      search: "",
+      center: null
     };
     this.handleInputChange.bind(this);
   }
 
+  //automatically grab current location 
   componentDidMount() {
-    console.log("loaded");
-    // Run API.getPlaces by current location + search term?
-  }
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position)
+      this.setState({
+        center: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        }
+      });
+    });
+  };
 
   handleInputChange = event => {
     this.setState({
@@ -49,20 +60,20 @@ class AddBusiness extends Component {
 
   handleSearchSubmit = event => {
     event.preventDefault();
-    this.searchGoogle(this.state.search);
+    let lat = this.state.center.lat;
+    let lng = this.state.center.lng;
+    this.searchGoogle(this.state.search, lat, lng);
   };
 
-  searchGoogle(query) {
-    console.log("google has been searched")
-    API.getPlaces(query)
-    // .then(
-    //   function (searchResults) {
-    //     console.log(searchResults.data);
-    //   })
-    .then(res =>
-        this.setState({
-          results: res.data.results
-        })
+  //queries the places api and loads results into this components result state
+  searchGoogle(query, lat, lng) {
+    console.log("google has been searched");
+    API.getPlaces(query, lat, lng)
+      .then(res =>
+        this.setState({ results: res.data.results })
+        // if(this.props.onSearch) {
+        //     this.props.onSearch(res.data.results);
+        // }
       )
       .catch(err => console.log(err));
   };
@@ -136,7 +147,7 @@ class AddBusiness extends Component {
                     </option>
                   ))}
                 </select>
-              // Default message if no business exists in the database.
+              // Default message before search..
               ) : (
                 <h3>Search for the name or type of the business.</h3>
               )}

@@ -24,8 +24,12 @@ export default {
   // Saves a deal to the Deals collection, populates it within the appropriate deals[] for a business document.
   saveDeal: function (id, dealData) {
     return axios.post("/api/businesses/" + id + "/deals", dealData);
-  }
+  },
   // saveDeal: function (id, dealData) {
   //   return axios.post(`/api/businesses/${id}/deals`, dealData);
   // }
+  // Get the deals with the given id
+  getDeals: function (id) {
+    return axios.get("/api/businesses/" + id + "/deals");
+  }
 };
