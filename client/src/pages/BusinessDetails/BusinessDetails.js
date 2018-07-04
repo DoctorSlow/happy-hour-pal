@@ -62,9 +62,9 @@ class Results extends Component {
     const select = event.target;
     const selectedOption = select[select.selectedIndex];
     API.getBusiness(selectedOption.getAttribute('value'))
-    .then(res =>{
-      this.setState({currentBusiness: res.data});
-    })
+      .then(res => {
+        this.setState({ currentBusiness: res.data });
+      })
   }
 
   // handleSelectedOption = event => {
@@ -95,7 +95,7 @@ class Results extends Component {
   render() {
 
     // Option A ... avoids declaring initially in state.
-    const {currentBusiness} = this.state
+    const { currentBusiness } = this.state
 
     return (
       <div>
@@ -128,6 +128,7 @@ class Results extends Component {
                 />
               ))}
               <Button color="primary" onClick={this.handleClickEvent}>Suggest Edit</Button>
+
             </BusinessCard>
 
             {/* <ReportDealBtn /> */}

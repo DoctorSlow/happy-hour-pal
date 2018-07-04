@@ -125,6 +125,11 @@ class App extends Component {
 							<Route exact path="/access" component={Access} />
 							<Route exact path="/businessListings" component={BusinessListings} />
 							<Route exact path="/listresults" component={ListResults} />
+							{/* <Route exact path="/listresults" render={
+								(props) => {
+									return (<ListResults {...props} loggedIn={this.state.loggedIn} />)
+								}
+							} /> */}
 							<Route exact path="/mapresults" component={MapResults} />
 							<Route exact path="/businessdetails" render={
 								(props) => {
