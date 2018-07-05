@@ -9,10 +9,12 @@ import ListResults from "./pages/ListResults/ListResults";
 import MapResults from "./pages/MapResults/MapResults";
 import Wrapper from "./components/Wrapper";
 import BusinessDetails from "./pages/BusinessDetails/BusinessDetails";
+import BizDetails from "./pages/BusinessDetails/BizDetails";
 import LoginForm from "./pages/LogIn/LogIn";
 import SignupForm from "./pages/SignUp/SignUp";
 import AddBusiness from "./pages/AddBusiness/AddBusiness";
 import EditBusiness from "./pages/EditBusiness/EditBusiness";
+import EditBiz from "./pages/EditBusiness/EditBiz";
 import SubmitEdit from "./pages/SubmitEdit/SubmitEdit";
 import "./App.css";
 
@@ -136,6 +138,11 @@ class App extends Component {
 									return (<BusinessDetails {...props} loggedIn={this.state.loggedIn} />)
 								}
 							} />
+              <Route exact path="/businessdetails/:id" render={
+								(props) => {
+									return (<BizDetails {...props} loggedIn={this.state.loggedIn} />)
+								}
+							} />
 							<Route exact path="/login" render={() =>
 								<LoginForm
 									_login={this._login}
@@ -147,6 +154,11 @@ class App extends Component {
 							<Route exact path="/editbusiness" render={
 								(props) => {
 									return (<EditBusiness {...props} loggedIn={this.state.loggedIn} />)
+								}
+							} />
+              <Route exact path="/editbusiness/:id" render={
+								(props) => {
+									return (<EditBiz {...props} loggedIn={this.state.loggedIn} />)
 								}
 							} />
 							<Route exact path="/submitedit" component={SubmitEdit} />
