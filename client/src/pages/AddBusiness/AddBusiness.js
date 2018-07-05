@@ -3,8 +3,12 @@ import SearchInput from "../../components/SearchInput";
 import Container from "../../components/Container";
 import Col from "../../components/Col";
 import Row from "../../components/Row";
-import { Input, TextArea } from "../../components/Form";
-import { Button, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { TextArea } from "../../components/Form";
+import { Button, Input} from 'reactstrap';
+
+import Select from 'react-select'; // new
+import 'react-select/dist/react-select.css'; // new
+
 import API from "../../utils/API";
 import "./AddBusiness.css";
 
@@ -23,7 +27,10 @@ class AddBusiness extends Component {
       info: "",
       results: [],
       search: "",
-      center: null
+      center: null,
+
+      selectedOption: '' // new
+
     };
     this.handleInputChange.bind(this);
   }
@@ -65,6 +72,19 @@ class AddBusiness extends Component {
     let lng = this.state.center.lng;
     this.searchGoogle(this.state.search, lat, lng);
   };
+
+
+
+  // new
+  handleChange = (selectedOption) => {
+    this.setState({ selectedOption });
+    // selectedOption can be null when the `x` (close) button is clicked
+    if (selectedOption) {
+      console.log(`Selected: ${selectedOption.label}`);
+    }
+  }
+
+
 
   //queries the places api and loads results into this components result state
   searchGoogle(query, lat, lng) {
@@ -120,6 +140,9 @@ class AddBusiness extends Component {
   };
 
   render() {
+
+    const { selectedOption, stayOpen } = this.state; // new
+
     return (
       <div>
         <div className="form-addbusiness">
@@ -181,8 +204,57 @@ class AddBusiness extends Component {
                     </select>
                   </label>
 
+                  {/* Multiple select NEW */}
+                  <Select
+                    multi
+                    stayOpen // not working
+                    name="form-field-name"
+                    value={selectedOption}
+                    onChange={this.handleChange}
+                    placeholder="Select days for the deal"
+                    options={[
+                      { value: '0', label: 'Sun' },
+                      { value: '1', label: 'Mon' },
+                      { value: '2', label: 'Tue' },
+                      { value: '3', label: 'Wed' },
+                      { value: '4', label: 'Thu' },
+                      { value: '5', label: 'Fri' },
+                      { value: '6', label: 'Sat' },
+                    ]}
+                  />
+
+                  {/* Checkboxes */}
+                  {/* <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox0" value="0" />
+                    <label class="form-check-label" for="inlineCheckbox0">Sun</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1" />
+                    <label class="form-check-label" for="inlineCheckbox1">Mon</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="2" />
+                    <label class="form-check-label" for="inlineCheckbox2">Tue</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="3" />
+                    <label class="form-check-label" for="inlineCheckbox3">Wed</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4" />
+                    <label class="form-check-label" for="inlineCheckbox4">Thu</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="5" />
+                    <label class="form-check-label" for="inlineCheckbox5">Fri</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="6" />
+                    <label class="form-check-label" for="inlineCheckbox6">Sat</label>
+                  </div> */}
+
                   {/* ***Input start & end times for the deal*** */}
-                  <label htmlFor="dealTimes">Select the start and end times of the deal.</label>
+                  <label htmlFor="dealTimes" className="time-input-label">Select the start and end times of the deal.</label>
                   <div className="form-row time-input">
                     <Input
                         value={this.state.beginTime}
