@@ -80,7 +80,7 @@ class AddBusiness extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (! this.state.name) {
+    if (! this.state.googleID || ! this.state.day || ! this.state.beginTime || ! this.state.endTime || ! this.state.info) {
       alert("All fields must be filled out");
     } else {
       // First, save the business as a new document.
@@ -165,13 +165,13 @@ class AddBusiness extends Component {
                   onChange={this.handleInputChange}
                 >
                   <option value="" disabled>Select the day</option>
-                  <option value="1">Sunday</option>
-                  <option value="2">Monday</option>
-                  <option value="3">Tuesday</option>
-                  <option value="4">Wednesday</option>
-                  <option value="5">Thursday</option>
-                  <option value="6">Friday</option>
-                  <option value="7">Saturday</option>
+                  <option value="0">Sunday</option>
+                  <option value="1">Monday</option>
+                  <option value="2">Tuesday</option>
+                  <option value="3">Wednesday</option>
+                  <option value="4">Thursday</option>
+                  <option value="5">Friday</option>
+                  <option value="6">Saturday</option>
                 </select>
               </label>
 
