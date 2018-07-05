@@ -14,13 +14,13 @@ import SignupForm from "./pages/SignUp/SignUp";
 import AddBusiness from "./pages/AddBusiness/AddBusiness";
 import EditBusiness from "./pages/EditBusiness/EditBusiness";
 import SubmitEdit from "./pages/SubmitEdit/SubmitEdit";
-
+import "./App.css";
 
 // Function for which links to display if signed in
 const DisplayLinks = props => {
 	if (props.loggedIn) {
 		return (
-			<nav className="navbar">
+			<nav className="navbar blue-navbar">
 				<ul className="nav">
 					<li>
 						<Link to="#" className="nav-link" onClick={props._logout}>
@@ -32,7 +32,7 @@ const DisplayLinks = props => {
 		)
 	} else {
 		return (
-			<nav className="navbar">
+			<nav className="navbar blue-navbar">
 				<ul className="nav">
 					<li className="nav-item">
 						<Link to="/login" className="nav-link">
