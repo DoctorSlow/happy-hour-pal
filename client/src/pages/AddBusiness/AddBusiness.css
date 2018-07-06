@@ -20,10 +20,6 @@ FORM
 .time-input-label {
     margin-top: 20px;
 }
-.time-input {
-    margin-bottom: 5px;
-    width: 150px;
-}
 .timeframe {
     margin-left: 10px;
     margin-right: 10px;
@@ -31,7 +27,6 @@ FORM
 .select-day {
     margin-left: 5px;
 }
-
 
 /* Select days buttons */
 #days-div {
