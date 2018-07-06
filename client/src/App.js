@@ -16,12 +16,11 @@ import AddBusiness from "./pages/AddBusiness/AddBusiness";
 import EditBusiness from "./pages/EditBusiness/EditBusiness";
 import EditBiz from "./pages/EditBusiness/EditBiz";
 import SubmitEdit from "./pages/SubmitEdit/SubmitEdit";
-<<<<<<< HEAD
+import AddDeal from "./pages/SubmitEdit/AddDeal";
+import EditDeal from "./pages/SubmitEdit/EditDeal";
 import Tabs from "./pages/Tabs/Tabs";
-
-=======
 import "./App.css";
->>>>>>> f3e0ae85ff58f78c64c1def37052058ead564466
+
 
 // Function for which links to display if signed in
 const DisplayLinks = props => {
@@ -168,6 +167,8 @@ class App extends Component {
 								}
 							} />
 							<Route exact path="/submitedit" component={SubmitEdit} />
+              <Route exact path="/adddeal/:id" component={AddDeal} />
+              <Route exact path="/editdeal/:id" component={EditDeal} />
 						</Wrapper>
 					</div>
 				</Router>

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Row, Col, Button } from 'reactstrap';
 // import API from "../utils/API";
-import deals from "../../deals.json";
+// import deals from "../../deals.json";
 // import reviews from "../../reviews.json";
-import { BusinessCard, BusinessNameCard, DealCard } from "../../components/Business";
+import { BusinessCard, BusinessNameCard } from "../../components/Business";
 import API from "../../utils/API";
 import SearchBar from "../../components/SearchBar";
 import { Link } from "react-router-dom";

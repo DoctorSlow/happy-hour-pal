@@ -8,9 +8,9 @@ import API from "../../utils/API";
 // import ReviewCard from "../../components/ReviewCard";
 // import ReviewsContainer from "../../components/ReviewsContainer";
 // import { BackBtn, ReportDealBtn, RateDealBtn, ViewAllBtn, SuggestEditBtn } from "../../../components/Buttons";
-import { List, ListItem } from "../../components/List";
-import { FormBtn } from "../../components/Form";
-import SearchForm from "../../components/SearchForm";
+// import { List, ListItem } from "../../components/List";
+// import { FormBtn } from "../../components/Form";
+// import SearchForm from "../../components/SearchForm";
 
 class Results extends Component {
   state = {
@@ -30,9 +30,9 @@ class Results extends Component {
     currentBusinessDeals: []
   };
 
-  handleClickEvent = () => {
+  handleClickEvent = (ID) => {
     if (this.props.loggedIn) {
-      this.props.history.push("/editbusiness");
+      this.props.history.push("/editbusiness/" + ID);
     } else {
       this.props.history.push("/login");
     }
@@ -42,8 +42,8 @@ class Results extends Component {
   componentDidMount() {
     API.getBusiness(this.props.match.params.id)
       .then(res =>{
-        this.setState({currentBusiness: res.data}),
-        console.log(res)
+        this.setState({currentBusiness: res.data[0]})
+        console.log(res.data)
       })
       .catch(err => console.log(err))
 
@@ -67,7 +67,7 @@ class Results extends Component {
   render() {
 
     // Option A ... avoids declaring initially in state.
-    const { currentBusiness } = this.state
+    // const { currentBusiness } = this.state
 
     return (
       <div>
@@ -77,9 +77,9 @@ class Results extends Component {
             {/* <BackBtn /> */}
 
             <BusinessCard>
-              {currentBusiness &&
+              {this.state.currentBusiness &&
                 <BusinessNameCard
-                  name={currentBusiness.name}
+                  name={this.state.currentBusiness.name}
                   address={this.state.address}
                   stars={this.state.stars}
                 />
@@ -107,9 +107,15 @@ class Results extends Component {
                   <h3>No current happy hour deals</h3>
               )}
 
-              <Button color="primary" onClick={this.handleClickEvent}>
-                Suggest Edit
-              </Button>
+              {this.state.currentBusinessDeals.map(business => (
+                <Button
+                  key={business._id}
+                  color="primary"
+                  onClick={() => this.handleClickEvent(business.googleID)}
+                >
+                  Suggest Edit
+                </Button>
+              )).slice(0,1)}
 
             </BusinessCard>
 

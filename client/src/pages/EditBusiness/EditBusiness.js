@@ -58,9 +58,9 @@ class EditBusiness extends Component {
   loadTargetBusiness = (event) => {
     const select = event.target;
     const selectedOption = select[select.selectedIndex];
-    API.getBusiness(selectedOption.getAttribute('value'))
+    API.getBusiness(selectedOption.getAttribute('data-id'))
       .then(res =>{
-        this.setState({currentBusiness: res.data}),
+        this.setState({currentBusiness: res.data[0]})
         console.log(res)
       })
       .catch(err => console.log(err))
