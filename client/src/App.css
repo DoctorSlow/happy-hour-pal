@@ -1,33 +1,50 @@
-.App {
-  text-align: center;
+/************************
+GENERAL
+************************/
+
+/* Div size */
+.mapHeight {
+  height: 100%;
+  position: relative;
 }
+
+
+
+/************************
+NAVBAR
+************************/
+
+.blue-navbar {
+  background-color: #255478ff !important;
+}
+.nav-link {
+  color: #fff;
+}
+
+
+
+/************************
+React Original Stuff
+************************/
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
-
 .App-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
 }
-
 .App-title {
   font-size: 1.5em;
 }
-
 .App-intro {
   font-size: large;
 }
-
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
-.mapHeight {
-  height: 100%;
-  position: relative;
-}
