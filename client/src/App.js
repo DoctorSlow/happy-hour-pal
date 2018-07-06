@@ -14,6 +14,7 @@ import SignupForm from "./pages/SignUp/SignUp";
 import AddBusiness from "./pages/AddBusiness/AddBusiness";
 import EditBusiness from "./pages/EditBusiness/EditBusiness";
 import SubmitEdit from "./pages/SubmitEdit/SubmitEdit";
+import Tabs from "./pages/Tabs/Tabs";
 
 
 // Function for which links to display if signed in
@@ -124,12 +125,13 @@ class App extends Component {
 							<Route exact path="/loading" component={Loading} />
 							<Route exact path="/access" component={Access} />
 							<Route exact path="/businessListings" component={BusinessListings} />
-							{/* <Route exact path="/listresults" component={ListResults} /> */}
-							<Route exact path="/listresults" render={
+							<Route exact path="/tabs" component={Tabs} />
+							<Route exact path="/listresults" component={ListResults} />
+							{/* <Route exact path="/listresults" render={
 								(props) => {
 									return (<ListResults {...props} loggedIn={this.state.loggedIn} />)
 								}
-							} />
+							} /> */}
 							<Route exact path="/mapresults" component={MapResults} />
 							<Route exact path="/businessdetails" render={
 								(props) => {
