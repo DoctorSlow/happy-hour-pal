@@ -28,7 +28,7 @@ class AddBusiness extends Component {
       results: [],
       search: "",
       center: null,
-
+      stayOpen: true,
       selectedOption: '' // new
 
     };
@@ -177,7 +177,7 @@ class AddBusiness extends Component {
                   // Default message before search..
                   ) : (
                     // <h3>Search for the name or type of the business.</h3>
-                    <h3></h3>
+                    <h3>Input a business name or type in the search bar.</h3>
                   )}
                   </div>
 
@@ -207,7 +207,8 @@ class AddBusiness extends Component {
                   {/* Multiple select NEW */}
                   <Select
                     multi
-                    stayOpen // not working
+                    closeOnSelect={!stayOpen}
+                    // stayOpen // not working
                     name="form-field-name"
                     value={selectedOption}
                     onChange={this.handleChange}
