@@ -38,58 +38,31 @@ class Results extends Component {
     }
   }
 
-  // Load all businesses from the Business collection.
+  // Load the business selected from previous page (by googleID).
   componentDidMount() {
-    this.loadAllBusinesses()
-  }
-
-  // Retrieve all businesses to be displayed in select drop-down.
-  loadAllBusinesses = () => {
-    API.getBusinesses()
-      .then(res =>
-        this.setState({
-          businesses: res.data,
-          // currentBusiness: []
-        })
-      )
-      .catch(err => console.log(err));
-  }
-
-  handleSelectedOption = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-
-  // Upon select, get info of selected business (by id).
-  loadTargetBusiness = (event) => {
-    const select = event.target;
-    const selectedOption = select[select.selectedIndex];
-    API.getBusiness(selectedOption.getAttribute('value'))
-      .then(res => {
-        this.setState({ currentBusiness: res.data }),
-          console.log(res)
+    API.getBusiness(this.props.match.params.id)
+      .then(res =>{
+        this.setState({currentBusiness: res.data}),
+        console.log(res)
       })
       .catch(err => console.log(err))
+
       // Next, get the deals that go with the business (by same id).
       .then(
-        API.getDeals(selectedOption.getAttribute('data-id'))
-          .then(results => {
-            this.setState({ currentBusinessDeals: results.data });
-            console.log(results.data)
-            console.log(this.state.currentBusinessDeals)
+        API.getDeals(this.props.match.params.id)
+          .then(results =>{
+            this.setState({currentBusinessDeals: results.data});
+            // console.log(results.data)
+            // console.log(this.state.currentBusinessDeals)
           })
       )
   }
 
-  // loadTargetDeals = (event) => {
-  //   const select = event.target;
-  //   const selectedOption = select[select.selectedIndex];
-  //   API.getDeals(selectedOption.getAttribute('value'))
-  //   .then(res =>{
-  //     this.setState({currentBusinessDeals: res.data});
-  //   })
-  // }
+  // handleSelectedOption = event => {
+  //   this.setState({
+  //     [event.target.name]: event.target.value
+  //   });
+  // };
 
   render() {
 
@@ -132,8 +105,11 @@ class Results extends Component {
                 </div>
               ) : (
                   <h3>No current happy hour deals</h3>
-                )}
-              <Button color="primary" onClick={this.handleClickEvent}>Suggest Edit</Button>
+              )}
+
+              <Button color="primary" onClick={this.handleClickEvent}>
+                Suggest Edit
+              </Button>
 
             </BusinessCard>
 
@@ -166,20 +142,20 @@ class Results extends Component {
           <Col sm="4">
 
             {/* Component for drop-down business list. */}
-            <SearchForm
+            {/* <SearchForm
               handleSelectedOption={this.handleSelectedOption}
               businesses={this.state.businesses}
               loadTargetBusiness={this.loadTargetBusiness}
             // loadTargetDeals={this.loadTargetDeals}
-            />
+            /> */}
 
             {/* Option A ... Div to display business selected from SearchForm */}
-            {currentBusiness &&
+            {/* {currentBusiness &&
               <div>
                 <h1>{currentBusiness.name}</h1>
                 <h2>{currentBusiness._id}</h2>
               </div>
-            }
+            } */}
 
             {/* Option B ... uses set state */}
             {/* <div>

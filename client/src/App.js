@@ -9,19 +9,25 @@ import ListResults from "./pages/ListResults/ListResults";
 import MapResults from "./pages/MapResults/MapResults";
 import Wrapper from "./components/Wrapper";
 import BusinessDetails from "./pages/BusinessDetails/BusinessDetails";
+import BizDetails from "./pages/BusinessDetails/BizDetails";
 import LoginForm from "./pages/LogIn/LogIn";
 import SignupForm from "./pages/SignUp/SignUp";
 import AddBusiness from "./pages/AddBusiness/AddBusiness";
 import EditBusiness from "./pages/EditBusiness/EditBusiness";
+import EditBiz from "./pages/EditBusiness/EditBiz";
 import SubmitEdit from "./pages/SubmitEdit/SubmitEdit";
+<<<<<<< HEAD
 import Tabs from "./pages/Tabs/Tabs";
 
+=======
+import "./App.css";
+>>>>>>> f3e0ae85ff58f78c64c1def37052058ead564466
 
 // Function for which links to display if signed in
 const DisplayLinks = props => {
 	if (props.loggedIn) {
 		return (
-			<nav className="navbar">
+			<nav className="navbar blue-navbar">
 				<ul className="nav">
 					<li>
 						<Link to="#" className="nav-link" onClick={props._logout}>
@@ -33,7 +39,7 @@ const DisplayLinks = props => {
 		)
 	} else {
 		return (
-			<nav className="navbar">
+			<nav className="navbar blue-navbar">
 				<ul className="nav">
 					<li className="nav-item">
 						<Link to="/login" className="nav-link">
@@ -138,6 +144,11 @@ class App extends Component {
 									return (<BusinessDetails {...props} loggedIn={this.state.loggedIn} />)
 								}
 							} />
+              <Route exact path="/businessdetails/:id" render={
+								(props) => {
+									return (<BizDetails {...props} loggedIn={this.state.loggedIn} />)
+								}
+							} />
 							<Route exact path="/login" render={() =>
 								<LoginForm
 									_login={this._login}
@@ -149,6 +160,11 @@ class App extends Component {
 							<Route exact path="/editbusiness" render={
 								(props) => {
 									return (<EditBusiness {...props} loggedIn={this.state.loggedIn} />)
+								}
+							} />
+              <Route exact path="/editbusiness/:id" render={
+								(props) => {
+									return (<EditBiz {...props} loggedIn={this.state.loggedIn} />)
 								}
 							} />
 							<Route exact path="/submitedit" component={SubmitEdit} />

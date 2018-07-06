@@ -4,8 +4,9 @@ import { Row, Col, Button } from 'reactstrap';
 import deals from "../../deals.json";
 // import reviews from "../../reviews.json";
 import { BusinessCard, BusinessNameCard, DealCard } from "../../components/Business";
-
+import API from "../../utils/API";
 import SearchBar from "../../components/SearchBar";
+import { Link } from "react-router-dom";
 // import  BusinessNameCard from "../../components/BusinessNameCard";
 // import DealCard from "../../components/DealCard";
 
@@ -14,14 +15,38 @@ import SearchBar from "../../components/SearchBar";
 
 class Results extends Component {
   state = {
-
-    deals,
-    name: "Ermanos",
-    address: "http://www.ermanosbrew.com/",
-    stars: "****"
-
-
+    businesses: [],
+    currentDeals: [],
+    // deals,
+    name: "",
+    // address: "http://www.ermanosbrew.com/",
+    // stars: "****"
   };
+
+  // Load all businesses from the Business collection.
+  componentDidMount() {
+    // this.loadAllDeals()
+    this.loadAllBusinesses()
+  }
+
+  // loadAllDeals = () => {
+  //   API.getAllDeals()
+  //   .then(res => {
+  //     this.setState({currentDeals: res.data});
+  //     console.log(res.data)
+  //     console.log(this.state.currentDeals)
+  //   })
+  //   .catch(err => console.log(err));
+  // }
+  loadAllBusinesses = () => {
+    API.getBusinesses()
+    .then(res => {
+      this.setState({businesses: res.data});
+      // console.log(res.data)
+      // console.log(this.state.businesses)
+    })
+    .catch(err => console.log(err));
+  }
 
   handleClickEvent = () => {
     // this.history.push("/addbusiness");
@@ -32,8 +57,6 @@ class Results extends Component {
     }
   }
 
-
-
   render() {
 
     return (
@@ -41,25 +64,38 @@ class Results extends Component {
         <SearchBar />
         <Row>
           <Col sm="4">
-            {/* <SearchBar /> */}
-            <BusinessCard>
-              <BusinessNameCard
-                name={this.state.name}
-                address={this.state.address}
-                stars={this.state.stars}
-              />
 
-              <DealCard
-                // onClick={() => this.handleClickEvent(pic.id)}
-                id={deals[0].id}
-                key={deals[0].id}
-                day={deals[0].day}
-                beginTime={deals[0].beginTime}
-                endTime={deals[0].endTime}
-                info={deals[0].info}
-              />
+          {/* {this.state.currentDeals.map(deals => ( */}
+            {this.state.businesses.map(business => (
+            <div>
+              <BusinessCard>
+                <BusinessNameCard
+                  name={business.name}
+                  key={business.googleID}
+                  // address={this.state.address}
+                  // stars={this.state.stars}
+                />
+                  {/* <Link to={"/editbusiness/" + business.googleID}>
+                    {business.name}
+                  </Link> */}
+                  <Link to={"/businessdetails/" + business.googleID}>
+                    {business.name}
+                  </Link>
 
-            </BusinessCard>
+                {/* <DealCard
+                  // onClick={() => this.handleClickEvent(pic.id)}
+                  id={deals._id}
+                  key={deals._id}
+                  day={deals.day}
+                  beginTime={deals.beginTime}
+                  endTime={deals.endTime}
+                  info={deals.info}
+                /> */}
+
+              </BusinessCard>
+            </div>
+          ))}
+
             <Button color="primary" onClick={this.handleClickEvent}>Suggest Location</Button>
           </Col>
         </Row>

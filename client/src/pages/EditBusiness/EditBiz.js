@@ -7,7 +7,7 @@ import API from "../../utils/API";
 import SearchForm from "../../components/SearchForm";
 import "./EditBusiness.css";
 
-class EditBusiness extends Component {
+class EditBiz extends Component {
 
   state = {
     businesses: [],
@@ -32,33 +32,9 @@ class EditBusiness extends Component {
       }
   }
 
-  // Load all businesses from the Business collection.
+  // Load the business selected from previous page (by googleID).
   componentDidMount() {
-    this.loadBusinesses();
-  }
-
-  // Retrieve all businesses to be displayed in select drop-down.
-  loadBusinesses = () => {
-    API.getBusinesses()
-      .then(res =>
-        this.setState({
-          businesses: res.data,
-        })
-      )
-      .catch(err => console.log(err));
-  };
-
-  handleSelectedOption = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-
-  // Upon select, get info of selected business (by id).
-  loadTargetBusiness = (event) => {
-    const select = event.target;
-    const selectedOption = select[select.selectedIndex];
-    API.getBusiness(selectedOption.getAttribute('value'))
+    API.getBusiness(this.props.match.params.id)
       .then(res =>{
         this.setState({currentBusiness: res.data}),
         console.log(res)
@@ -67,7 +43,7 @@ class EditBusiness extends Component {
 
       // Next, get the deals that go with the business (by same id).
       .then(
-        API.getDeals(selectedOption.getAttribute('data-id'))
+        API.getDeals(this.props.match.params.id)
           .then(results =>{
             this.setState({currentBusinessDeals: results.data});
             console.log(results.data)
@@ -75,6 +51,12 @@ class EditBusiness extends Component {
           })
       )
   }
+
+  // handleSelectedOption = event => {
+  //   this.setState({
+  //     [event.target.name]: event.target.value
+  //   });
+  // };
 
   render() {
 
@@ -125,12 +107,12 @@ class EditBusiness extends Component {
           <Col sm="4">
 
             {/* Component for drop-down business list. */}
-            <SearchForm
+            {/* <SearchForm
               handleSelectedOption={this.handleSelectedOption}
               businesses={this.state.businesses}
               loadTargetBusiness={this.loadTargetBusiness}
               // loadTargetDeals={this.loadTargetDeals}
-            />
+            /> */}
 
           </Col>
         </Row>
@@ -139,4 +121,4 @@ class EditBusiness extends Component {
   }
 }
 
-export default EditBusiness;
+export default EditBiz;
