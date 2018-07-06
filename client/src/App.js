@@ -16,12 +16,8 @@ import AddBusiness from "./pages/AddBusiness/AddBusiness";
 import EditBusiness from "./pages/EditBusiness/EditBusiness";
 import EditBiz from "./pages/EditBusiness/EditBiz";
 import SubmitEdit from "./pages/SubmitEdit/SubmitEdit";
-<<<<<<< HEAD
 import Tabs from "./pages/Tabs/Tabs";
-
-=======
 import "./App.css";
->>>>>>> f3e0ae85ff58f78c64c1def37052058ead564466
 
 // Function for which links to display if signed in
 const DisplayLinks = props => {
@@ -144,7 +140,7 @@ class App extends Component {
 									return (<BusinessDetails {...props} loggedIn={this.state.loggedIn} />)
 								}
 							} />
-              <Route exact path="/businessdetails/:id" render={
+							<Route exact path="/businessdetails/:id" render={
 								(props) => {
 									return (<BizDetails {...props} loggedIn={this.state.loggedIn} />)
 								}
@@ -162,7 +158,7 @@ class App extends Component {
 									return (<EditBusiness {...props} loggedIn={this.state.loggedIn} />)
 								}
 							} />
-              <Route exact path="/editbusiness/:id" render={
+							<Route exact path="/editbusiness/:id" render={
 								(props) => {
 									return (<EditBiz {...props} loggedIn={this.state.loggedIn} />)
 								}

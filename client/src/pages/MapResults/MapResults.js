@@ -14,11 +14,12 @@ class MapResults extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
 
   }
-
+  //include state for matched results (ids from api call that match businesssss in our DB)
   state = {
     results: [],
     search: "",
-    center: null
+    center: null,
+    matched: []
   };
   //automatically grab current location 
   componentDidMount() {
