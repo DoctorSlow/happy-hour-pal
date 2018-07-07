@@ -16,7 +16,7 @@ import AddBusiness from "./pages/AddBusiness/AddBusiness";
 import EditBusiness from "./pages/EditBusiness/EditBusiness";
 import EditBiz from "./pages/EditBusiness/EditBiz";
 import SubmitEdit from "./pages/SubmitEdit/SubmitEdit";
-<<<<<<< HEAD
+<<<<<<< HEADgit status
 import Tabs from "./pages/Tabs/Tabs";
 
 import "./App.css";
