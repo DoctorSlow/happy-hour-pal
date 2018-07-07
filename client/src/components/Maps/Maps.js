@@ -12,6 +12,7 @@ console.log(Id, name, open)
 const origin = window.location.origin;
 window.location.replace(origin + "/businessdetails/" + Id)
 // this.history.push("/businessdetails/" + placeId);
+}
 
 
 const MyMapComponent = withScriptjs(withGoogleMap(function (props) {
