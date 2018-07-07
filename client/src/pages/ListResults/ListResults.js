@@ -102,7 +102,6 @@ class Results extends Component {
             </div>
           ))}
 
-
             <Button color="primary" onClick={this.handleClickEvent}>Suggest Location</Button>
           </Col>
         </Row>
