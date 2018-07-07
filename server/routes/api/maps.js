@@ -6,5 +6,7 @@ const mapsController = require("../../controllers/mapsController");
 router.route("/:query/:lat/:lng")
 	.get(mapsController.queryMap);
 
+router.route("/:lat/:lng")
+	.get(mapsController.autoQuery);
 
 module.exports = router;

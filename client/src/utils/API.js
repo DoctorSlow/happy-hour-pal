@@ -1,9 +1,13 @@
 import axios from "axios";
 
 export default {
-  // Place search API call
+  // Place search API call that accepts manual search
   getPlaces: function (query, lat, lng) {
     return axios.get('/api/maps/' + query + "/" + lat + "/" + lng);
+  },
+  // Place search DOES NOT use user search
+  autoPlaces: function (lat, lng) {
+    return axios.get('/api/maps/' + lat + "/" + lng);
   },
   // Gets all businesses
   getBusinesses: function () {
@@ -28,8 +32,14 @@ export default {
   // saveDeal: function (id, dealData) {
   //   return axios.post(`/api/businesses/${id}/deals`, dealData);
   // }
+  getAllDeals: function() {
+    return axios.get("/api/deals");
+  },
   // Get the deals with the given id
   getDeals: function (id) {
     return axios.get("/api/businesses/" + id + "/deals");
   }
+  // getDeals: function (id) {
+  //   return axios.get("/api/deals" + id);
+  // }
 };
