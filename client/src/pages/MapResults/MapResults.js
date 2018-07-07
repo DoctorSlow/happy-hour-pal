@@ -54,9 +54,6 @@ class MapResults extends Component {
   autoSearchSumbit = event => {
     event.preventDefault();
     this.autoSearch(this.state.center.lat, this.state.center.lng);
-
-    // setTimeout(function () { this.dbCompare(this.state.dbBusinesses, this.state.autores); }, 2000);
-
   }
 
   //queries the places api and loads results into this components result state MANUAL SEARCH
@@ -84,7 +81,7 @@ class MapResults extends Component {
     API.getBusinesses()
       .then(res =>
         this.setState({ dbBusinesses: res.data }, () => {
-          //'this' is undefined, do i have to bind it?
+          //dbCompare is used as a CB to avoid async setState issues
           this.dbCompare(this.state.dbBusinesses, this.state.autores)
         })
       )
@@ -92,18 +89,12 @@ class MapResults extends Component {
   }
 
   dbCompare(dbBiz, googleBiz) {
-    //give an array containing only the googleids of all nearby bars
-    // let placeIds = googleBiz.map(p => p.id);
     //db objects will now be in an array with corresponding id as a KEY and business object as VALUE
-    //i need to figure how to reference the googleID
-    console.log(dbBiz);
-    console.log(googleBiz);
     let knownPlaces = dbBiz.reduce((translated, kPlace) => {
       translated[kPlace.googleID] = kPlace;
-      console.log(translated);
       return translated;
     }, {});
-
+    //finds the chosen ones, where our ids between db and google api match
     let matchedPlaces = googleBiz.reduce((matched, currentPlace) => {
       if (knownPlaces.hasOwnProperty(currentPlace.id)) {
         matched.push({ ...currentPlace, ...knownPlaces[currentPlace.id] });
@@ -112,8 +103,7 @@ class MapResults extends Component {
     }, []);
 
     console.log(matchedPlaces);
-
-
+    //results is the state that markers are generated from
     this.setState({ results: matchedPlaces })
   }
 
