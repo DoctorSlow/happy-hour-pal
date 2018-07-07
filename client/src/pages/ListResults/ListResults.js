@@ -62,43 +62,49 @@ class Results extends Component {
     return (
       <div>
         <SearchBar />
-        <Row>
-          <Col sm="4">
+        <div className="list-results">
+          <Row>
+            <Col sm="1" md="2" lg="2"></Col>
+            <Col sm="10" md="8" lg="8">
 
-          {/* {this.state.currentDeals.map(deals => ( */}
-            {this.state.businesses.map(business => (
-            <div>
-              <BusinessCard>
-                <BusinessNameCard
-                  name={business.name}
-                  key={business.googleID}
-                  // address={this.state.address}
-                  // stars={this.state.stars}
-                />
-                  {/* <Link to={"/editbusiness/" + business.googleID}>
-                    {business.name}
-                  </Link> */}
-                  <Link to={"/businessdetails/" + business.googleID}>
-                    {business.name}
-                  </Link>
+            {/* {this.state.currentDeals.map(deals => ( */}
+              {this.state.businesses.map(business => (
+              <div>
+                <BusinessCard>
+                  <BusinessNameCard
+                    name={business.name}
+                    key={business.googleID}
+                    // address={this.state.address}
+                    // stars={this.state.stars}
+                  />
+                    {/* <Link to={"/editbusiness/" + business.googleID}>
+                      {business.name}
+                    </Link> */}
+                    <Link className="business-link" to={"/businessdetails/" + business.googleID}>
+                      {business.name}
+                    </Link>
 
-                {/* <DealCard
-                  // onClick={() => this.handleClickEvent(pic.id)}
-                  id={deals._id}
-                  key={deals._id}
-                  day={deals.day}
-                  beginTime={deals.beginTime}
-                  endTime={deals.endTime}
-                  info={deals.info}
-                /> */}
+                  {/* <DealCard
+                    // onClick={() => this.handleClickEvent(pic.id)}
+                    id={deals._id}
+                    key={deals._id}
+                    day={deals.day}
+                    beginTime={deals.beginTime}
+                    endTime={deals.endTime}
+                    info={deals.info}
+                  /> */}
+                  <hr />
+                </BusinessCard>
+              </div>
+            ))}
 
-              </BusinessCard>
+            <div className="text-center">
+              <Button color="primary" onClick={this.handleClickEvent}>Suggest Location</Button>
             </div>
-          ))}
-
-            <Button color="primary" onClick={this.handleClickEvent}>Suggest Location</Button>
-          </Col>
-        </Row>
+            </Col>
+            <Col sm="1" md="2" lg="2"></Col>
+          </Row>
+        </div>
       </div>
     );
   }
