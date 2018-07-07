@@ -30,13 +30,7 @@ class Results extends Component {
   loadAllDeals = () => {
     API.getBusinesses()
       .then(res => {
-<<<<<<< HEAD
-        this.setState({ businesses: res.data });
-        // console.log(res.data)
-        // console.log(this.state.businesses)
-      })
-      .catch(err => console.log(err));
-=======
+
         this.setState({businesses: res.data});
         console.log(res.data)
         // console.log(this.state.businesses)
@@ -51,7 +45,7 @@ class Results extends Component {
           })
           .catch(err => console.log(err))
       )
->>>>>>> 5a70e742eaf41db2d11fc47a1fe85bb9ddac8471
+
   }
 
   handleClickEvent = () => {
@@ -87,13 +81,10 @@ class Results extends Component {
                   <Link to={"/businessdetails/" + business.googleID}>
                     {business.name}
                   </Link>
-<<<<<<< HEAD
 
-                  {/* <DealCard
-=======
                 {/* {this.state.currentDeals.map(deals => (
                 <DealCard
->>>>>>> 5a70e742eaf41db2d11fc47a1fe85bb9ddac8471
+
                   // onClick={() => this.handleClickEvent(pic.id)}
                   id={deals._id}
                   key={deals._id}
@@ -101,13 +92,7 @@ class Results extends Component {
                   beginTime={deals.beginTime}
                   endTime={deals.endTime}
                   info={deals.info}
-<<<<<<< HEAD
-                /> */}
 
-                </BusinessCard>
-              </div>
-            ))}
-=======
                 />
                 ))} */}
                 {/* <Link to={"/businessdetails/" + deals.googleID}>
@@ -116,7 +101,7 @@ class Results extends Component {
               </BusinessCard>
             </div>
           ))}
->>>>>>> 5a70e742eaf41db2d11fc47a1fe85bb9ddac8471
+
 
             <Button color="primary" onClick={this.handleClickEvent}>Suggest Location</Button>
           </Col>
