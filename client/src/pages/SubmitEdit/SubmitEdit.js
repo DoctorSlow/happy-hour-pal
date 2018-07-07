@@ -3,7 +3,10 @@ import SearchBar from "../../components/SearchBar";
 import Container from "../../components/Container";
 import Col from "../../components/Col";
 import Row from "../../components/Row";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import { Input, TextArea } from "../../components/Form";
+import { Button } from 'reactstrap';
+import Select from 'react-select'; // Multiselector
+import 'react-select/dist/react-select.css'; // Multiselector formatting
 import API from "../../utils/API";
 import "./SubmitEdit.css";
 
@@ -19,7 +22,9 @@ class AddBusiness extends Component {
       day: "",
       beginTime: "",
       endTime: "",
-      info: ""
+      info: "",
+      stayOpen: true,
+      selectedOption: ''
     };
     this.handleInputChange.bind(this);
   }
@@ -65,6 +70,15 @@ class AddBusiness extends Component {
     });
   };
 
+  // Multiselect function
+  handleChange = (selectedOption) => {
+    this.setState({ selectedOption });
+    // selectedOption can be null when the `x` (close) button is clicked
+    if (selectedOption) {
+      console.log(`Selected: ${selectedOption.label}`);
+    }
+  }
+
   handleFormSubmit = event => {
     event.preventDefault();
     if (! this.state.googleID || ! this.state.day || ! this.state.beginTime || ! this.state.endTime || ! this.state.info) {
@@ -99,17 +113,17 @@ class AddBusiness extends Component {
   };
 
   render() {
+
+    const { selectedOption, stayOpen } = this.state; // Multiselector states
+
     return (
-      <div>
-      <SearchBar />
+      <div className="form-addbusiness">
+      {/* <SearchBar /> */}
       <Container>
         <Row>
-          <Col size="md-6">
-
-            <h5 className="title">Add New Deal</h5>
+          <Col size="sm-12 md-12 lg-12">
 
             {/* Display name of business here, get data from button then submit to db with form data */}
-            {/* <h3>*Display business name here*</h3> */}
 
             <form>
 
@@ -119,7 +133,7 @@ class AddBusiness extends Component {
                 {this.state.businesses.length ? (
                   // Selecting a business fires loadTargetBusiness.
                   // <select onChange={this.state.loadTargetBusiness}>
-                  <select id="businessSelect" onChange={this.handleSelectedOption}>
+                  <select id="businessSelect" className="business-name" onChange={this.handleSelectedOption}>
                     {this.state.businesses.map(business => (
                       <option
                         key={business._id}
@@ -137,9 +151,10 @@ class AddBusiness extends Component {
                 )}
               </div>
 
-              <label>
+              <label className="day-input">
                 Choose a day from this list:
                 <select
+                  className="select-day"
                   name="day"
                   type="select"
                   value={this.state.day}
@@ -156,7 +171,27 @@ class AddBusiness extends Component {
                 </select>
               </label>
 
-              <label htmlFor="dealTimes">Select the start and end times of the deal.</label>
+              {/* Multiple select */}
+              <Select
+                multi
+                closeOnSelect={!stayOpen}
+                // stayOpen // not working
+                name="form-field-name"
+                value={selectedOption}
+                onChange={this.handleChange}
+                placeholder="Select days for the deal"
+                options={[
+                  { value: '0', label: 'Sun' },
+                  { value: '1', label: 'Mon' },
+                  { value: '2', label: 'Tue' },
+                  { value: '3', label: 'Wed' },
+                  { value: '4', label: 'Thu' },
+                  { value: '5', label: 'Fri' },
+                  { value: '6', label: 'Sat' },
+                ]}
+              />
+
+              <label htmlFor="dealTimes" className="time-input-label">Select the start and end times of the deal.</label>
               <div className="form-row">
                 <Input
                     value={this.state.beginTime}
@@ -187,12 +222,12 @@ class AddBusiness extends Component {
                 onChange={this.handleInputChange}
               />
 
-              <FormBtn
-                className="btn-primary"
+              <Button
+                className="btn-primary orange-btn btn-block"
                 onClick={this.handleFormSubmit}
               >
-                Submit New Happy Hour Special
-              </FormBtn>
+                Update Happy Hour Special
+              </Button>
 
             </form>
           </Col>

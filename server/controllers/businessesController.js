@@ -4,14 +4,15 @@ const db = require("../db/models");
 module.exports = {
   findAll: function(req, res) {
     db.Business
-      .find(req.query)
+      .find()
       .sort({ name: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
     db.Business
-      .findById(req.params.id)
+      // .findById(req.params.id)
+      .find({ googleID: req.params.id})
       //.populate("deals")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import { Row, Col, Button } from 'reactstrap';
 // import API from "../utils/API";
-import deals from "../../deals.json";
+// import deals from "../../deals.json";
 // import reviews from "../../reviews.json";
 import { BusinessCard, BusinessNameCard, DealCard } from "../../components/Business";
 import API from "../../utils/API";
 import SearchBar from "../../components/SearchBar";
 import { Link } from "react-router-dom";
-// import  BusinessNameCard from "../../components/BusinessNameCard";
-// import DealCard from "../../components/DealCard";
 
 // import { BackBtn, ReportDealBtn, RateDealBtn, ViewAllBtn, SuggestEditBtn } from "../../../components/Buttons";
 
@@ -25,27 +23,27 @@ class Results extends Component {
 
   // Load all businesses from the Business collection.
   componentDidMount() {
-    // this.loadAllDeals()
-    this.loadAllBusinesses()
+    this.loadAllDeals()
+    // this.loadAllBusinesses()
   }
 
-  // loadAllDeals = () => {
-  //   API.getAllDeals()
-  //   .then(res => {
-  //     this.setState({currentDeals: res.data});
-  //     console.log(res.data)
-  //     console.log(this.state.currentDeals)
-  //   })
-  //   .catch(err => console.log(err));
-  // }
-  loadAllBusinesses = () => {
+  loadAllDeals = () => {
     API.getBusinesses()
-    .then(res => {
-      this.setState({businesses: res.data});
-      // console.log(res.data)
-      // console.log(this.state.businesses)
-    })
-    .catch(err => console.log(err));
+      .then(res => {
+        this.setState({businesses: res.data});
+        console.log(res.data)
+        // console.log(this.state.businesses)
+      })
+      .catch(err => console.log(err))
+      .then(
+        API.getAllDeals()
+          .then(res => {
+          this.setState({currentDeals: res.data});
+          console.log(res.data)
+          // console.log(this.state.currentDeals)
+          })
+          .catch(err => console.log(err))
+      )
   }
 
   handleClickEvent = () => {
@@ -65,7 +63,7 @@ class Results extends Component {
         <Row>
           <Col sm="4">
 
-          {/* {this.state.currentDeals.map(deals => ( */}
+            {/* {this.state.currentDeals.map(deals => ( */}
             {this.state.businesses.map(business => (
             <div>
               <BusinessCard>
@@ -81,8 +79,8 @@ class Results extends Component {
                   <Link to={"/businessdetails/" + business.googleID}>
                     {business.name}
                   </Link>
-
-                {/* <DealCard
+                {/* {this.state.currentDeals.map(deals => (
+                <DealCard
                   // onClick={() => this.handleClickEvent(pic.id)}
                   id={deals._id}
                   key={deals._id}
@@ -90,8 +88,11 @@ class Results extends Component {
                   beginTime={deals.beginTime}
                   endTime={deals.endTime}
                   info={deals.info}
-                /> */}
-
+                />
+                ))} */}
+                {/* <Link to={"/businessdetails/" + deals.googleID}>
+                  Go to Business
+                </Link> */}
               </BusinessCard>
             </div>
           ))}

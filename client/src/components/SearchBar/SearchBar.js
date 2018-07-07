@@ -13,7 +13,8 @@ const SearchBar = props => (
         <div>
             <form className="form-inline my-2 my-lg-0">
                 <input name="search" onChange={props.onChange} className="form-control mr-sm-2" type="search" placeholder="Current Location" aria-label="Search" />
-                <button onClick={props.onClick} className="btn btn-dark my-2 my-sm-0" type="submit">Go</button>
+                <button onClick={props.onClick} className="btn btn-dark my-2 my-sm-0" type="submit">Manual Search</button>
+                <button onClick={props.autoClick} className="btn btn-dark my-2 my-sm-0" type="submit">Search Nearby</button>
             </form>
         </div>
 
