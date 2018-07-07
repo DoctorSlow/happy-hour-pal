@@ -24,6 +24,13 @@ import "./App.css";
 
 // Function for which links to display if signed in
 const DisplayLinks = props => {
+
+	// Hides navbar on homepage
+	if (window.location.pathname === "/") {
+		return (<div></div>)
+	}
+
+	// Navbar links display
 	if (props.loggedIn) {
 		return (
 			<nav className="navbar blue-navbar">
