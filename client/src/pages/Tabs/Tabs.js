@@ -3,6 +3,8 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, Ca
 import classnames from 'classnames';
 import ListResults from "../ListResults/ListResults";
 import MapResults from "../MapResults/MapResults";
+// import DisplayLinks from "../../components/DisplayLinks/DisplayLinks";
+import NestedModal from "../../components/NestedModal/NestedModal";
 import "./Tabs.css"
 
 export default class Tabs extends React.Component {
@@ -25,6 +27,7 @@ export default class Tabs extends React.Component {
     render() {
         return (
             <div className="mapHeight">
+            {/* <DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} /> */}
                 <Nav tabs>
                     <NavItem>
                         <NavLink
@@ -61,6 +64,7 @@ export default class Tabs extends React.Component {
                         </Row>
                     </TabPane>
                 </TabContent>
+                <NestedModal buttonLabel="Click Me" />
             </div>
         );
     }
