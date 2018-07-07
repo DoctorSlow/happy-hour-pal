@@ -5,11 +5,11 @@ export default {
   getPlaces: function (query, lat, lng) {
     return axios.get('/api/maps/' + query + "/" + lat + "/" + lng);
   },
-  // Gets all businesses
+  // Gets all businesses (findAll)
   getBusinesses: function () {
     return axios.get("/api/businesses");
   },
-  // Gets the business with the given id
+  // Gets the business with the given id (findById)
   getBusiness: function (id) {
     return axios.get("/api/businesses/" + id);
   },
@@ -28,14 +28,20 @@ export default {
   // saveDeal: function (id, dealData) {
   //   return axios.post(`/api/businesses/${id}/deals`, dealData);
   // }
+  // Get all the deals from the deals collection (d-findAllDeals)
   getAllDeals: function() {
     return axios.get("/api/deals");
   },
-  // Get the deals with the given id
+  // Get the deals with the given id (findDeals)
   getDeals: function (id) {
     return axios.get("/api/businesses/" + id + "/deals");
+  },
+  // Get specific deal by its id. (d-findDealById)
+  getDeal: function (id) {
+    return axios.get("/api/deals/" + id);
+  },
+  // Update a specific deal by its id (updateDeal)
+  modifyDeal: function (id, dealData) {
+    return axios.put("/api/deals/" + id, dealData);
   }
-  // getDeals: function (id) {
-  //   return axios.get("/api/deals" + id);
-  // }
 };

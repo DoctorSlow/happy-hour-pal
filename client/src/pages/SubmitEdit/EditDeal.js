@@ -23,17 +23,18 @@ class EditDeal extends Component {
   }
 
   componentDidMount() {
-    API.getDeals(this.props.match.params.id)
+    // API.getDeals(this.props.match.params.id)
+    API.getDeal(this.props.match.params.id)
       .then(res => {
         this.setState({
-          deal: res.data
-          // googleID: res.data.googleID,
-          // day: res.data.day,
-          // beginTime: res.data.beginTime,
-          // endTime: res.data.endTime,
-          // info: res.data.info,
+          deal: res.data,
+          googleID: res.data.googleID,
+          day: res.data.day,
+          beginTime: res.data.beginTime,
+          endTime: res.data.endTime,
+          info: res.data.info,
         })
-        console.log(res.data)
+        console.log(this.state.deal)
       })
       .catch(err => console.log(err));
   }
@@ -56,38 +57,38 @@ class EditDeal extends Component {
     });
   };
 
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   if (! this.state.googleID || ! this.state.day || ! this.state.beginTime || ! this.state.endTime || ! this.state.info) {
-  //     alert("All fields must be filled out");
-  //   } else {
-  //     const select = document.getElementById('businessSelect');
-  //     const selectedOption = select[select.selectedIndex];
-  //     const businessId = selectedOption.getAttribute('data-id');
-  //     console.log(businessId);
-  //     API.saveDeal( businessId, {
-  //       googleID: this.state.googleID,
-  //       day: this.state.day,
-  //       beginTime: this.state.beginTime,
-  //       endTime: this.state.endTime,
-  //       info: this.state.info
-  //     })
-  //       .then(
-  //         function (dealData) {
-  //           console.log(dealData);
-  //           alert("Thanks for the info, pal!")
-  //         },
-  //         this.setState({
-  //             name: "",
-  //             day: "",
-  //             beginTime: "",
-  //             endTime: "",
-  //             info: ""
-  //         })
-  //       )
-  //       .catch(err => console.log(err));
-  //   }
-  // };
+  handleFormSubmit = event => {
+    event.preventDefault();
+    if (! this.state.googleID || ! this.state.day || ! this.state.beginTime || ! this.state.endTime || ! this.state.info) {
+      alert("All fields must be filled out");
+    } else {
+      const id = this.state.deal._id;
+      // console.log(id);
+
+      API.modifyDeal( id, {
+
+        googleID: this.state.googleID,
+        day: this.state.day,
+        beginTime: this.state.beginTime,
+        endTime: this.state.endTime,
+        info: this.state.info
+      })
+        .then(
+          function (dealData) {
+            console.log(dealData);
+            alert("Deal updated!")
+          },
+          this.setState({
+              name: "",
+              day: "",
+              beginTime: "",
+              endTime: "",
+              info: ""
+          })
+        )
+        .catch(err => console.log(err));
+    }
+  };
 
   render() {
     return (
@@ -99,12 +100,26 @@ class EditDeal extends Component {
 
             <h5 className="title">Edit Deal</h5>
 
-            {/* <form>
+            <form>
+
+              {/* <div className="form-group">
+                <h3
+                  // id="businessName"
+                  // data-id={this.state.business._id}
+                  // value={this.state.business.googleID}
+                >
+                  {this.state.deal.info}
+                </h3>
+
+              </div> */}
+
+              <h3>Business Name goes here</h3>
 
               <label>
                 Choose a day from this list:
                 <select
                   name="day"
+                  id="daySelect"
                   type="select"
                   value={this.state.day}
                   selected={this.state.day}
@@ -157,7 +172,7 @@ class EditDeal extends Component {
                 Submit Edited Happy Hour Special
               </FormBtn>
 
-            </form> */}
+            </form>
           </Col>
         </Row>
       </Container>
