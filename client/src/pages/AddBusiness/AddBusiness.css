@@ -11,14 +11,14 @@ FORM
 }
 
 /* Margin Spacing */
+.search-label {
+    margin-bottom: 0;
+}
 .business-name {
     margin-top: 20px;
 }
 .search-input, .day-input {
     margin-bottom: 20px;
-}
-.time-input-label {
-    margin-top: 20px;
 }
 .timeframe {
     margin-left: 10px;

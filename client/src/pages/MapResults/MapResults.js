@@ -1,6 +1,9 @@
+/* eslint react/no-multi-comp: 0, react/prop-types: 0 */
+
 import React, { Component } from "react";
 import SearchBar from "../../components/SearchBar";
 import MyMapComponent from "../../components/Maps";
+// import DetailModal from "../../components/DetailModal";
 import API from "../../utils/API";
 import "./MapResults.css";
 

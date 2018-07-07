@@ -64,7 +64,8 @@ class Results extends Component {
       <div>
         <SearchBar />
         <Row>
-          <Col sm="4">
+          <Col sm="1" md="2" lg="2"></Col>
+          <Col sm="10" md="8" lg="8">
 
             {/* {this.state.currentDeals.map(deals => ( */}
             {this.state.businesses.map(business => (
@@ -99,12 +100,16 @@ class Results extends Component {
                 {/* <Link to={"/businessdetails/" + deals.googleID}>
                   Go to Business
                 </Link> */}
+                <hr />
               </BusinessCard>
             </div>
           ))}
-
-            <Button color="primary" onClick={this.handleClickEvent}>Suggest Location</Button>
+            <div className="text-center">
+              <p>Do you know something we don't? Help us out!</p>
+              <Button color="primary" onClick={this.handleClickEvent}>Add New Location</Button>
+            </div>
           </Col>
+          <Col sm="1" md="2" lg="2"></Col>
         </Row>
       </div>
     );

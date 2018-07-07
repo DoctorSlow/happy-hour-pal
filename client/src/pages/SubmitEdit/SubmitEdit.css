@@ -17,9 +17,6 @@ FORM
 .search-input, .day-input {
     margin-bottom: 20px;
 }
-.time-input-label {
-    margin-top: 20px;
-}
 .time-input {
     margin-bottom: 5px;
     width: 150px;

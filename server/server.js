@@ -24,7 +24,11 @@ const app = express();
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static('public'));
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static("client/build"));
+} else {
+	app.use(express.static('public'));
+}
 app.use(
 	session({
 		secret: process.env.APP_SECRET || 'this is the default passphrase',
@@ -60,13 +64,13 @@ app.use('/auth', require('./auth'));
 app.use('/', routes);
 
 // ====== Error handler ====
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
 	console.log('====== ERROR =======')
 	console.error(err.stack)
 	res.status(500)
 })
 
 // Start the API server
-app.listen(PORT, function() {
+app.listen(PORT, function () {
 	console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });

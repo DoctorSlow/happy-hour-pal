@@ -27,14 +27,14 @@ export default class Tabs extends React.Component {
     render() {
         return (
             <div className="mapHeight">
-            {/* <DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} /> */}
+                {/* <DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} /> */}
                 <Nav tabs>
                     <NavItem>
                         <NavLink
                             className={classnames({ active: this.state.activeTab === '1' })}
                             onClick={() => { this.toggle('1'); }}
                         >
-                            Map Results
+                            List View
                         </NavLink>
                     </NavItem>
                     <NavItem>
@@ -42,24 +42,22 @@ export default class Tabs extends React.Component {
                             className={classnames({ active: this.state.activeTab === '2' })}
                             onClick={() => { this.toggle('2'); }}
                         >
-                            List Results
+                            Map View
                         </NavLink>
                     </NavItem>
                 </Nav>
                 <TabContent activeTab={this.state.activeTab} className="mapHeight">
-                    <TabPane tabId="1" className="mapHeight">
-                        <Row className="mapHeight">
-                            <Col sm="12" className="mapHeight">
-
-                                <MapResults />
-
-                            </Col>
-                        </Row>
-                    </TabPane>
-                    <TabPane tabId="2">
+                    <TabPane tabId="1">
                         <Row>
                             <Col sm="12">
                                 <ListResults />
+                            </Col>
+                        </Row>
+                    </TabPane>
+                    <TabPane tabId="2" className="mapHeight">
+                        <Row className="mapHeight">
+                            <Col sm="12" className="mapHeight">
+                                <MapResults />
                             </Col>
                         </Row>
                     </TabPane>
