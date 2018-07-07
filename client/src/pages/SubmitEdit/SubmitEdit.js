@@ -171,8 +171,8 @@ class AddBusiness extends Component {
                 </select>
               </label>
 
-              {/* Multiple select */}
-              <Select
+              {/* FUTURE: Multiple select */}
+              {/* <Select
                 multi
                 closeOnSelect={!stayOpen}
                 // stayOpen // not working
@@ -189,10 +189,10 @@ class AddBusiness extends Component {
                   { value: '5', label: 'Fri' },
                   { value: '6', label: 'Sat' },
                 ]}
-              />
+              /> */}
 
-              <label htmlFor="dealTimes" className="time-input-label">Select the start and end times of the deal.</label>
-              <div className="form-row">
+              <label htmlFor="dealTimes">Select the start and end times of the deal.</label>
+              <div className="form-row mx-0">
                 <Input
                     value={this.state.beginTime}
                     onChange={this.handleInputChange}
