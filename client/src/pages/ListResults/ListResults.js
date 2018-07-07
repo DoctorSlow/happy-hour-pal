@@ -105,7 +105,7 @@ class Results extends Component {
             </div>
           ))}
             <div className="text-center">
-              <p>Do you know something we don't? Help us out!</p>
+              <p>Know something we don't? Help us out!</p>
               <Button color="primary" onClick={this.handleClickEvent}>Add New Location</Button>
             </div>
           </Col>
