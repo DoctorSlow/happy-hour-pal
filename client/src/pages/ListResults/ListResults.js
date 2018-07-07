@@ -36,15 +36,15 @@ class Results extends Component {
         // console.log(this.state.businesses)
       })
       .catch(err => console.log(err))
-      .then(
-        API.getAllDeals()
-          .then(res => {
-          this.setState({currentDeals: res.data});
-          console.log(res.data)
-          // console.log(this.state.currentDeals)
-          })
-          .catch(err => console.log(err))
-      )
+      // .then(
+      //   API.getAllDeals()
+      //     .then(res => {
+      //     this.setState({currentDeals: res.data});
+      //     console.log(res.data)
+      //     // console.log(this.state.currentDeals)
+      //     })
+      //     .catch(err => console.log(err))
+      // )
 
   }
 
@@ -84,7 +84,7 @@ class Results extends Component {
                     {business.name}
                   </Link>
 
-                {/* {this.state.currentDeals.map(deals => (
+                {business.deals.map(deals => (
                 <DealCard
 
                   // onClick={() => this.handleClickEvent(pic.id)}
@@ -96,7 +96,7 @@ class Results extends Component {
                   info={deals.info}
 
                 />
-                ))} */}
+                ))}
                 {/* <Link to={"/businessdetails/" + deals.googleID}>
                   Go to Business
                 </Link> */}
