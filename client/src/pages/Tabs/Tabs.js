@@ -64,7 +64,7 @@ export default class Tabs extends React.Component {
                         </Row>
                     </TabPane>
                 </TabContent>
-                <NestedModal buttonLabel="Click Me" />
+                {/* <NestedModal buttonLabel="Click Me" /> */}
             </div>
         );
     }

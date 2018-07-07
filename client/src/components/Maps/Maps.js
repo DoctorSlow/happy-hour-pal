@@ -5,8 +5,12 @@ import "./Maps.css";
 //The two ternary functions handle our geolocation coords, if they exist, set map center to that, if not
 //default to downtown tucson
 
-const mapMarkerClick = function(placeId, name, open) {
-console.log(placeId, name, open)
+const mapMarkerClick = function(Id, name, open) {
+console.log(Id, name, open)
+
+const origin = window.location.origin;
+window.location.replace(origin + "/businessdetails/" + Id)
+// this.history.push("/businessdetails/" + placeId);
 
 }
 
@@ -34,7 +38,7 @@ const MyMapComponent = withScriptjs(withGoogleMap(function (props) {
           title={mark.name}
           place_id={mark.place_id}
           clickable={true}
-          onClick={()=>{mapMarkerClick(mark.place_id, mark.name, mark.opening_hours.open_now)}}
+          onClick={()=>{mapMarkerClick(mark.id, mark.name, mark.opening_hours.open_now)}}
           
 
         />
