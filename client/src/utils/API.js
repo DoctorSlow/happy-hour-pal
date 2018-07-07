@@ -29,10 +29,13 @@ export default {
   //   return axios.post(`/api/businesses/${id}/deals`, dealData);
   // }
   getAllDeals: function() {
-    return axios.get("/api/businesses/deals");
+    return axios.get("/api/deals");
   },
   // Get the deals with the given id
   getDeals: function (id) {
     return axios.get("/api/businesses/" + id + "/deals");
   }
+  // getDeals: function (id) {
+  //   return axios.get("/api/deals" + id);
+  // }
 };

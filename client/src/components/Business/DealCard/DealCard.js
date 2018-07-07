@@ -17,6 +17,15 @@ function dayOfWeekAsString(dayIndex) {
   return ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][dayIndex];
 }
 
+function toStandardTime(militaryTime) {
+  militaryTime = militaryTime.split(':');
+  if (militaryTime[0] > 12) {
+    return (militaryTime[0] - 12) + ':' + militaryTime[1] + ' P.M.';
+  } else {
+    return militaryTime.join(':') + ' A.M.';
+  }
+}
+
 // Business card component for List Results
 const DealCard = props => (
   <div className="deal-card">
@@ -28,7 +37,8 @@ const DealCard = props => (
         {dayOfWeekAsString(props.day)}
       </CardTitle>
       <CardSubtitle>
-        {props.beginTime} - {props.endTime}
+        {toStandardTime(props.beginTime)} - {toStandardTime(props.endTime)}
+        {/* {props.beginTime} - {props.endTime} */}
       </CardSubtitle>
       <CardText>
         {props.info}
