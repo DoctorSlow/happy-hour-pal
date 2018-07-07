@@ -40,12 +40,12 @@ class Results extends Component {
   // }
   loadAllBusinesses = () => {
     API.getBusinesses()
-    .then(res => {
-      this.setState({businesses: res.data});
-      // console.log(res.data)
-      // console.log(this.state.businesses)
-    })
-    .catch(err => console.log(err));
+      .then(res => {
+        this.setState({ businesses: res.data });
+        // console.log(res.data)
+        // console.log(this.state.businesses)
+      })
+      .catch(err => console.log(err));
   }
 
   handleClickEvent = () => {
@@ -65,16 +65,16 @@ class Results extends Component {
         <Row>
           <Col sm="4">
 
-          {/* {this.state.currentDeals.map(deals => ( */}
+            {/* {this.state.currentDeals.map(deals => ( */}
             {this.state.businesses.map(business => (
-            <div>
-              <BusinessCard>
-                <BusinessNameCard
-                  name={business.name}
-                  key={business.googleID}
+              <div>
+                <BusinessCard>
+                  <BusinessNameCard
+                    name={business.name}
+                    key={business.googleID}
                   // address={this.state.address}
                   // stars={this.state.stars}
-                />
+                  />
                   {/* <Link to={"/editbusiness/" + business.googleID}>
                     {business.name}
                   </Link> */}
@@ -82,7 +82,7 @@ class Results extends Component {
                     {business.name}
                   </Link>
 
-                {/* <DealCard
+                  {/* <DealCard
                   // onClick={() => this.handleClickEvent(pic.id)}
                   id={deals._id}
                   key={deals._id}
@@ -92,9 +92,9 @@ class Results extends Component {
                   info={deals.info}
                 /> */}
 
-              </BusinessCard>
-            </div>
-          ))}
+                </BusinessCard>
+              </div>
+            ))}
 
             <Button color="primary" onClick={this.handleClickEvent}>Suggest Location</Button>
           </Col>

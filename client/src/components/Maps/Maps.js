@@ -27,6 +27,8 @@ const MyMapComponent = withScriptjs(withGoogleMap(function (props) {
           position={{ lat: mark.geometry.location.lat, lng: mark.geometry.location.lng }}
           title={mark.name}
           place_id={mark.place_id}
+          clickable={true}
+          
 
         />
       ))
