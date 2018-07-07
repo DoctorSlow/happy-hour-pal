@@ -6,6 +6,8 @@ module.exports = {
     db.Business
       .find()
       .sort({ name: 1 })
+      .populate({path: 'deals', options: {sort:{"day": "ascending"}}})
+      //.populate("deals")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
