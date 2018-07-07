@@ -16,7 +16,20 @@ module.exports = {
       // .sort({ googleID: 1})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }
+  },
+  findDealById: function(req, res) {
+    db.Deal
+      .findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  updateDeal: function(req, res) {
+    // console.log(req.path)
+    db.Deal
+      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
 //   createDeal: function(req, res) {
 //     db.Deal
 //       .create(req.body)

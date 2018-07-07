@@ -99,9 +99,32 @@ class Results extends Component {
     return (
       <div>
         <Row>
-          <Col sm="4">
-
+          <Col sm="1" md="2" lg="2"></Col>
+          <Col sm="10" md="8" lg="8">
             {/* <BackBtn /> */}
+
+            {/* Component for drop-down business list. */}
+            <SearchForm
+              handleSelectedOption={this.handleSelectedOption}
+              businesses={this.state.businesses}
+              loadTargetBusiness={this.loadTargetBusiness}
+            // loadTargetDeals={this.loadTargetDeals}
+            />
+
+            {/* Option A ... Div to display business selected from SearchForm */}
+            {currentBusiness &&
+              <div>
+                <h1>{currentBusiness.name}</h1>
+                <h2>{currentBusiness._id}</h2>
+              </div>
+            }
+
+            {/* Option B ... uses set state */}
+            {/* <div>
+              <h1>{this.state.currentBusiness.name}</h1>
+              <h2>{this.state.currentBusiness._id}</h2>
+            </div> */}
+
 
             <BusinessCard>
               {currentBusiness &&
@@ -143,7 +166,8 @@ class Results extends Component {
               {children}
             </RatingCard> */}
 
-            <ReviewsContainer>
+            {/* Render reviews here future */}
+            {/* <ReviewsContainer>
               {this.state.reviews.map(review => (
                 <ReviewCard
                   // onClick={() => this.handleClickEvent(pic.id)}
@@ -154,7 +178,7 @@ class Results extends Component {
                   info={review.info}
                 />
               ))}
-            </ReviewsContainer>
+            </ReviewsContainer> */}
 
             {/* <TopPalCard>
               {children}
@@ -163,31 +187,8 @@ class Results extends Component {
             {/* <SuggestEditBtn /> */}
 
           </Col>
-          <Col sm="4">
 
-            {/* Component for drop-down business list. */}
-            <SearchForm
-              handleSelectedOption={this.handleSelectedOption}
-              businesses={this.state.businesses}
-              loadTargetBusiness={this.loadTargetBusiness}
-            // loadTargetDeals={this.loadTargetDeals}
-            />
-
-            {/* Option A ... Div to display business selected from SearchForm */}
-            {currentBusiness &&
-              <div>
-                <h1>{currentBusiness.name}</h1>
-                <h2>{currentBusiness._id}</h2>
-              </div>
-            }
-
-            {/* Option B ... uses set state */}
-            {/* <div>
-              <h1>{this.state.currentBusiness.name}</h1>
-              <h2>{this.state.currentBusiness._id}</h2>
-            </div> */}
-
-          </Col>
+          <Col sm="1" md="2" lg="2"></Col>
         </Row>
       </div>
     );

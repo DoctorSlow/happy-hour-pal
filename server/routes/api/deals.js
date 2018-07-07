@@ -6,8 +6,9 @@ router.route("/")
   .get(dealsController.findAllDeals);
 
 // Matches with "/api/deals/:id"
-// router.route("/:id")
-//   .get(dealsController.findDeals)
+router.route("/:id")
+  .get(dealsController.findDealById)
+  .put(dealsController.updateDeal)
 //   .post(dealsController.createDeal);
 
 module.exports = router;
