@@ -12,8 +12,16 @@ module.exports = {
 		axios.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=" + req.params.query + "&location=" + req.params.lat + "," + req.params.lng + "&radius=15000&key=" + APIKEY)
 
 			.then((data) => {
-				console.log(data.data);
+				res.json(data.data);
+			})
+	},
+	autoQuery: function (req, res) {
+		axios.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + req.params.lat + "," + req.params.lng + "&radius=3200&type=bar&key=" + APIKEY)
+
+			.then((data) => {
+				// console.log(data.data);
 				res.json(data.data);
 			})
 	}
+
 }
