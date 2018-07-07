@@ -30,6 +30,7 @@ class Results extends Component {
   loadAllDeals = () => {
     API.getBusinesses()
       .then(res => {
+
         this.setState({businesses: res.data});
         console.log(res.data)
         // console.log(this.state.businesses)
@@ -44,6 +45,7 @@ class Results extends Component {
           })
           .catch(err => console.log(err))
       )
+
   }
 
   handleClickEvent = () => {
@@ -65,22 +67,24 @@ class Results extends Component {
 
             {/* {this.state.currentDeals.map(deals => ( */}
             {this.state.businesses.map(business => (
-            <div>
-              <BusinessCard>
-                <BusinessNameCard
-                  name={business.name}
-                  key={business.googleID}
+              <div>
+                <BusinessCard>
+                  <BusinessNameCard
+                    name={business.name}
+                    key={business.googleID}
                   // address={this.state.address}
                   // stars={this.state.stars}
-                />
+                  />
                   {/* <Link to={"/editbusiness/" + business.googleID}>
                     {business.name}
                   </Link> */}
                   <Link to={"/businessdetails/" + business.googleID}>
                     {business.name}
                   </Link>
+
                 {/* {this.state.currentDeals.map(deals => (
                 <DealCard
+
                   // onClick={() => this.handleClickEvent(pic.id)}
                   id={deals._id}
                   key={deals._id}
@@ -88,6 +92,7 @@ class Results extends Component {
                   beginTime={deals.beginTime}
                   endTime={deals.endTime}
                   info={deals.info}
+
                 />
                 ))} */}
                 {/* <Link to={"/businessdetails/" + deals.googleID}>

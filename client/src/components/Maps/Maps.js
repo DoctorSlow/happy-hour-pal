@@ -4,6 +4,12 @@ import "./Maps.css";
 //Here we utilize the react-google-maps library to handle rendering components as map/map markers etc
 //The two ternary functions handle our geolocation coords, if they exist, set map center to that, if not
 //default to downtown tucson
+
+const mapMarkerClick = function (placeId, name, open) {
+  console.log(placeId, name, open)
+
+}
+
 const MyMapComponent = withScriptjs(withGoogleMap(function (props) {
   console.log(props);
   let iconMarker = new window.google.maps.MarkerImage(
@@ -27,7 +33,9 @@ const MyMapComponent = withScriptjs(withGoogleMap(function (props) {
           position={{ lat: mark.geometry.location.lat, lng: mark.geometry.location.lng }}
           title={mark.name}
           place_id={mark.place_id}
-        // onClick={this.toggle}
+          clickable={true}
+          onClick={() => { mapMarkerClick(mark.place_id, mark.name, mark.opening_hours.open_now) }}
+
 
         />
       ))
