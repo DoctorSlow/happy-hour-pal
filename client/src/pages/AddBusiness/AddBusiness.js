@@ -143,7 +143,7 @@ class AddBusiness extends Component {
             <Row>
               <Col size="sm-12 md-12 lg-12">
 
-                <label htmlFor="business">Enter business name or business type:</label>
+                <label htmlFor="business" className="search-label">Enter business name or business type:</label>
                 <SearchInput
                   className="search-input"
                   onClick={this.handleSearchSubmit}
@@ -169,8 +169,7 @@ class AddBusiness extends Component {
                     </select>
                   // Default message before search..
                   ) : (
-                    // <h3>Search for the name or type of the business.</h3>
-                    <h3>Input a business name or type in the search bar.</h3>
+                    <h3></h3>
                   )}
                   </div>
 
@@ -197,8 +196,8 @@ class AddBusiness extends Component {
                     </select>
                   </label>
 
-                  {/* Multiple select */}
-                  <Select
+                  {/* FUTURE: Multiple select */}
+                  {/* <Select
                     multi
                     closeOnSelect={!stayOpen}
                     // stayOpen // not working
@@ -215,11 +214,11 @@ class AddBusiness extends Component {
                       { value: '5', label: 'Fri' },
                       { value: '6', label: 'Sat' },
                     ]}
-                  />
+                  /> */}
 
                   {/* ***Input start & end times for the deal*** */}
-                  <label htmlFor="dealTimes" className="time-input-label">Select the start and end times of the deal.</label>
-                  <div className="form-row">
+                  <label htmlFor="dealTimes">Select the start and end times of the deal.</label>
+                  <div className="form-row mx-0">
                     <Input
                         value={this.state.beginTime}
                         onChange={this.handleInputChange}
