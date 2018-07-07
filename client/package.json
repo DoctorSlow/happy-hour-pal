@@ -25,14 +25,6 @@
     "eject": "react-scripts eject"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DoctorSlow/happy-hour-pal.git"
-  },
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/DoctorSlow/happy-hour-pal/issues"
-  },
-  "homepage": "https://github.com/DoctorSlow/happy-hour-pal#readme"
+  "license": "ISC"
 }
