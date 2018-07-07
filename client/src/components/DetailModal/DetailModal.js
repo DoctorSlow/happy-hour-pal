@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-class DetailModal extends React.Component {
+export default class DetailModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -64,4 +64,4 @@ class DetailModal extends React.Component {
     }
 }
 
-export default DetailModal;
+// export default DetailModal;

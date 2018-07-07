@@ -3,6 +3,7 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, Ca
 import classnames from 'classnames';
 import ListResults from "../ListResults/ListResults";
 import MapResults from "../MapResults/MapResults";
+import DetailModal from "../../components/DetailModal/DetailModal";
 import "./Tabs.css"
 
 export default class Tabs extends React.Component {
@@ -61,6 +62,7 @@ export default class Tabs extends React.Component {
                         </Row>
                     </TabPane>
                 </TabContent>
+                <DetailModal />
             </div>
         );
     }
