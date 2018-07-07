@@ -24,13 +24,6 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findAllDeals: function(req,res) {
-    db.Deal
-      .find(req.query)
-      // .sort({ googleID: 1})
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
   create: function(req, res) {
     db.Business
       .create(req.body)
