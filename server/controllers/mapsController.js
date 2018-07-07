@@ -8,13 +8,8 @@ const APIKEY = "AIzaSyD_2mmRZkUnIuOqeIxJRjKZjDadVGB1i0E";
 module.exports = {
 
 	queryMap: function (req, res) {
-<<<<<<< HEAD
 
 		axios.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=" + req.params.query + "&location=" + req.params.lat + "," + req.params.lng + "&radius=7500&key=" + APIKEY)
-=======
-		// console.log(req);
-		axios.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=" + req.params.query + "&location=" + req.params.lat + "," + req.params.lng + "&radius=15000&key=" + APIKEY)
->>>>>>> da7f87cc066823008a11d64ddad828ad26bd1d7c
 
 			.then((data) => {
 				res.json(data.data);
