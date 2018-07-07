@@ -8,8 +8,8 @@ import API from "../../utils/API";
 // import ReviewCard from "../../components/ReviewCard";
 // import ReviewsContainer from "../../components/ReviewsContainer";
 // import { BackBtn, ReportDealBtn, RateDealBtn, ViewAllBtn, SuggestEditBtn } from "../../../components/Buttons";
-import { List, ListItem } from "../../components/List";
-import { FormBtn } from "../../components/Form";
+// import { List, ListItem } from "../../components/List";
+// import { FormBtn } from "../../components/Form";
 import SearchForm from "../../components/SearchForm";
 
 class Results extends Component {
@@ -67,7 +67,7 @@ class Results extends Component {
     const selectedOption = select[select.selectedIndex];
     API.getBusiness(selectedOption.getAttribute('value'))
       .then(res => {
-        this.setState({ currentBusiness: res.data }),
+        this.setState({ currentBusiness: res.data })
           console.log(res)
       })
       .catch(err => console.log(err))

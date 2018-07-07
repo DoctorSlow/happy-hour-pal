@@ -28,6 +28,9 @@ export default {
   // saveDeal: function (id, dealData) {
   //   return axios.post(`/api/businesses/${id}/deals`, dealData);
   // }
+  getAllDeals: function() {
+    return axios.get("/api/businesses/deals");
+  },
   // Get the deals with the given id
   getDeals: function (id) {
     return axios.get("/api/businesses/" + id + "/deals");

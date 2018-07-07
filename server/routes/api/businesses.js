@@ -17,4 +17,8 @@ router.route("/:id/deals/")
   .get(businessesController.findDeals)
   .post(businessesController.createDeal);
 
+// Matches with "/api/businesses/deals"
+router.route("/deals")
+  .get(businessesController.findAllDeals);
+
 module.exports = router;
