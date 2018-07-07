@@ -21,6 +21,7 @@ app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 if (process.env.NODE_ENV === "production") {
+	console.log("Static file server running");
 	app.use(express.static("../client/build"));
 }
 
