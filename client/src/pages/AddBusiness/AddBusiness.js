@@ -4,7 +4,7 @@ import Container from "../../components/Container";
 import Col from "../../components/Col";
 import Row from "../../components/Row";
 import { TextArea, Input } from "../../components/Form";
-import { Button } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Select from 'react-select'; // Multiselector
 import 'react-select/dist/react-select.css'; // Multiselector formatting
 import API from "../../utils/API";
@@ -27,9 +27,12 @@ class AddBusiness extends Component {
       search: "",
       center: null,
       stayOpen: true,
-      selectedOption: ''
+      selectedOption: '',
+      modal: false,
+      modalMessage: ""
     };
     this.handleInputChange.bind(this);
+    this.toggle = this.toggle.bind(this);
   }
 
   //automatically grab current location 
@@ -80,6 +83,12 @@ class AddBusiness extends Component {
     }
   }
 
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
+
   //queries the places api and loads results into this components result state
   //change this to revert to older api call: searchGoogle(query, lat, lng)
   searchGoogle(lat, lng) {
@@ -97,7 +106,11 @@ class AddBusiness extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (!this.state.googleID || !this.state.day || !this.state.beginTime || !this.state.endTime || !this.state.info) {
-      alert("All fields must be filled out");
+      // alert("All fields must be filled out");
+      this.setState({
+        modal: !this.state.modal,
+        modalMessage: "Please fill out all fields!"
+      });
     } else {
       // First, save the business as a new document.
       API.saveBusiness({
@@ -108,10 +121,9 @@ class AddBusiness extends Component {
         .then(
           function (newBusiness) {
             console.log(newBusiness.data);
-            alert(newBusiness.data.name + " added");
+            // alert(newBusiness.data.name + " added");
             const business = newBusiness.data;
             const businessId = business._id;
-
             const select = document.getElementById('daySelect');
             const selectedOption = select[select.selectedIndex];
             //const dealDay = selectedOption.getAttribute('value');
@@ -127,9 +139,11 @@ class AddBusiness extends Component {
               beginTime: dealStart,
               endTime: dealEnd,
               info: dealInfo
-            })
-            const origin = window.location.origin;
-            window.location.replace(origin + "/businessdetails/")
+            }),
+            setTimeout(function() {
+              const origin = window.location.origin;
+              window.location.replace(origin + "/businessdetails/" + business.googleID)
+            }, 3000)
           }
 
         )
@@ -144,6 +158,18 @@ class AddBusiness extends Component {
 
     return (
       <div>
+        {/* <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}> */}
+        <Modal isOpen={this.state.modal}>
+          {/* <ModalHeader toggle={this.toggle}>Modal title</ModalHeader> */}
+          <ModalBody>
+            {/* Please fill out all fields! */}
+            {this.state.modalMessage}
+          </ModalBody>
+          <ModalFooter>
+            {/* <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '} */}
+            <Button color="secondary" onClick={this.toggle}>Okay</Button>
+          </ModalFooter>
+        </Modal>
         <div className="form-addbusiness">
           <Container>
             <Row>
