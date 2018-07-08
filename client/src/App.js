@@ -33,31 +33,99 @@ const DisplayLinks = props => {
 	// Navbar links display
 	if (props.loggedIn) {
 		return (
-			<nav className="navbar blue-navbar">
-				<ul className="nav">
-					<li>
-						<Link to="#" className="nav-link" onClick={props._logout}>
-							Logout
-						</Link>
-					</li>
-				</ul>
+			<nav className="navbar navbar-expand-lg navbar-dark blue-navbar">
+				<a class="navbar-brand" href="/tabs">HappyHourPal</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul className="navbar-nav">
+						<li
+							className={
+								window.location.pathname === "/tabs"
+								? "nav-item active"
+								: "nav-item"
+							}
+							>
+							<Link to="/tabs" className="nav-link">
+								View Happy Hours
+							</Link>
+						</li>
+						<li
+							className={
+								window.location.pathname === "/addbusiness"
+								? "nav-item active"
+								: "nav-item"
+							}
+							>
+							<Link to="/addbusiness" className="nav-link">
+								Add Happy Hour
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link to="/tabs" className="nav-link" onClick={props._logout}>
+								Logout
+							</Link>
+						</li>
+					</ul>
+				</div>
 			</nav>
 		)
 	} else {
 		return (
-			<nav className="navbar blue-navbar">
-				<ul className="nav">
-					<li className="nav-item">
-						<Link to="/login" className="nav-link">
-							Log in
-						</Link>
-					</li>
-					<li className="nav-item">
-						<Link to="/signup" className="nav-link">
-							Sign up
-						</Link>
-					</li>
-				</ul>
+			<nav className="navbar navbar-expand-lg navbar-dark blue-navbar">
+				<a class="navbar-brand" href="/tabs">HappyHourPal</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul className="navbar-nav">
+						<li
+							className={
+								window.location.pathname === "/tabs"
+								? "nav-item active"
+								: "nav-item"
+							}
+							>
+							<Link to="/tabs" className="nav-link">
+								View Happy Hours
+							</Link>
+						</li>
+						<li
+							className={
+								window.location.pathname === "/addbusiness"
+								? "nav-item active"
+								: "nav-item"
+							}
+							>
+							<Link to="/addbusiness" className="nav-link">
+								Add Happy Hour
+							</Link>
+						</li>
+						<li
+							className={
+								window.location.pathname === "/login"
+								? "nav-item active"
+								: "nav-item"
+							}
+							>
+							<Link to="/login" className="nav-link">
+								Log in
+							</Link>
+						</li>
+						<li
+							className={
+								window.location.pathname === "/signup"
+								? "nav-item active"
+								: "nav-item"
+							}
+							>
+							<Link to="/signup" className="nav-link">
+								Sign up
+							</Link>
+						</li>
+					</ul>
+				</div>
 			</nav>
 		)
 	}
@@ -130,7 +198,7 @@ class App extends Component {
 			<div className="App">
 				<Router className="mapHeight">
 					<div className="mapHeight">
-						<Navbar />
+						{/* <Navbar /> */}
 						<Wrapper className="mapHeight">
 							<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
 							<Route exact path="/" component={Loading} />
