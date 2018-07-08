@@ -5,8 +5,16 @@ import Col from "../../components/Col";
 import logo from "./quaillogo.png";
 import "./Loading.css";
 
+
+
 // Shows when app is first opened and loading
 const Loading = () => (
+
+  setTimeout(function() {
+    const origin = window.location.origin;
+    window.location.replace(origin + "/tabs")
+  }, 3000),
+
   <div className="loading-page">
     <Container>
       <Row>
