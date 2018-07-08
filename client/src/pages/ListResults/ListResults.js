@@ -111,8 +111,9 @@ class Results extends Component {
             </div>
           ))}
             <div className="text-center">
+              <img className="quail-logo results-logo" src="/assets/images/quaillogo.png" alt="quail-logo" />
               <p className="add-location-call">Know something we don't? Help a pal out!</p>
-              <Button className="add-location-btn" onClick={this.handleClickEvent}>Add Happy Hour</Button>
+              <Button color="#b66925ff" className="add-location-btn" onClick={this.handleClickEvent}>Add Happy Hour</Button>
             </div>
           </Col>
           <Col sm="1" md="2" lg="2"></Col>

@@ -4,6 +4,8 @@ GENERAL
 
 .background {
     background-color: #f2f2f2ff;
+    /* background-color: #e9b521ff; */
+
 }
 
 
@@ -20,6 +22,7 @@ BUSINESS CARDS
     margin-top: 20px;
     margin-left: 15px;
     color: #d96d28ff !important;
+    /* color: #4d4d4dff !important; */
 }
 
 
@@ -28,13 +31,20 @@ BUSINESS CARDS
 CROWDSOURCE REQUEST
 ************************/
 
+/* Quail */
+.results-logo {
+    margin-top: 50px;
+    width: 39.48px;
+    height: 75.615px;
+}
 /* Text */
 .add-location-call {
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 /* Button */
 .add-location-btn {
+    color: #fff;
     background-color: #d96d28ff !important;
     margin-bottom: 50px;
 }

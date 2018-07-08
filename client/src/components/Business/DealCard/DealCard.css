@@ -9,8 +9,9 @@ DEAL CARD
     margin-top: -20px;
     margin-bottom: -15px;
 }
-.card-title {
-    font-size: 1em;
+.card-title, .card-subtitle {
+    font-size: .8em;
+    /* color: #d96d28ff !important; */
 }
 
 /* Deal description */
