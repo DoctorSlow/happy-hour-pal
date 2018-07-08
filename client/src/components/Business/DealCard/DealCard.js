@@ -31,19 +31,19 @@ const DealCard = props => (
   <div className="deal-card">
 
     {/* New Deal card to pull from MongoDB */}
-    <CardBody {...props._id}>
-      <CardTitle>
+    <CardBody className="card-body" {...props._id}>
+      <CardTitle className="card-title gray">
         {/* {weekday[props.day]} */}
         {dayOfWeekAsString(props.day)}
       </CardTitle>
-      <CardSubtitle>
+      <CardSubtitle className="gray">
         {toStandardTime(props.beginTime)} - {toStandardTime(props.endTime)}
         {/* {props.beginTime} - {props.endTime} */}
       </CardSubtitle>
-      <CardText>
+      <CardText className="text-left card-text light-gray">
         {props.info}
       </CardText>
-      <Button color="primary" className="update" style={{ visibility: (props.showButton ? "visible" : "hidden") }} id={props.id} onClick={props.handleClickEvent}>
+      <Button color="primary" className="update" style={{ display: (props.showButton ? "block" : "none") }} id={props.id} onClick={props.handleClickEvent}>
         Update
       </Button>
 

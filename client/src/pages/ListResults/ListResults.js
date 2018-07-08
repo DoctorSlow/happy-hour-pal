@@ -7,6 +7,8 @@ import { BusinessCard, BusinessNameCard, DealCard } from "../../components/Busin
 import API from "../../utils/API";
 import SearchBar from "../../components/SearchBar";
 import { Link } from "react-router-dom";
+import "./ListResults.css";
+
 
 // import { BackBtn, ReportDealBtn, RateDealBtn, ViewAllBtn, SuggestEditBtn } from "../../../components/Buttons";
 
@@ -63,7 +65,7 @@ class Results extends Component {
     return (
       <div>
         <SearchBar />
-        <Row>
+        <Row className="background">
           <Col sm="1" md="2" lg="2"></Col>
           <Col sm="10" md="8" lg="8">
 
@@ -71,18 +73,22 @@ class Results extends Component {
             {this.state.businesses.map(business => (
               <div>
                 <BusinessCard>
-                  <BusinessNameCard
+
+                  {/* <BusinessNameCard
                     name={business.name}
                     key={business.googleID}
-                  // address={this.state.address}
-                  // stars={this.state.stars}
-                  />
+                    // address={this.state.address}
+                    // stars={this.state.stars}
+                  /> */}
+
                   {/* <Link to={"/editbusiness/" + business.googleID}>
                     {business.name}
                   </Link> */}
-                  <Link to={"/businessdetails/" + business.googleID}>
-                    {business.name}
-                  </Link>
+                  <h5 className="business-name">
+                    <Link className="business-name-link" to={"/businessdetails/" + business.googleID}>
+                      {business.name}
+                    </Link>
+                  </h5>
 
                 {business.deals.map(deals => (
                 <DealCard
@@ -100,13 +106,13 @@ class Results extends Component {
                 {/* <Link to={"/businessdetails/" + deals.googleID}>
                   Go to Business
                 </Link> */}
-                <hr />
+                {/* <hr /> */}
               </BusinessCard>
             </div>
           ))}
             <div className="text-center">
-              <p>Know something we don't? Help us out!</p>
-              <Button color="primary" onClick={this.handleClickEvent}>Add New Location</Button>
+              <p className="add-location-call">Know something we don't? Help a pal out!</p>
+              <Button className="add-location-btn" onClick={this.handleClickEvent}>Add Happy Hour</Button>
             </div>
           </Col>
           <Col sm="1" md="2" lg="2"></Col>

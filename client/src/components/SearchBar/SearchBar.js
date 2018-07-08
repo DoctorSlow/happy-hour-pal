@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Button } from 'reactstrap';
 import "./SearchBar.css";
 import API from "../../utils/API";
 
 
 // SearchBar for Results pages
 const SearchBar = props => (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light navStyle">
+    <nav className="navbar navbar-expand-lg navbar-light navStyle white-navbar">
         <div>
             <form className="form-inline my-2 my-lg-0">
                 <input name="search" onChange={props.onChange} className="form-control mr-sm-2" type="search" placeholder="Current Location" aria-label="Search" />
-                <button onClick={props.onClick} className="btn btn-dark my-2 my-sm-0" type="submit">Manual Search</button>
-                <button onClick={props.autoClick} className="btn btn-dark my-2 my-sm-0" type="submit">Search Nearby</button>
+                <Button className="left-btn" onClick={props.onClick} className="btn search-btn my-2 my-sm-0" type="submit">Manual Search</Button>
+                <Button onClick={props.autoClick} className="btn search-btn my-2 my-sm-0" type="submit">Search Nearby</Button>
             </form>
         </div>
 

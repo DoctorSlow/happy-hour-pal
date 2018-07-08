@@ -125,7 +125,8 @@ class Results extends Component {
               {children}
             </RatingCard> */}
 
-            <ReviewsContainer>
+            {/* FUTURE: Render Reviews Here */}
+            {/* <ReviewsContainer>
               {this.state.reviews.map(review => (
                 <ReviewCard
                   // onClick={() => this.handleClickEvent(pic.id)}
@@ -136,7 +137,7 @@ class Results extends Component {
                   info={review.info}
                 />
               ))}
-            </ReviewsContainer>
+            </ReviewsContainer> */}
 
             {/* <TopPalCard>
               {children}

@@ -1,5 +1,9 @@
-/* .business-name-card {
-    width: 400px;
-    border-style: solid;
-    border-width: 2px;
-} */
+/* Business name */
+.business-name-card, .business-name-card:hover {
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    color: #d96d28ff;
+    font-weight: bold;
+}
+

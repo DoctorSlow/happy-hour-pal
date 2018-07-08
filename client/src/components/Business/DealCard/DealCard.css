@@ -1,5 +1,29 @@
+/************************
+DEAL CARD
+************************/
+
 .deal-card {
-    /* width: 400px; */
-    border-style: solid;
-    border-width: 1px;
+    padding-bottom: 0;
+}
+.card-body {
+    margin-top: -20px;
+    margin-bottom: -15px;
+}
+.card-title {
+    font-size: 1em;
+}
+
+/* Deal description */
+.card-text {
+    margin-top: 5px;
+}
+
+/* Days and times color */
+.gray {
+    color: #4d4d4dff;
+}
+
+/* Deal description color */
+.light-gray {
+    color: #808080ff;
 }

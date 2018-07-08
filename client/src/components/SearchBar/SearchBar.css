@@ -1,7 +1,30 @@
+/************************
+SEARCH BAR
+************************/
+
+/* Position */
 .navStyle {
     position: absolute;
     width: 100%; 
     padding-bottom: 20px;
     z-index: 1;
 }
+
+/* Color */
+.white-navbar {
+    background-color: #fff !important;
+    color: #fff;
+  }
+
+/* Button */
+.search-btn {
+    background-color: #2296a2ff !important;
+    margin-bottom: 30px;
+    margin-right: 5px;
+}
+.search-btn:hover, .search-btn:active, .search-btn:visited  {
+    background-color: #1f737cff !important;
+}
+
+
 
