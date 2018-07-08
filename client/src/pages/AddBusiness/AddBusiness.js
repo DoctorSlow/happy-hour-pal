@@ -12,8 +12,8 @@ import "./AddBusiness.css";
 
 class AddBusiness extends Component {
 
-  constructor () {
-    super ();
+  constructor() {
+    super();
     // this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     // this.handleInputChange = this.handleInputChange.bind(this);
     this.state = {
@@ -65,9 +65,10 @@ class AddBusiness extends Component {
 
   handleSearchSubmit = event => {
     event.preventDefault();
-    let lat = this.state.center.lat;
-    let lng = this.state.center.lng;
-    this.searchGoogle(this.state.search, lat, lng);
+    //newer api call, testing this for better map matches
+    this.searchGoogle(this.state.center.lat, this.state.center.lng);
+    //saving old search
+    // this.searchGoogle(this.state.search, this.state.center.lat, this.state.center.lng);
   };
 
   // Multiselect function
@@ -80,9 +81,10 @@ class AddBusiness extends Component {
   }
 
   //queries the places api and loads results into this components result state
-  searchGoogle(query, lat, lng) {
+  //change this to revert to older api call: searchGoogle(query, lat, lng)
+  searchGoogle(lat, lng) {
     console.log("google has been searched");
-    API.getPlaces(query, lat, lng)
+    API.autoPlaces(lat, lng)
       .then(res =>
         this.setState({ results: res.data.results })
         // if(this.props.onSearch) {
@@ -94,7 +96,7 @@ class AddBusiness extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (! this.state.googleID || ! this.state.day || ! this.state.beginTime || ! this.state.endTime || ! this.state.info) {
+    if (!this.state.googleID || !this.state.day || !this.state.beginTime || !this.state.endTime || !this.state.info) {
       alert("All fields must be filled out");
     } else {
       // First, save the business as a new document.
@@ -102,38 +104,38 @@ class AddBusiness extends Component {
         name: this.state.name,
         googleID: this.state.googleID
       })
-      .catch(err => console.log(err))
-      .then(
-        function (newBusiness) {
-          console.log(newBusiness.data);
-          alert(newBusiness.data.name + " added");
-          const business = newBusiness.data;
-          const businessId = business._id;
+        .catch(err => console.log(err))
+        .then(
+          function (newBusiness) {
+            console.log(newBusiness.data);
+            alert(newBusiness.data.name + " added");
+            const business = newBusiness.data;
+            const businessId = business._id;
 
-          const select = document.getElementById('daySelect');
-          const selectedOption = select[select.selectedIndex];
-          //const dealDay = selectedOption.getAttribute('value');
-          const dealDay = selectedOption.value;
-          const dealStart = document.getElementById('beginTime').value;
-          const dealEnd = document.getElementById('endTime').value;
-          const dealInfo = document.getElementById('info').value;
+            const select = document.getElementById('daySelect');
+            const selectedOption = select[select.selectedIndex];
+            //const dealDay = selectedOption.getAttribute('value');
+            const dealDay = selectedOption.value;
+            const dealStart = document.getElementById('beginTime').value;
+            const dealEnd = document.getElementById('endTime').value;
+            const dealInfo = document.getElementById('info').value;
 
-          // Take the data from the new business to use for referencing the new deal for it.
-           return API.saveDeal( businessId, {
-            googleID: business.googleID,
-            day: dealDay,
-            beginTime: dealStart,
-            endTime: dealEnd,
-            info: dealInfo
-          })
-                const origin = window.location.origin;
-window.location.replace(origin + "/businessdetails/")
-        }
-    
-      )
-      .catch(err => console.log(err));
+            // Take the data from the new business to use for referencing the new deal for it.
+            return API.saveDeal(businessId, {
+              googleID: business.googleID,
+              day: dealDay,
+              beginTime: dealStart,
+              endTime: dealEnd,
+              info: dealInfo
+            })
+            const origin = window.location.origin;
+            window.location.replace(origin + "/businessdetails/")
+          }
+
+        )
+        .catch(err => console.log(err));
     }
-  
+
   };
 
   render() {
@@ -157,29 +159,29 @@ window.location.replace(origin + "/businessdetails/")
                 <form>
                   {/* ***Select business name(after search)*** */}
                   <div className="form-group business-name">
-                  {/* <label className="business-name" htmlFor="business">Business Name: </label> */}
-                  {/* If businesses exist in the database: */}
-                  {this.state.results.length ? (
-                    <select onChange={this.handleSelectedOption} defaultValue="">
-                      <option value="" disabled>Select business</option>
-                      {this.state.results.map(place => (
-                        <option
-                          key={place.id}
-                          value={[place.name,place.id]}
-                        >
-                          {place.name}
-                        </option>
-                      ))}
-                    </select>
-                  // Default message before search..
-                  ) : (
-                    <h3></h3>
-                  )}
+                    {/* <label className="business-name" htmlFor="business">Business Name: </label> */}
+                    {/* If businesses exist in the database: */}
+                    {this.state.results.length ? (
+                      <select onChange={this.handleSelectedOption} defaultValue="">
+                        <option value="" disabled>Select business</option>
+                        {this.state.results.map(place => (
+                          <option
+                            key={place.id}
+                            value={[place.name, place.id]}
+                          >
+                            {place.name}
+                          </option>
+                        ))}
+                      </select>
+                      // Default message before search..
+                    ) : (
+                        <h3></h3>
+                      )}
                   </div>
 
                   {/* ***Select day of deal*** */}
                   <label className="day-input">
-                    Choose a day from this list: 
+                    Choose a day from this list:
                     <select
                       className="select-day"
                       name="day"
@@ -224,21 +226,21 @@ window.location.replace(origin + "/businessdetails/")
                   <label htmlFor="dealTimes">Select the start and end times of the deal.</label>
                   <div className="form-row mx-0">
                     <Input
-                        value={this.state.beginTime}
-                        onChange={this.handleInputChange}
-                        type="time"
-                        id="beginTime"
-                        name="beginTime"
-                        required
+                      value={this.state.beginTime}
+                      onChange={this.handleInputChange}
+                      type="time"
+                      id="beginTime"
+                      name="beginTime"
+                      required
                     />
                     <p className="timeframe">to</p>
                     <Input
-                        value={this.state.endTime}
-                        onChange={this.handleInputChange}
-                        type="time"
-                        id="endTime"
-                        name="endTime"
-                        required
+                      value={this.state.endTime}
+                      onChange={this.handleInputChange}
+                      type="time"
+                      id="endTime"
+                      name="endTime"
+                      required
                     />
                   </div>
 
