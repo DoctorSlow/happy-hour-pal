@@ -1,0 +1,43 @@
+/************************
+GENERAL
+************************/
+
+.background {
+    background-color: #f2f2f2ff;
+}
+
+
+
+/************************
+BUSINESS CARDS
+************************/
+
+.business-name {
+    margin-bottom: 20px;
+}
+
+.business-name-link {
+    margin-top: 20px;
+    margin-left: 15px;
+    color: #d96d28ff !important;
+}
+
+
+
+/************************
+CROWDSOURCE REQUEST
+************************/
+
+/* Text */
+.add-location-call {
+    margin-top: 50px;
+}
+
+/* Button */
+.add-location-btn {
+    background-color: #d96d28ff !important;
+    margin-bottom: 50px;
+}
+.add-location-btn:hover, .add-location-btn:active, .add-location-btn:visited  {
+    background-color: #b66925ff !important;
+}
