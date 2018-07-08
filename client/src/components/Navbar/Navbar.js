@@ -33,7 +33,7 @@ const Navbar = props => (
             Access
           </Link>
         </li>
-        <li
+        {/* <li
           className={
             window.location.pathname === "/addbusiness"
               ? "nav-item active"
@@ -43,7 +43,7 @@ const Navbar = props => (
           <Link to="/addbusiness" className="nav-link">
             Add Business
           </Link>
-        </li>
+        </li> */}
         <li
           className={
             window.location.pathname === "/tabs"
@@ -55,7 +55,7 @@ const Navbar = props => (
             Tab View
           </Link>
         </li>
-        <li
+        {/* <li
           className={
             window.location.pathname === "/listresults"
               ? "nav-item active"
@@ -65,8 +65,8 @@ const Navbar = props => (
           <Link to="/listresults" className="nav-link">
             List Results
           </Link>
-        </li>
-        <li
+        </li> */}
+        {/* <li
           className={
             window.location.pathname === "/mapresults"
               ? "nav-item active"
@@ -76,8 +76,8 @@ const Navbar = props => (
           <Link to="/mapresults" className="nav-link">
             Map Results
           </Link>
-        </li>
-        <li
+        </li> */}
+        {/* <li
           className={
             window.location.pathname === "/businessdetails"
               ? "nav-item active"
@@ -87,8 +87,8 @@ const Navbar = props => (
           <Link to="/businessdetails" className="nav-link">
             Business Details
           </Link>
-        </li>
-        <li
+        </li> */}
+        {/* <li
           className={
             window.location.pathname === "/login"
               ? "nav-item active"
@@ -98,8 +98,8 @@ const Navbar = props => (
           <Link to="/login" className="nav-link">
             Sign In
           </Link>
-        </li>
-        <li
+        </li> */}
+        {/* <li
           className={
             window.location.pathname === "/signup"
               ? "nav-item active"
@@ -109,8 +109,8 @@ const Navbar = props => (
           <Link to="/signup" className="nav-link">
             Sign Up
           </Link>
-        </li>
-        <li
+        </li> */}
+        {/* <li
           className={
             window.location.pathname === "/editbusiness"
               ? "nav-item active"
@@ -120,8 +120,8 @@ const Navbar = props => (
           <Link to="/editbusiness" className="nav-link">
             Edit Business
           </Link>
-        </li>
-        <li
+        </li> */}
+        {/* <li
           className={
             window.location.pathname === "/submitedit"
               ? "nav-item active"
@@ -131,7 +131,7 @@ const Navbar = props => (
           <Link to="/submitedit" className="nav-link">
             Submit Edit
           </Link>
-        </li>
+        </li> */}
       </ul>
     </div>
   </nav>
