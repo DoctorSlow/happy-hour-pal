@@ -126,10 +126,14 @@ class AddBusiness extends Component {
             endTime: dealEnd,
             info: dealInfo
           })
+                const origin = window.location.origin;
+window.location.replace(origin + "/businessdetails/")
         }
+    
       )
       .catch(err => console.log(err));
     }
+  
   };
 
   render() {

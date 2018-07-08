@@ -24,33 +24,108 @@ import "./App.css";
 
 // Function for which links to display if signed in
 const DisplayLinks = props => {
+
+	// Hides navbar on homepage
+	if (window.location.pathname === "/") {
+		return (<div></div>)
+	}
+
+	// Navbar links display
 	if (props.loggedIn) {
 		return (
-			<nav className="navbar blue-navbar">
-				<ul className="nav">
-					<li>
-						<Link to="#" className="nav-link" onClick={props._logout}>
-							Logout
-						</Link>
-					</li>
-				</ul>
+			<nav className="navbar navbar-expand-lg navbar-dark blue-navbar">
+				<a className="navbar-brand" href="/tabs">HappyHourPal</a>
+				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span className="navbar-toggler-icon"></span>
+				</button>
+				<div className="collapse navbar-collapse" id="navbarNav">
+					<ul className="navbar-nav">
+						<li
+							className={
+								window.location.pathname === "/tabs"
+								? "nav-item active"
+								: "nav-item"
+							}
+							>
+							<Link to="/tabs" className="nav-link">
+								View Happy Hours
+							</Link>
+						</li>
+						<li
+							className={
+								window.location.pathname === "/addbusiness"
+								? "nav-item active"
+								: "nav-item"
+							}
+							>
+							<Link to="/addbusiness" className="nav-link">
+								Add Happy Hour
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link to="/tabs" className="nav-link" onClick={props._logout}>
+								Logout
+							</Link>
+						</li>
+					</ul>
+				</div>
 			</nav>
 		)
 	} else {
 		return (
-			<nav className="navbar blue-navbar">
-				<ul className="nav">
-					<li className="nav-item">
-						<Link to="/login" className="nav-link">
-							Log in
-						</Link>
-					</li>
-					<li className="nav-item">
-						<Link to="/signup" className="nav-link">
-							Sign up
-						</Link>
-					</li>
-				</ul>
+			<nav className="navbar navbar-expand-lg navbar-dark blue-navbar">
+				<a className="navbar-brand" href="/tabs">HappyHourPal</a>
+				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span className="navbar-toggler-icon"></span>
+				</button>
+				<div className="collapse navbar-collapse" id="navbarNav">
+					<ul className="navbar-nav">
+						<li
+							className={
+								window.location.pathname === "/tabs"
+								? "nav-item active"
+								: "nav-item"
+							}
+							>
+							<Link to="/tabs" className="nav-link">
+								View Happy Hours
+							</Link>
+						</li>
+						<li
+							className={
+								window.location.pathname === "/addbusiness"
+								? "nav-item active"
+								: "nav-item"
+							}
+							>
+							<Link to="/addbusiness" className="nav-link">
+								Add Happy Hour
+							</Link>
+						</li>
+						<li
+							className={
+								window.location.pathname === "/login"
+								? "nav-item active"
+								: "nav-item"
+							}
+							>
+							<Link to="/login" className="nav-link">
+								Log in
+							</Link>
+						</li>
+						<li
+							className={
+								window.location.pathname === "/signup"
+								? "nav-item active"
+								: "nav-item"
+							}
+							>
+							<Link to="/signup" className="nav-link">
+								Sign up
+							</Link>
+						</li>
+					</ul>
+				</div>
 			</nav>
 		)
 	}
@@ -123,14 +198,20 @@ class App extends Component {
 			<div className="App">
 				<Router className="mapHeight">
 					<div className="mapHeight">
-						<Navbar />
+						{/* <Navbar /> */}
 						<Wrapper className="mapHeight">
 							<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
 							<Route exact path="/" component={Loading} />
 							<Route exact path="/loading" component={Loading} />
 							<Route exact path="/access" component={Access} />
 							<Route exact path="/businessListings" component={BusinessListings} />
-							<Route exact path="/tabs" component={Tabs} />
+							{/* <Route exact path="/tabs" component={Tabs} /> */}
+							<Route exact path="/tabs" render={
+								(props) => {
+									return (<Tabs {...props} loggedIn={this.state.loggedIn} />)
+								}
+							} />
+
 							{/* <Route exact path="/listresults" component={ListResults} /> */}
 							<Route exact path="/listresults" render={
 								(props) => {

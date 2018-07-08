@@ -5,13 +5,11 @@
   "main": "server/server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
+    "start:prod": "node server/server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
     "seed": "node scripts/seedDB.js",
-    "install": "cd client && yarn install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "install": "cd client && yarn install"
   },
   "author": "",
   "license": "ISC",
@@ -34,8 +32,6 @@
     "nodemon": "^1.17.5",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^5.0.1",
-    "react-google-maps": "^9.4.5",
-    "react-select": "^1.2.1"
+    "passport-local-mongoose": "^5.0.1"
   }
 }

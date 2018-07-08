@@ -7,9 +7,6 @@ import API from "../../utils/API";
 // SearchBar for Results pages
 const SearchBar = props => (
     <nav className="navbar navbar-expand-lg navbar-light bg-light navStyle">
-        <Link className="navbar-brand" to="/">
-            Happy Hour Pal
-        </Link>
         <div>
             <form className="form-inline my-2 my-lg-0">
                 <input name="search" onChange={props.onChange} className="form-control mr-sm-2" type="search" placeholder="Current Location" aria-label="Search" />
