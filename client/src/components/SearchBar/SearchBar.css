@@ -16,9 +16,15 @@ SEARCH BAR
     color: #fff;
   }
 
+/* .search-input {
+    width: 300px !important;
+    margin-top: 20px;
+} */
+
 /* Button */
 .search-btn {
     background-color: #2296a2ff !important;
+    color: #fff;
     margin-bottom: 30px;
     margin-right: 5px;
 }
