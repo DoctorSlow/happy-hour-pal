@@ -73,7 +73,8 @@ class Results extends Component {
     return (
       <div>
         <Row className="background">
-          <Col sm="4">
+          <Col sm="1" md="2" lg="2"></Col>
+          <Col sm="10" md="8" lg="8">
 
             {/* <BackBtn /> */}
 
@@ -152,7 +153,6 @@ class Results extends Component {
             {/* <SuggestEditBtn /> */}
 
           </Col>
-          <Col sm="4">
 
             {/* Component for drop-down business list. */}
             {/* <SearchForm
@@ -175,8 +175,8 @@ class Results extends Component {
               <h1>{this.state.currentBusiness.name}</h1>
               <h2>{this.state.currentBusiness._id}</h2>
             </div> */}
-
-          </Col>
+          
+          <Col sm="1" md="2" lg="2"></Col>
         </Row>
       </div>
     );

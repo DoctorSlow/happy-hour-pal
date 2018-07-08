@@ -28,3 +28,14 @@ DEAL CARD
 .light-gray {
     color: #808080ff;
 }
+
+.update-deal-btn {
+    color: #fff;
+    background-color: #d96d28ff !important;
+    margin-bottom: 20px;
+}
+
+.update-deal-btn:hover {
+    color: #fff;
+    background-color: #b66925ff !important;
+}

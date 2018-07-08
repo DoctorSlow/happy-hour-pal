@@ -1,0 +1,13 @@
+/************************
+CROWDSOURCE REQUEST
+************************/
+
+/* Button */
+.add-missing-biz-deal-btn {
+    color: #fff;
+    background-color: #d96d28ff !important;
+    margin-bottom: 100px;
+}
+.add-missing-biz-deal-btn:hover, .add-missing-biz-deal-btn:active, .add-missing-biz-deal-btn:visited  {
+    background-color: #b66925ff !important;
+}
