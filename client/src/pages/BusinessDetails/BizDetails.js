@@ -5,6 +5,7 @@ import reviews from "../../reviews.json";
 import { BusinessCard, BusinessNameCard, DealCard } from "../../components/Business";
 import { ReviewCard, ReviewsContainer } from "../../components/Reviews";
 import API from "../../utils/API";
+import "./BizDetails.css";
 // import ReviewCard from "../../components/ReviewCard";
 // import ReviewsContainer from "../../components/ReviewsContainer";
 // import { BackBtn, ReportDealBtn, RateDealBtn, ViewAllBtn, SuggestEditBtn } from "../../../components/Buttons";
@@ -23,8 +24,8 @@ class Results extends Component {
     reviews,
     visibility: "hidden",
     name: "",
-    address: "http://www.ermanosbrew.com/",
-    stars: "****",
+    // address: "http://www.ermanosbrew.com/",
+    // stars: "****",
     search: "",
     currentBusiness: [],
     currentBusinessDeals: []
@@ -71,7 +72,7 @@ class Results extends Component {
 
     return (
       <div>
-        <Row>
+        <Row className="background">
           <Col sm="4">
 
             {/* <BackBtn /> */}
@@ -81,7 +82,7 @@ class Results extends Component {
                 <BusinessNameCard
                   name={this.state.currentBusiness.name}
                   address={this.state.address}
-                  stars={this.state.stars}
+                  // stars={this.state.stars}
                 />
               }
 
@@ -107,17 +108,22 @@ class Results extends Component {
                   <h3>No current happy hour deals</h3>
               )}
 
+            </BusinessCard>
+
+            <div className="text-center">
+              <img className="quail-logo results-logo" src="/assets/images/quaillogo.png" alt="quail-logo" />
+              <p className="add-location-call">Something looks off? Help a pal out!</p>
               {this.state.currentBusinessDeals.map(business => (
                 <Button
+                  className="edit-biz-btn"
                   key={business._id}
-                  color="primary"
+                  color="#b66925ff"
                   onClick={() => this.handleClickEvent(business.googleID)}
                 >
-                  Suggest Edit
+                  Update Happy Hour
                 </Button>
               )).slice(0,1)}
-
-            </BusinessCard>
+            </div>
 
             {/* <ReportDealBtn /> */}
 

@@ -23,6 +23,11 @@ BUSINESS CARDS
     margin-left: 15px;
     color: #d96d28ff !important;
     /* color: #4d4d4dff !important; */
+    text-decoration: underline;
+}
+
+.business-name-link:hover {
+    color: #b66925ff !important;
 }
 
 
@@ -46,7 +51,7 @@ CROWDSOURCE REQUEST
 .add-location-btn {
     color: #fff;
     background-color: #d96d28ff !important;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 .add-location-btn:hover, .add-location-btn:active, .add-location-btn:visited  {
     background-color: #b66925ff !important;
