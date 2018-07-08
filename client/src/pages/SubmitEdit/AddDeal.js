@@ -69,8 +69,7 @@ class AddDeal extends Component {
       <div className="form-addbusiness">
       <Container>
         <Row>
-          <Col size="md-6">
-
+          <Col size="sm-12 md-12 lg-12">
             <h5 className="title">ADD NEW DEAL</h5>
 
             <form>
