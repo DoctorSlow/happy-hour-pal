@@ -3,7 +3,8 @@ import SearchBar from "../../components/SearchBar";
 import Container from "../../components/Container";
 import Col from "../../components/Col";
 import Row from "../../components/Row";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import { Input, TextArea } from "../../components/Form";
+import { Button } from 'reactstrap';
 import API from "../../utils/API";
 import "./SubmitEdit.css";
 
@@ -65,30 +66,31 @@ class AddDeal extends Component {
 
   render() {
     return (
-      <div>
-      <SearchBar />
+      <div className="form-addbusiness">
       <Container>
         <Row>
           <Col size="md-6">
 
-            <h5 className="title">Add New Deal</h5>
+            <h5 className="title">ADD NEW DEAL</h5>
 
             <form>
 
               <div className="form-group">
-                <h3
+                <h5
+                  className="selected-biz"
                   id="businessName"
                   data-id={this.state.business._id}
                   value={this.state.business.googleID}
                 >
                   {this.state.business.name}
-                </h3>
+                </h5>
 
               </div>
 
-              <label>
+              <label className="day-input">
                 Choose a day from this list:
                 <select
+                  className="select-day"
                   name="day"
                   type="select"
                   value={this.state.day}
@@ -106,7 +108,7 @@ class AddDeal extends Component {
               </label>
 
               <label htmlFor="dealTimes">Select the start and end times of the deal.</label>
-              <div className="form-row">
+              <div className="form-row mx-0">
                 <Input
                     value={this.state.beginTime}
                     onChange={this.handleInputChange}
@@ -135,12 +137,13 @@ class AddDeal extends Component {
                 onChange={this.handleInputChange}
               />
 
-              <FormBtn
-                className="btn-primary"
+              <Button
+                className="btn orange-btn btn-block"
                 onClick={this.handleFormSubmit}
+                color="#b66925ff"
               >
-                Submit New Happy Hour Special
-              </FormBtn>
+                Submit New Happy Hour
+              </Button>
 
             </form>
           </Col>

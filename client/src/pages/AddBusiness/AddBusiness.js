@@ -175,6 +175,8 @@ class AddBusiness extends Component {
             <Row>
               <Col size="sm-12 md-12 lg-12">
 
+                <h5 className="title">ADD NEW DEAL</h5>
+
                 <label htmlFor="business" className="search-label">Enter business name or business type:</label>
                 <SearchInput
                   className="search-input"
@@ -284,8 +286,9 @@ class AddBusiness extends Component {
 
                   {/* ***Submit the new business into the database with its first deal*** */}
                   <Button
-                    className="btn-primary orange-btn btn-block"
+                    className="btn orange-btn btn-block"
                     onClick={this.handleFormSubmit}
+                    color="#b66925ff"
                   >
                     Submit New Happy Hour Special
                   </Button>

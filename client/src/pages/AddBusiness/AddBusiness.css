@@ -44,8 +44,11 @@ textarea.form-control {
   }
 
 /* Buttons */
-.orange-btn, .orange-btn:hover, .orange-btn:active, .orange-btn:visited  {
+.orange-btn  {
     color: #fff;
     background-color: #d96d28ff !important;
     margin-bottom: 30px;
+}
+.orange-btn:hover  {
+    background-color: #b66925ff !important;
 }

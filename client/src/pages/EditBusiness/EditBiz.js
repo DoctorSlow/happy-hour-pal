@@ -17,8 +17,8 @@ class EditBiz extends Component {
     info: "",
     visibility: "visible",
     name: "",
-    address: "http://www.ermanosbrew.com/",
-    stars: "****",
+    // address: "http://www.ermanosbrew.com/",
+    // stars: "****",
     currentBusiness: [],
     currentBusinessDeals: []
   };
@@ -65,9 +65,10 @@ class EditBiz extends Component {
     const {currentBusiness} = this.state
 
     return (
-      <div>
+      <div className="background">
         <Row>
-          <Col sm="4">
+          <Col sm="1" md="2" lg="2"></Col>
+          <Col sm="10" md="8" lg="8">
 
             {/* <BackBtn /> */}
 
@@ -76,10 +77,10 @@ class EditBiz extends Component {
                 <BusinessNameCard
                   name={currentBusiness.name}
                   address={this.state.address}
-                  stars={this.state.stars}
+                  // stars={this.state.stars}
                 />
               }
-
+              
               {/* Deal Card displays all data from business collection. */}
               {this.state.currentBusinessDeals.length ? (
                 <div>
@@ -100,19 +101,24 @@ class EditBiz extends Component {
               ) : (
                 <h3>No current happy hour deals</h3>
               )}
+            </BusinessCard>
 
+            <div className="text-center">
+              <img className="quail-logo results-logo" src="/assets/images/quaillogo.png" alt="quail-logo" />
+              <p className="add-location-call">Missing a deal? Help a pal out!</p>
               {this.state.currentBusinessDeals.map(business => (
                 <Button
+                  className="add-missing-biz-deal-btn"
                   key={business._id}
-                  color="primary"
+                  color="#b66925ff"
                   onClick={() => this.handleAddEvent(business.googleID)}
                 >
                   Add New Deal
                 </Button>
               )).slice(0,1)}
-
-            </BusinessCard>
+            </div>
           </Col>
+          <Col sm="1" md="2" lg="2"></Col>
         </Row>
       </div>
     );

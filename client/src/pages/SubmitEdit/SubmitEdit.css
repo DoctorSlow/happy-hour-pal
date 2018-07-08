@@ -10,6 +10,17 @@ FORM
     margin-top: 2%;
 }
 
+/* .title {
+    color: #fff;
+    background-color: #2296a2ff;
+} */
+
+/* Rendered business name */
+.selected-biz {
+    color: #d96d28ff;
+    margin-bottom: 20px;
+}
+
 /* Margin Spacing */
 .business-name {
     margin-top: 20px;
