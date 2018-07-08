@@ -6,8 +6,8 @@ import "./Maps.css";
 //default to downtown tucson
 
 
-const mapMarkerClick = function(Id, name, open) {
-console.log(Id, name, open)
+const mapMarkerClick = function(Id, name) {
+console.log(Id, name)
 
 const origin = window.location.origin;
 window.location.replace(origin + "/businessdetails/" + Id)
@@ -40,7 +40,7 @@ const MyMapComponent = withScriptjs(withGoogleMap(function (props) {
           place_id={mark.place_id}
           clickable={true}
 
-          onClick={()=>{mapMarkerClick(mark.id, mark.name, mark.opening_hours.open_now)}}
+          onClick={()=>{mapMarkerClick(mark.id, mark.name)}}
           
 
 
