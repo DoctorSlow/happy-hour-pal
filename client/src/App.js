@@ -34,11 +34,11 @@ const DisplayLinks = props => {
 	if (props.loggedIn) {
 		return (
 			<nav className="navbar navbar-expand-lg navbar-dark blue-navbar">
-				<a class="navbar-brand" href="/tabs">HappyHourPal</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
+				<a className="navbar-brand" href="/tabs">HappyHourPal</a>
+				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span className="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse" id="navbarNav">
+				<div className="collapse navbar-collapse" id="navbarNav">
 					<ul className="navbar-nav">
 						<li
 							className={
@@ -74,11 +74,11 @@ const DisplayLinks = props => {
 	} else {
 		return (
 			<nav className="navbar navbar-expand-lg navbar-dark blue-navbar">
-				<a class="navbar-brand" href="/tabs">HappyHourPal</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
+				<a className="navbar-brand" href="/tabs">HappyHourPal</a>
+				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span className="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse" id="navbarNav">
+				<div className="collapse navbar-collapse" id="navbarNav">
 					<ul className="navbar-nav">
 						<li
 							className={
