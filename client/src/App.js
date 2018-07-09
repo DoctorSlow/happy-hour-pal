@@ -91,8 +91,8 @@ const DisplayLinks = props => {
 								View Happy Hours
 							</Link>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link disabled" href="#">Add Happy Hour</a>
+						<li className="nav-item">
+							<a className="nav-link disabled" href="#">Add Happy Hour</a>
 						</li>
 						<li
 							className={

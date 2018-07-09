@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import SearchBar from "../../components/SearchBar";
 import Container from "../../components/Container";
 import Col from "../../components/Col";
 import Row from "../../components/Row";
@@ -93,11 +92,11 @@ class EditDeal extends Component {
 
   render() {
     return (
-      <div className="form-addbusiness">
+      <div className="form-addbusiness backgroud">
       <Container>
         <Row>
           <Col size="sm-12 md-12 lg-12">
-            <h5 className="title">UPDATE DEAL</h5>
+            <h5 className="title gray">UPDATE DEAL</h5>
 
             <form>
 
@@ -114,7 +113,7 @@ class EditDeal extends Component {
 
               <h5 className="selected-biz">Render business name here</h5>
 
-              <label className="day-input">
+              <label className="day-input gray">
                 Choose a day from this list:
                 <select
                   className="select-day"
@@ -135,7 +134,7 @@ class EditDeal extends Component {
                 </select>
               </label>
 
-              <label htmlFor="dealTimes">Select the start and end times of the deal.</label>
+              <label htmlFor="dealTimes" className="gray">Select the start and end times of the deal</label>
               <div className="form-row mx-0">
                 <Input
                     value={this.state.beginTime}
@@ -156,7 +155,7 @@ class EditDeal extends Component {
                 />
               </div>
 
-              <label htmlFor="description">Enter a description for the deal.</label>
+              <label htmlFor="description" className="gray">Enter a description for the deal</label>
               <TextArea
                 name="info"
                 placeholder="Description"

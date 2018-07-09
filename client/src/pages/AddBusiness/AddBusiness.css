@@ -1,4 +1,16 @@
 /************************
+GENERAL
+************************/
+
+.background {
+    background-color: #f2f2f2ff;
+    /* background-color: #e9b521ff; */
+
+}
+
+
+
+/************************
 FORM
 ************************/
 
@@ -8,9 +20,16 @@ FORM
     padding: 15px;
     margin: 0 auto;
     margin-top: 2%;
+    border: solid;
+    border-width: 1px;
+    border-color: #e6e6e6ff;
+    background-color: #fff;
 }
 
 /* Margin Spacing */
+.title {
+    margin-bottom: 20px;
+}
 .business-name {
     margin-top: 20px;
 }
@@ -20,15 +39,24 @@ FORM
 .timeframe {
     margin-left: 10px;
     margin-right: 10px;
+    margin-top: 10px;
 }
 .select-day {
     margin-left: 5px;
+}
+
+/* Text color */
+.gray {
+    color: #4d4d4dff;
 }
 
 /* Select days buttons */
 #days-div {
     height: 50px;
     overflow: auto;
+}
+.select-day {
+    color: #495057;
 }
 #days {
     width: 800px;

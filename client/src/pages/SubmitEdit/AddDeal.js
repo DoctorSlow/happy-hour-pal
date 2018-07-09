@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import SearchBar from "../../components/SearchBar";
 import Container from "../../components/Container";
 import Col from "../../components/Col";
 import Row from "../../components/Row";
@@ -66,11 +65,11 @@ class AddDeal extends Component {
 
   render() {
     return (
-      <div className="form-addbusiness">
+      <div className="form-addbusiness background">
       <Container>
         <Row>
           <Col size="sm-12 md-12 lg-12">
-            <h5 className="title">ADD NEW DEAL</h5>
+            <h5 className="title gray">ADD NEW DEAL</h5>
 
             <form>
 
@@ -86,7 +85,7 @@ class AddDeal extends Component {
 
               </div>
 
-              <label className="day-input">
+              <label className="day-input gray">
                 Choose a day from this list:
                 <select
                   className="select-day"
@@ -106,7 +105,7 @@ class AddDeal extends Component {
                 </select>
               </label>
 
-              <label htmlFor="dealTimes">Select the start and end times of the deal.</label>
+              <label htmlFor="dealTimes" className="gray">Select the start and end times of the deal</label>
               <div className="form-row mx-0">
                 <Input
                     value={this.state.beginTime}
@@ -116,7 +115,7 @@ class AddDeal extends Component {
                     name="beginTime"
                     required
                 />
-                <p className="timeframe">to</p>
+                <p className="timeframe">—</p>
                 <Input
                     value={this.state.endTime}
                     onChange={this.handleInputChange}
@@ -127,7 +126,7 @@ class AddDeal extends Component {
                 />
               </div>
 
-              <label htmlFor="description">Enter a description for the deal.</label>
+              <label htmlFor="description" className="gray">Enter a description for the deal</label>
               <TextArea
                 name="info"
                 placeholder="Description"
