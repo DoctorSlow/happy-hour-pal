@@ -62,7 +62,7 @@ class LoginForm extends Component {
                             />
                         </FormGroup>
                         {' '}
-                        <Button color="#2296a2ff" className="login-btn btn-block" onClick={this.handleSubmit}>Log in</Button>
+                        <Button color="#2296a2ff" className="login-btn btn-block orange-btn" onClick={this.handleSubmit}>Log in</Button>
                     </Form>
                     <p>Don't have an account? <Link className="link" to="/signup">Sign up</Link></p>
 				</div>

@@ -1,4 +1,14 @@
 /************************
+GENERAL
+************************/
+
+.background {
+    background-color: #f2f2f2ff;
+}
+
+
+
+/************************
 FORM
 ************************/
 
@@ -8,12 +18,19 @@ FORM
     padding: 15px;
     margin: 0 auto;
     margin-top: 2%;
+    border: solid;
+    border-width: 1px;
+    border-color: #e6e6e6ff;
+    background-color: #fff;
 }
 
-/* .title {
-    color: #fff;
-    background-color: #2296a2ff;
-} */
+/* Text color */
+.gray {
+    color: #4d4d4dff;
+}
+::placeholder {
+    color: #b3b3b3ff;
+}
 
 /* Rendered business name */
 .selected-biz {
@@ -22,6 +39,9 @@ FORM
 }
 
 /* Margin Spacing */
+.title {
+    margin-bottom: 20px;
+}
 .business-name {
     margin-top: 20px;
 }
@@ -35,6 +55,7 @@ FORM
 .timeframe {
     margin-left: 10px;
     margin-right: 10px;
+    margin-top: 10px;
 }
 .select-day, .business-name {
     margin-left: 5px;
@@ -44,6 +65,9 @@ FORM
 #days-div {
     height: 50px;
     overflow: auto;
+}
+.select-day {
+    color: #495057;
 }
 #days {
     width: 800px;
@@ -59,8 +83,11 @@ textarea.form-control {
   }
 
 /* Buttons */
-.orange-btn, .orange-btn:hover, .orange-btn:active, .orange-btn:visited  {
+.orange-btn {
     color: #fff;
     background-color: #d96d28ff !important;
     margin-bottom: 30px;
+}
+.orange-btn:hover {
+    background-color: #b66925ff !important;
 }

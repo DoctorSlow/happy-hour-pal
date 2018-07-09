@@ -167,17 +167,17 @@ class AddBusiness extends Component {
           </ModalBody>
           <ModalFooter>
             {/* <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '} */}
-            <Button color="secondary" onClick={this.toggle}>Okay</Button>
+            <Button color="#2296a2ff" className="btn orange-btn" onClick={this.toggle}>Okay</Button>
           </ModalFooter>
         </Modal>
-        <div className="form-addbusiness">
+        <div className="form-addbusiness background">
           <Container>
             <Row>
               <Col size="sm-12 md-12 lg-12">
 
-                <h5 className="title">ADD NEW DEAL</h5>
+                <h5 className="title gray">ADD NEW DEAL</h5>
 
-                <label htmlFor="business" className="search-label">Enter business name or business type:</label>
+                <label htmlFor="business" className="search-label gray">Enter business name or business type</label>
                 <SearchInput
                   className="search-input"
                   onClick={this.handleSearchSubmit}
@@ -208,7 +208,7 @@ class AddBusiness extends Component {
                   </div>
 
                   {/* ***Select day of deal*** */}
-                  <label className="day-input">
+                  <label className="day-input gray">
                     Choose a day from this list:
                     <select
                       className="select-day"
@@ -251,7 +251,7 @@ class AddBusiness extends Component {
                   /> */}
 
                   {/* ***Input start & end times for the deal*** */}
-                  <label htmlFor="dealTimes">Select the start and end times of the deal.</label>
+                  <label htmlFor="dealTimes" className="gray">Select the start and end times of the deal</label>
                   <div className="form-row mx-0">
                     <Input
                       value={this.state.beginTime}
@@ -261,7 +261,7 @@ class AddBusiness extends Component {
                       name="beginTime"
                       required
                     />
-                    <p className="timeframe">to</p>
+                    <p className="timeframe">—</p>
                     <Input
                       value={this.state.endTime}
                       onChange={this.handleInputChange}
@@ -273,9 +273,8 @@ class AddBusiness extends Component {
                   </div>
 
                   {/* ***Describe the deal*** */}
-                  <label htmlFor="description">Enter a description of the deal.</label>
+                  <label htmlFor="description" className="gray">Enter a description of the deal</label>
                   <TextArea
-                    // className="description"
                     name="info"
                     id="info"
                     placeholder="Description"
