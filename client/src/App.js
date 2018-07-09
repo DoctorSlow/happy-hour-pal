@@ -91,16 +91,8 @@ const DisplayLinks = props => {
 								View Happy Hours
 							</Link>
 						</li>
-						<li
-							className={
-								window.location.pathname === "/addbusiness"
-								? "nav-item active"
-								: "nav-item"
-							}
-							>
-							<Link to="/addbusiness" className="nav-link">
-								Add Happy Hour
-							</Link>
+						<li class="nav-item">
+							<a class="nav-link disabled" href="#">Add Happy Hour</a>
 						</li>
 						<li
 							className={
