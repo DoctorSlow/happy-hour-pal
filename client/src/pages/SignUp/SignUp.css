@@ -87,8 +87,12 @@ FORM
 
 /* Button */
 .signup-btn, .signup-btn:hover, .signup-btn:active, .signup-btn:visited  {
+    color: #fff;
     background-color: #2296a2ff !important;
     margin-bottom: 30px;
+}
+.signup-btn:hover {
+    background-color: #1f737cff !important;
 }
 
 
@@ -105,7 +109,11 @@ p {
 }
 
 /* Link */
-.link, .link:hover {
+.link {
     color: #2296a2ff;
     font-weight: bold;
+    text-decoration: underline;
+}
+.link:hover {
+    color: #1f737cff;
 }

@@ -110,7 +110,7 @@ class SignupForm extends Component {
 						/>
 					</FormGroup>
 					{' '}
-					<Button className="signup-btn btn-block" onClick={this.handleSubmit}>Sign up</Button>
+					<Button color="#2296a2ff" className="signup-btn btn-block" onClick={this.handleSubmit}>Sign up</Button>
 				</Form>
 				<p>Already have an account? <Link className="link" to="/login">Log in</Link></p>
 			</div>

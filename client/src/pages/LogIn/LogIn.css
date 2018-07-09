@@ -64,9 +64,13 @@ FORM
 }
 
 /* Button */
-.login-btn, .login-btn:hover, .login-btn:active, .login-btn:visited  {
+.login-btn {
+    color: #fff;
     background-color: #2296a2ff !important;
     margin-bottom: 30px;
+}
+.login-btn:hover {
+    background-color: #1f737cff !important;
 }
 
 
@@ -83,7 +87,11 @@ p {
 }
 
 /* Link */
-.link, .link:hover {
+.link {
     color: #2296a2ff;
     font-weight: bold;
+    text-decoration: underline;
+}
+.link:hover {
+    color: #1f737cff;
 }
