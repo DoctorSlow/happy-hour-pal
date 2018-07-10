@@ -36,7 +36,10 @@ class MapResults extends Component {
           lng: position.coords.longitude
         }
       });
-    });
+    })
+    setTimeout(() => {
+      this.autoSearch(this.state.center.lat, this.state.center.lng);
+    }, 1500);
   };
 
   //allows state changes(right now just the search parameter) to be updated live
