@@ -77,15 +77,11 @@ class EditDeal extends Component {
         .then(
           function (dealData) {
             console.log(dealData);
-            alert("Deal updated!")
-          },
-          this.setState({
-              name: "",
-              day: "",
-              beginTime: "",
-              endTime: "",
-              info: ""
-          })
+            setTimeout(function() {
+              const origin = window.location.origin;
+              window.location.replace(origin + "/businessdetails/" + dealData.data.googleID)
+            }, 3000)
+          }
         )
         .catch(err => console.log(err));
     }
