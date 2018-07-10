@@ -66,12 +66,16 @@ class AddBusiness extends Component {
     console.log(optionName, optionID);
   }
 
-  handleSearchSubmit = event => {
+  //take the text and search with it
+  handleNameSearchSubmit = event => {
     event.preventDefault();
-    //newer api call, testing this for better map matches
-    this.searchGoogle(this.state.center.lat, this.state.center.lng);
-    //saving old search
-    // this.searchGoogle(this.state.search, this.state.center.lat, this.state.center.lng);
+    this.nameSearchGoogle(this.state.search, this.state.center.lat, this.state.center.lng);
+  };
+
+  //search without any text input 
+  handleAutoSearchSubmit = event => {
+    event.preventDefault();
+    this.autoSearchGoogle(this.state.center.lat, this.state.center.lng);
   };
 
   // Multiselect function
@@ -81,24 +85,28 @@ class AddBusiness extends Component {
     if (selectedOption) {
       console.log(`Selected: ${selectedOption.label}`);
     }
-  }
+  };
 
   toggle() {
     this.setState({
       modal: !this.state.modal
     });
-  }
+  };
 
-  //queries the places api and loads results into this components result state
-  //change this to revert to older api call: searchGoogle(query, lat, lng)
-  searchGoogle(lat, lng) {
-    console.log("google has been searched");
+  //queries the places api and loads results into this components result state NO TEXT
+  autoSearchGoogle(lat, lng) {
     API.autoPlaces(lat, lng)
       .then(res =>
         this.setState({ results: res.data.results })
-        // if(this.props.onSearch) {
-        //     this.props.onSearch(res.data.results);
-        // }
+      )
+      .catch(err => console.log(err));
+  };
+
+  //queries the places api WITH USER TEXT
+  nameSearchGoogle(search, lat, lng) {
+    API.getPlaces(search, lat, lng)
+      .then(res =>
+        this.setState({ results: res.data.results })
       )
       .catch(err => console.log(err));
   };
@@ -140,10 +148,10 @@ class AddBusiness extends Component {
               endTime: dealEnd,
               info: dealInfo
             }),
-            setTimeout(function() {
-              const origin = window.location.origin;
-              window.location.replace(origin + "/businessdetails/" + business.googleID)
-            }, 3000)
+              setTimeout(function () {
+                const origin = window.location.origin;
+                window.location.replace(origin + "/businessdetails/" + business.googleID)
+              }, 3000)
           }
 
         )
@@ -180,7 +188,8 @@ class AddBusiness extends Component {
                 <label htmlFor="business" className="search-label gray">Enter business name or business type</label>
                 <SearchInput
                   className="search-input"
-                  onClick={this.handleSearchSubmit}
+                  nameClick={this.handleNameSearchSubmit}
+                  autoClick={this.handleAutoSearchSubmit}
                   onChange={this.handleInputChange}
                 />
 
