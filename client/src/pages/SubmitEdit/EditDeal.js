@@ -29,6 +29,7 @@ class EditDeal extends Component {
       .then(res => {
         this.setState({
           deal: res.data,
+          busName: res.data.busName,
           googleID: res.data.googleID,
           day: res.data.day,
           beginTime: res.data.beginTime,
@@ -67,7 +68,7 @@ class EditDeal extends Component {
       // console.log(id);
 
       API.modifyDeal( id, {
-
+        busName: this.state.busName,
         googleID: this.state.googleID,
         day: this.state.day,
         beginTime: this.state.beginTime,
@@ -112,7 +113,7 @@ class EditDeal extends Component {
 
               </div> */}
 
-              <h5 className="selected-biz">Render business name here</h5>
+              <h5 className="selected-biz">{this.state.busName}</h5>
 
               <label className="day-input">
                 Choose a day from this list:
