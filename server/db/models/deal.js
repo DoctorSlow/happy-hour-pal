@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new DealSchema object
 var DealSchema = new Schema({
-    // name: { type: String, required: true },
+    busName: { type: String },
     businessID: {
         type: Schema.Types.ObjectId,
         ref: "Business"

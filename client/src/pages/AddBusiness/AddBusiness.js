@@ -17,6 +17,7 @@ class AddBusiness extends Component {
     // this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     // this.handleInputChange = this.handleInputChange.bind(this);
     this.state = {
+      busName: "",
       googleID: "",
       name: "",
       day: "",
@@ -134,6 +135,7 @@ class AddBusiness extends Component {
 
             // Take the data from the new business to use for referencing the new deal for it.
             return API.saveDeal(businessId, {
+              busName: business.name,
               googleID: business.googleID,
               day: dealDay,
               beginTime: dealStart,
