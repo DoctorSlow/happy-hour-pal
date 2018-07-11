@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new DealSchema object
 var DealSchema = new Schema({
-    // name: { type: String, required: true },
+    busName: { type: String },
     businessID: {
         type: Schema.Types.ObjectId,
         ref: "Business"
@@ -20,6 +20,7 @@ var DealSchema = new Schema({
     endTime: { type: String, required: true },
     info: { type: String, required: true },
     updated_date: { type: Date, default: Date.now },
+    isShown: { type: Boolean, default: true}
 });
 
 // Creates our model from the above schema, using mongoose's model method

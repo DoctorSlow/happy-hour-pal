@@ -14,7 +14,7 @@ import "./DealCard.css";
 // weekday[5]="Saturday";
 // weekday[6]="Sunday";
 function dayOfWeekAsString(dayIndex) {
-  return ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][dayIndex];
+  return ["SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"][dayIndex];
 }
 
 function toStandardTime(militaryTime) {
@@ -34,7 +34,7 @@ const DealCard = props => (
     <CardBody className="card-body" {...props._id}>
       <CardTitle className="card-title gray">
         {/* {weekday[props.day]} */}
-        {dayOfWeekAsString(props.day).toUpperCase()}
+        {dayOfWeekAsString(props.day)}
       </CardTitle>
       <CardSubtitle className="gray card-subtitle">
         {toStandardTime(props.beginTime)} - {toStandardTime(props.endTime)}
