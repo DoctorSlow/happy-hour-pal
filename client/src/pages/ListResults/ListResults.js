@@ -64,13 +64,13 @@ class Results extends Component {
 
     return (
       <div>
-        <SearchBar />
+        {/* <SearchBar /> */}
         <Row className="background">
           <Col sm="1" md="2" lg="2"></Col>
           <Col sm="10" md="8" lg="8">
 
             {/* {this.state.currentDeals.map(deals => ( */}
-            {this.state.businesses.map(business => (
+            {this.props.businesses.map(business => (
               <div>
                 <BusinessCard>
 
