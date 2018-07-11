@@ -6,7 +6,7 @@ SEARCH BAR
 .navStyle {
     position: absolute;
     width: 100%; 
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     z-index: 1;
 }
 

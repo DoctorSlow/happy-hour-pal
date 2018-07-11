@@ -20,7 +20,8 @@ FILTER
 ************************/
 .buttons-div {
     background-color: #fff;
-    padding-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     /* Make this scrollable when needed */
     overflow-x: auto;
     /* We don't want vertical scrolling */
@@ -48,6 +49,7 @@ FILTER
     color: #fff;
     background-color: #2296a2ff !important;
     margin-right: 5px;
+    margin-top: 5px;
     margin-bottom: 5px;
 }
 .filter-btn:hover {
@@ -57,6 +59,14 @@ FILTER
 /************************
 BUSINESS CARDS
 ************************/
+
+.beer-img {
+    /* width: 15.289px;
+    height: 29.073px; */
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+}
 
 .business-name {
     margin-bottom: 20px;
