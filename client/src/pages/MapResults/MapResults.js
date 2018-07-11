@@ -23,8 +23,7 @@ class MapResults extends Component {
     search: "",
     center: null,
     autores: [],
-    dbBusinesses: [],
-    matched: []
+    dbBusinesses: []
   };
 
   //automatically grab current location 
