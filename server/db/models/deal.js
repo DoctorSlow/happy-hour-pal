@@ -20,6 +20,7 @@ var DealSchema = new Schema({
     endTime: { type: String, required: true },
     info: { type: String, required: true },
     updated_date: { type: Date, default: Date.now },
+    isShown: { type: Boolean, default: true}
 });
 
 // Creates our model from the above schema, using mongoose's model method
