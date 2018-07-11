@@ -15,6 +15,7 @@ class Results extends Component {
       currentDeals: [],
       deals: [],
       name: "",
+      dayValue: ""
     };
     this.filterDay = this.filterDay.bind(this);
   }
@@ -46,10 +47,11 @@ class Results extends Component {
   filterDay(event) {
     const dayButton = event.target;
     const dayValue = dayButton.getAttribute('data-day-value');
+    this.setState({dayValue})
     // console.log(dayValue);
 
     const  businesses  = this.props.businesses;
-
+    // console.log(businesses);
     businesses.forEach((business) => {
       let hasDeal = false;
       business.deals.forEach((deal) => {
@@ -62,8 +64,9 @@ class Results extends Component {
       business.isShown = hasDeal;
       console.log(hasDeal)
     });
-
+    const deals = businesses.deals;
     this.setState({ businesses })
+    this.setState({ deals })
     console.log(businesses);
   }
 
@@ -117,6 +120,7 @@ class Results extends Component {
                       </h5>
 
                       {business.deals
+                        .filter(deals => deals.day == this.state.dayValue)
                         .map(deals => (
                           <DealCard
                             id={deals._id}
