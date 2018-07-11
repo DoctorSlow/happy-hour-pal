@@ -127,9 +127,6 @@ class MapResults extends Component {
 
     return (
       <div className="mapHeight">
-        <div className="spacing-above-map">
-          <button>Hi</button>
-        </div>
         <div>
           {/* <SearchBar onClick={this.handleSearchSubmit} autoClick={this.autoSearchSumbit} onChange={this.handleInputChange} /> */}
           <MyMapComponent
