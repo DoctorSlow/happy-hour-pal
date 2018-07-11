@@ -8,7 +8,7 @@ import "./ListResults.css";
 
 class Results extends Component {
 
-  constructor(){
+  constructor() {
     super();
     this.state = {
       businesses: [],
@@ -43,12 +43,12 @@ class Results extends Component {
     }
   }
 
-  filterDay (event) {
+  filterDay(event) {
     const dayButton = event.target;
     const dayValue = dayButton.getAttribute('data-day-value');
     // console.log(dayValue);
 
-    const {businesses} = this.state;
+    const { businesses } = this.state;
 
     businesses.forEach((business) => {
       let hasDeal = false;
@@ -63,7 +63,7 @@ class Results extends Component {
       console.log(hasDeal)
     });
 
-    this.setState({businesses})
+    this.setState({ businesses })
     console.log(businesses);
   }
 
@@ -103,7 +103,7 @@ class Results extends Component {
         <Row className="background">
           <Col sm="1" md="2" lg="2"></Col>
           <Col sm="10" md="8" lg="8">
-<
+
             {this.props.businesses
               .map(business => {
 
