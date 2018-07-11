@@ -33,26 +33,26 @@ class Results extends Component {
     API.getBusinesses()
       .then(res => {
 
-        this.setState({businesses: res.data});
+        this.setState({ businesses: res.data });
         console.log(res.data)
         // console.log(this.state.businesses)
       })
       .catch(err => console.log(err))
-      // .then(
-      //   API.getAllDeals()
-      //     .then(res => {
-      //     this.setState({currentDeals: res.data});
-      //     console.log(res.data)
-      //     // console.log(this.state.currentDeals)
-      //     })
-      //     .catch(err => console.log(err))
-      // )
+    // .then(
+    //   API.getAllDeals()
+    //     .then(res => {
+    //     this.setState({currentDeals: res.data});
+    //     console.log(res.data)
+    //     // console.log(this.state.currentDeals)
+    //     })
+    //     .catch(err => console.log(err))
+    // )
 
   }
 
   handleClickEvent = () => {
     // this.history.push("/addbusiness");
-    
+
     if (this.props.loggedIn) {
       this.props.history.push("/addbusiness");
     } else {
@@ -64,7 +64,7 @@ class Results extends Component {
 
     return (
       <div>
-        <SearchBar />
+        {/* <SearchBar /> */}
         <Row className="background">
           <Col sm="1" md="2" lg="2"></Col>
           <Col sm="10" md="8" lg="8">
@@ -90,26 +90,26 @@ class Results extends Component {
                     </Link>
                   </h5>
 
-                {business.deals.map(deals => (
-                <DealCard
+                  {business.deals.map(deals => (
+                    <DealCard
 
-                  // onClick={() => this.handleClickEvent(pic.id)}
-                  id={deals._id}
-                  key={deals._id}
-                  day={deals.day}
-                  beginTime={deals.beginTime}
-                  endTime={deals.endTime}
-                  info={deals.info}
+                      // onClick={() => this.handleClickEvent(pic.id)}
+                      id={deals._id}
+                      key={deals._id}
+                      day={deals.day}
+                      beginTime={deals.beginTime}
+                      endTime={deals.endTime}
+                      info={deals.info}
 
-                />
-                ))}
-                {/* <Link to={"/businessdetails/" + deals.googleID}>
+                    />
+                  ))}
+                  {/* <Link to={"/businessdetails/" + deals.googleID}>
                   Go to Business
                 </Link> */}
-                {/* <hr /> */}
-              </BusinessCard>
-            </div>
-          ))}
+                  {/* <hr /> */}
+                </BusinessCard>
+              </div>
+            ))}
             <div className="text-center">
               <img className="quail-logo results-logo" src="/assets/images/quaillogo.png" alt="quail-logo" />
               <p className="add-location-call">Know something we don't? Help a pal out!</p>

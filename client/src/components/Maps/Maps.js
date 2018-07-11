@@ -6,17 +6,17 @@ import "./Maps.css";
 //default to downtown tucson
 
 
-const mapMarkerClick = function(Id, name) {
-console.log(Id, name)
+const mapMarkerClick = function (Id, name) {
+  console.log(Id, name)
 
-const origin = window.location.origin;
-window.location.replace(origin + "/businessdetails/" + Id)
-// this.history.push("/businessdetails/" + placeId);
+  const origin = window.location.origin;
+  window.location.replace(origin + "/businessdetails/" + Id)
+  // this.history.push("/businessdetails/" + placeId);
 }
 
 
 const MyMapComponent = withScriptjs(withGoogleMap(function (props) {
-  console.log(props);
+  // console.log(props);
   let iconMarker = new window.google.maps.MarkerImage(
     '/assets/images/quailpointerwhite.png',
     null, /* size is determined at runtime */
@@ -26,24 +26,20 @@ const MyMapComponent = withScriptjs(withGoogleMap(function (props) {
   );
   return < GoogleMap
     defaultZoom={13.5}
-    defaultCenter={props.center ? { lat: props.center.lat, lng: props.center.lng } : { lat: 32.2226, lng: -110.974 }}
+    defaultCenter={props.center ? { lat: props.center.lat, lng: props.center.lng } : { lat: 32.2322432, lng: -110.95162880000001 }}
   >
-    {props.isMarkerShown && <Marker position={props.center ? { lat: props.center.lat, lng: props.center.lng } : { lat: 32.2226, lng: -110.974 }} title="You are here--happy hours are near!" />}
+    {props.isMarkerShown && <Marker position={props.center ? { lat: props.center.lat, lng: props.center.lng } : { lat: 32.2322432, lng: -110.95162880000001 }} title="You are here--happy hours are near!" />}
 
     {
       props.results.map(mark => (
         <Marker
-
+          key={mark.name}
           icon={iconMarker}
           position={{ lat: mark.geometry.location.lat, lng: mark.geometry.location.lng }}
           title={mark.name}
           place_id={mark.place_id}
           clickable={true}
-
-          onClick={()=>{mapMarkerClick(mark.id, mark.name)}}
-          
-
-
+          onClick={() => { mapMarkerClick(mark.id, mark.name) }}
         />
       ))
     }

@@ -36,10 +36,21 @@ class MapResults extends Component {
           lng: position.coords.longitude
         }
       });
-    })
+    }, () => {
+      this.setState({
+        center: {
+          lat: 32.2322432,
+          lng: -110.95162880000001
+        }
+      })
+    },
+      {
+        timeout: 2000,
+        enableHighAccuracy: true
+      })
     setTimeout(() => {
       this.autoSearch(this.state.center.lat, this.state.center.lng);
-    }, 1500);
+    }, 2000);
   };
 
   //allows state changes(right now just the search parameter) to be updated live
@@ -108,7 +119,7 @@ class MapResults extends Component {
       return matched;
     }, []);
 
-    console.log(matchedPlaces);
+    // console.log(matchedPlaces);
     //results is the state that markers are generated from
     this.setState({ results: matchedPlaces })
   }
