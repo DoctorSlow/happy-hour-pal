@@ -145,7 +145,7 @@ export default class Tabs extends React.Component {
 
         console.log(this.state.results);
         return (
-            <div className="mapHeight">
+            <div className="mapHeight background">
 
                 <Nav tabs>
                     <NavItem>
@@ -165,7 +165,7 @@ export default class Tabs extends React.Component {
                         </NavLink>
                     </NavItem>
                 </Nav>
-                <TabContent activeTab={this.state.activeTab} className="mapHeight">
+                <TabContent activeTab={this.state.activeTab} className="mapHeight background">
                     <TabPane tabId="1">
                         <Row>
                             <Col sm="12">
