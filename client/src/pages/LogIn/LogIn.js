@@ -26,7 +26,7 @@ class LoginForm extends Component {
 		console.log('Log-in successful')
 		this.props._login(this.state.username, this.state.password)
 		this.setState({
-			redirectTo: '/tabs'
+			redirectTo: '/addbusiness'
 		})
 	}
 

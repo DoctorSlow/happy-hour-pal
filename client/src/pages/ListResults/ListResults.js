@@ -77,7 +77,7 @@ class Results extends Component {
           <div className="buttons-display">
             <Button
               color="#2296a2ff"
-              className="filter-btn"
+              className="btn filter-btn"
               name="dayButton"
               onClick={this.filterDay}
               data-day-value={0}

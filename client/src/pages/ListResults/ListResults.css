@@ -10,7 +10,6 @@ html, body {
 
 .background {
     background-color: #f2f2f2ff;
-    /* background-color: #e9b521ff; */
 }
 
 
@@ -65,11 +64,12 @@ BUSINESS CARDS
     height: 29.073px; */
     width: 40px;
     height: 40px;
-    margin-left: 15px;
+    /* margin-left: 15px; */
 }
 
 .business-name {
     margin-bottom: 20px;
+    padding-left: 15px;
 }
 
 .business-name-link {
