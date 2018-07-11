@@ -169,7 +169,7 @@ export default class Tabs extends React.Component {
                     <TabPane tabId="1">
                         <Row>
                             <Col sm="12">
-                                <SearchBar onClick={this.handleSearchSubmit} autoClick={this.autoSearchSumbit} onChange={this.handleInputChange} />
+                                {/* <SearchBar onClick={this.handleSearchSubmit} autoClick={this.autoSearchSumbit} onChange={this.handleInputChange} /> */}
                                 <ListResults
                                     history={this.props.history}
                                     loggedIn={this.props.loggedIn}

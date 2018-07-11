@@ -132,6 +132,7 @@ class Results extends Component {
                   <div>
                     <BusinessCard>
                       <h5 className="business-name">
+                        <img className="beer-img" src="/assets/images/beer4.png" alt="beer-logo" />
                         <Link className="business-name-link" to={"/businessdetails/" + business.googleID}>
                           {business.name}
                         </Link>

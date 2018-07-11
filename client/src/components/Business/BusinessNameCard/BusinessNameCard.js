@@ -6,7 +6,10 @@ import "./BusinessNameCard.css";
 const BusinessNameCard = props => (
     <div>
         <a href={props.address}>
-			<h5 className="business-name-card">{props.name}</h5>
+            <h5 className="business-name-card">
+                <img className="quail-img" src="/assets/images/beer4.png" alt="beer-logo" />
+                {props.name}
+            </h5>
 		</a>
         <h3>{props.stars}</h3>
     </div>

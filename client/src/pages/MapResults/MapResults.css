@@ -16,4 +16,8 @@ html,
       padding: 0;
     }
 
+.spacing-above-map {
+    background-color: #fff;
+    height: 15px;
+}
 
