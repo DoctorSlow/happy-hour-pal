@@ -8,8 +8,8 @@ import "./ListResults.css";
 
 class Results extends Component {
 
-  constructor(){
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       businesses: [],
       currentDeals: [],
@@ -20,21 +20,20 @@ class Results extends Component {
   }
 
   // Load all businesses from the Business collection.
-  componentDidMount() {
-    this.loadAllDeals()
-    // this.loadAllBusinesses()
-  }
+  // componentDidMount() {
+  //   this.loadAllDeals()
+  //   // this.loadAllBusinesses()
+  // }
 
-  loadAllDeals = () => {
-    API.getBusinesses()
-      .then(res => {
-
-        this.setState({businesses: res.data});
-        // console.log(res.data)
-        // console.log(this.state.businesses)
-      })
-      .catch(err => console.log(err))
-  }
+  // loadAllDeals = () => {
+  //   API.getBusinesses()
+  //     .then(res => {
+  //       this.setState({ businesses: res.data });
+  //       console.log(res.data)
+  //       // console.log(this.state.businesses)
+  //     })
+  //     .catch(err => console.log(err))
+  // }
 
   handleClickEvent = () => {
     if (this.props.loggedIn) {
@@ -44,12 +43,12 @@ class Results extends Component {
     }
   }
 
-  filterDay (event) {
+  filterDay(event) {
     const dayButton = event.target;
     const dayValue = dayButton.getAttribute('data-day-value');
     // console.log(dayValue);
 
-    const {businesses} = this.state;
+    const  businesses  = this.props.businesses;
 
     businesses.forEach((business) => {
       let hasDeal = false;
@@ -64,14 +63,13 @@ class Results extends Component {
       console.log(hasDeal)
     });
 
-    this.setState({businesses})
+    this.setState({ businesses })
     console.log(businesses);
   }
 
   render() {
     return (
       <div>
-        <SearchBar />
         <button
           name="dayButton"
           onClick={this.filterDay}
@@ -136,6 +134,7 @@ class Results extends Component {
                 )
               })
             }
+
             <div className="text-center">
               <img
                 className="quail-logo results-logo"
