@@ -128,7 +128,7 @@ class MapResults extends Component {
 
     return (
       <div className="mapHeight">
-        <SearchBar onClick={this.handleSearchSubmit} autoClick={this.autoSearchSumbit} onChange={this.handleInputChange} />
+        {/* <SearchBar onClick={this.handleSearchSubmit} autoClick={this.autoSearchSumbit} onChange={this.handleInputChange} /> */}
         <MyMapComponent
           isMarkerShown
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_2mmRZkUnIuOqeIxJRjKZjDadVGB1i0E"
