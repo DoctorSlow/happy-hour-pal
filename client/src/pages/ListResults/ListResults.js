@@ -28,9 +28,8 @@ class Results extends Component {
   loadAllDeals = () => {
     API.getBusinesses()
       .then(res => {
-
-        this.setState({businesses: res.data});
-        // console.log(res.data)
+        this.setState({ businesses: res.data });
+        console.log(res.data)
         // console.log(this.state.businesses)
       })
       .catch(err => console.log(err))
@@ -71,8 +70,6 @@ class Results extends Component {
   render() {
     return (
       <div>
-
-        <SearchBar />
         <button
           name="dayButton"
           onClick={this.filterDay}
@@ -102,7 +99,6 @@ class Results extends Component {
           onClick={this.filterDay}
           data-day-value={6}
         >Sat</button>
-
 
         <Row className="background">
           <Col sm="1" md="2" lg="2"></Col>
