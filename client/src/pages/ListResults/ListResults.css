@@ -2,13 +2,57 @@
 GENERAL
 ************************/
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 .background {
     background-color: #f2f2f2ff;
     /* background-color: #e9b521ff; */
-
 }
 
 
+
+/************************
+FILTER
+************************/
+.buttons-div {
+    background-color: #fff;
+    padding-bottom: 30px;
+    /* Make this scrollable when needed */
+    overflow-x: auto;
+    /* We don't want vertical scrolling */
+    overflow-y: hidden;
+    /* Make an auto-hiding scroller for the 3 people using a IE */
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    /* For WebKit implementations, provide inertia scrolling */
+    -webkit-overflow-scrolling: touch;
+    /* We don't want internal inline elements to wrap */
+    white-space: nowrap;
+    /* Remove the default scrollbar for WebKit implementations */
+    /* &::-webkit-scrollbar {
+        display: none;
+    } */
+}
+.buttons-display {
+    margin-left: 15px;
+    margin-right: 15px;
+    overflow: scroll;
+    width: 500px;
+}
+
+/* Button */
+.filter-btn {
+    color: #fff;
+    background-color: #2296a2ff !important;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.filter-btn:hover {
+    background-color: #1f737cff !important;
+}
 
 /************************
 BUSINESS CARDS

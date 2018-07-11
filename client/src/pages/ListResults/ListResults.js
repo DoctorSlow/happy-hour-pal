@@ -72,38 +72,56 @@ class Results extends Component {
 
   render() {
     return (
-      <div>
-        <button
-          name="dayButton"
-          onClick={this.filterDay}
-          data-day-value={0}
-        >Sun</button>
-        <button
-          onClick={this.filterDay}
-          data-day-value={1}
-        >Mon</button>
-        <button
-          onClick={this.filterDay}
-          data-day-value={2}
-        >Tue</button>
-        <button
-          onClick={this.filterDay}
-          data-day-value={3}
-        >Wed</button>
-        <button
-          onClick={this.filterDay}
-          data-day-value={4}
-        >Thu</button>
-        <button
-          onClick={this.filterDay}
-          data-day-value={5}
-        >Fri</button>
-        <button
-          onClick={this.filterDay}
-          data-day-value={6}
-        >Sat</button>
+      <div className="mapHeight background">
+        <div className="buttons-div">
+          <div className="buttons-display">
+            <Button
+              color="#2296a2ff"
+              className="filter-btn"
+              name="dayButton"
+              onClick={this.filterDay}
+              data-day-value={0}
+            >Sun</Button>
+            <Button
+              color="#2296a2ff"
+              className="filter-btn"
+              onClick={this.filterDay}
+              data-day-value={1}
+            >Mon</Button>
+            <Button
+              color="#2296a2ff"
+              className="filter-btn"
+              onClick={this.filterDay}
+              data-day-value={2}
+            >Tue</Button>
+            <Button
+              color="#2296a2ff"
+              className="filter-btn"
+              onClick={this.filterDay}
+              data-day-value={3}
+            >Wed</Button>
+            <Button
+              color="#2296a2ff"
+              className="filter-btn"
+              onClick={this.filterDay}
+              data-day-value={4}
+            >Thu</Button>
+            <Button
+              color="#2296a2ff"
+              className="filter-btn"
+              onClick={this.filterDay}
+              data-day-value={5}
+            >Fri</Button>
+            <Button
+              color="#2296a2ff"
+              className="filter-btn"
+              onClick={this.filterDay}
+              data-day-value={6}
+            >Sat</Button>
+          </div>
+        </div>
 
-        <Row className="background">
+        <Row>
           <Col sm="1" md="2" lg="2"></Col>
           <Col sm="10" md="8" lg="8">
 

@@ -2,6 +2,12 @@
 GENERAL
 ************************/
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 .background {
     background-color: #f2f2f2ff;
     /* background-color: #e9b521ff; */
@@ -48,6 +54,14 @@ FORM
 /* Text color */
 .gray {
     color: #4d4d4dff;
+}
+
+/* Select business */
+.select-biz-label {
+    margin-left: -5px;
+}
+.biz-dropdown {
+    margin-top: 10px;
 }
 
 /* Select days buttons */

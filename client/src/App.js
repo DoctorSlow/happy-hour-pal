@@ -187,7 +187,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className="App">
+			<div className="App background">
 				<Router className="mapHeight">
 					<div className="mapHeight">
 						{/* <Navbar /> */}

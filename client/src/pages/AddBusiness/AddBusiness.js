@@ -167,7 +167,7 @@ class AddBusiness extends Component {
     const { selectedOption, stayOpen } = this.state; // Multiselector states
 
     return (
-      <div>
+      <div className="mapHeight background">
         {/* <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}> */}
         <Modal isOpen={this.state.modal}>
           {/* <ModalHeader toggle={this.toggle}>Modal title</ModalHeader> */}
@@ -187,7 +187,7 @@ class AddBusiness extends Component {
 
                 <h5 className="title gray">ADD NEW DEAL</h5>
 
-                <label htmlFor="business" className="search-label gray">Enter business name or business type</label>
+                <label htmlFor="business" className="search-label gray">Find the business</label>
                 <SearchInput
                   className="search-input"
                   nameClick={this.handleNameSearchSubmit}
@@ -201,7 +201,8 @@ class AddBusiness extends Component {
                     {/* <label className="business-name" htmlFor="business">Business Name: </label> */}
                     {/* If businesses exist in the database: */}
                     {this.state.results.length ? (
-                      <select onChange={this.handleSelectedOption} defaultValue="">
+                    <label htmlFor="description" className="gray select-biz-label">Select the business
+                      <select className="biz-dropdown" onChange={this.handleSelectedOption} defaultValue="">
                         <option value="" disabled>Select business</option>
                         {this.state.results.map(place => (
                           <option
@@ -212,6 +213,7 @@ class AddBusiness extends Component {
                           </option>
                         ))}
                       </select>
+                      </label>
                       // Default message before search..
                     ) : (
                         <h3></h3>
@@ -262,7 +264,7 @@ class AddBusiness extends Component {
                   /> */}
 
                   {/* ***Input start & end times for the deal*** */}
-                  <label htmlFor="dealTimes" className="gray">Select the start and end times of the deal</label>
+                  <label htmlFor="dealTimes" className="gray">Select start and end times of the deal</label>
                   <div className="form-row mx-0">
                     <Input
                       value={this.state.beginTime}
