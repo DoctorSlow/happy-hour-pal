@@ -8,8 +8,8 @@ import "./ListResults.css";
 
 class Results extends Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       businesses: [],
       currentDeals: [],
@@ -108,7 +108,7 @@ class Results extends Component {
           <Col sm="1" md="2" lg="2"></Col>
           <Col sm="10" md="8" lg="8">
 
-<
+
             {this.props.businesses
               .map(business => {
 
