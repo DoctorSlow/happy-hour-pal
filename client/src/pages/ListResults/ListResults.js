@@ -1,27 +1,23 @@
 import React, { Component } from "react";
 import { Row, Col, Button } from 'reactstrap';
-// import API from "../utils/API";
-// import deals from "../../deals.json";
-// import reviews from "../../reviews.json";
 import { BusinessCard, BusinessNameCard, DealCard } from "../../components/Business";
 import API from "../../utils/API";
 import SearchBar from "../../components/SearchBar";
 import { Link } from "react-router-dom";
 import "./ListResults.css";
 
-
-// import { BackBtn, ReportDealBtn, RateDealBtn, ViewAllBtn, SuggestEditBtn } from "../../../components/Buttons";
-
-
 class Results extends Component {
-  state = {
-    businesses: [],
-    currentDeals: [],
-    // deals,
-    name: "",
-    // address: "http://www.ermanosbrew.com/",
-    // stars: "****"
-  };
+
+  constructor(){
+    super();
+    this.state = {
+      businesses: [],
+      currentDeals: [],
+      deals: [],
+      name: "",
+    };
+    this.filterDay = this.filterDay.bind(this);
+  }
 
   // Load all businesses from the Business collection.
   componentDidMount() {
@@ -34,25 +30,13 @@ class Results extends Component {
       .then(res => {
 
         this.setState({businesses: res.data});
-        console.log(res.data)
+        // console.log(res.data)
         // console.log(this.state.businesses)
       })
       .catch(err => console.log(err))
-      // .then(
-      //   API.getAllDeals()
-      //     .then(res => {
-      //     this.setState({currentDeals: res.data});
-      //     console.log(res.data)
-      //     // console.log(this.state.currentDeals)
-      //     })
-      //     .catch(err => console.log(err))
-      // )
-
   }
 
   handleClickEvent = () => {
-    // this.history.push("/addbusiness");
-    
     if (this.props.loggedIn) {
       this.props.history.push("/addbusiness");
     } else {
@@ -60,60 +44,114 @@ class Results extends Component {
     }
   }
 
-  render() {
+  filterDay (event) {
+    const dayButton = event.target;
+    const dayValue = dayButton.getAttribute('data-day-value');
+    // console.log(dayValue);
 
+    const {businesses} = this.state;
+
+    businesses.forEach((business) => {
+      let hasDeal = false;
+      business.deals.forEach((deal) => {
+        // console.log(business);
+        // console.log(deal);
+        if (dayValue == deal.day) {
+          hasDeal = true;
+        }
+      });
+      business.isShown = hasDeal;
+      console.log(hasDeal)
+    });
+
+    this.setState({businesses})
+    console.log(businesses);
+  }
+
+  render() {
     return (
       <div>
         <SearchBar />
+        <button
+          name="dayButton"
+          onClick={this.filterDay}
+          data-day-value={0}
+        >Sun</button>
+        <button
+          onClick={this.filterDay}
+          data-day-value={1}
+        >Mon</button>
+        <button
+          onClick={this.filterDay}
+          data-day-value={2}
+        >Tue</button>
+        <button
+          onClick={this.filterDay}
+          data-day-value={3}
+        >Wed</button>
+        <button
+          onClick={this.filterDay}
+          data-day-value={4}
+        >Thu</button>
+        <button
+          onClick={this.filterDay}
+          data-day-value={5}
+        >Fri</button>
+        <button
+          onClick={this.filterDay}
+          data-day-value={6}
+        >Sat</button>
+
         <Row className="background">
           <Col sm="1" md="2" lg="2"></Col>
           <Col sm="10" md="8" lg="8">
 
-            {/* {this.state.currentDeals.map(deals => ( */}
-            {this.state.businesses.map(business => (
-              <div>
-                <BusinessCard>
+            {this.state.businesses
+              .map(business => {
 
-                  {/* <BusinessNameCard
-                    name={business.name}
-                    key={business.googleID}
-                    // address={this.state.address}
-                    // stars={this.state.stars}
-                  /> */}
+                return (business.isShown) && (
+                  <div>
+                    <BusinessCard>
+                      <h5 className="business-name">
+                        <Link className="business-name-link" to={"/businessdetails/" + business.googleID}>
+                          {business.name}
+                        </Link>
+                      </h5>
 
-                  {/* <Link to={"/editbusiness/" + business.googleID}>
-                    {business.name}
-                  </Link> */}
-                  <h5 className="business-name">
-                    <Link className="business-name-link" to={"/businessdetails/" + business.googleID}>
-                      {business.name}
-                    </Link>
-                  </h5>
-
-                {business.deals.map(deals => (
-                <DealCard
-
-                  // onClick={() => this.handleClickEvent(pic.id)}
-                  id={deals._id}
-                  key={deals._id}
-                  day={deals.day}
-                  beginTime={deals.beginTime}
-                  endTime={deals.endTime}
-                  info={deals.info}
-
-                />
-                ))}
-                {/* <Link to={"/businessdetails/" + deals.googleID}>
-                  Go to Business
-                </Link> */}
-                {/* <hr /> */}
-              </BusinessCard>
-            </div>
-          ))}
+                      {business.deals
+                        .map(deals => (
+                          <DealCard
+                            id={deals._id}
+                            key={deals._id}
+                            day={deals.day}
+                            dayValue={deals.day}
+                            beginTime={deals.beginTime}
+                            endTime={deals.endTime}
+                            info={deals.info}
+                          />
+                        ))
+                      }
+                    </BusinessCard>
+                  </div>
+                )
+              })
+            }
             <div className="text-center">
-              <img className="quail-logo results-logo" src="/assets/images/quaillogo.png" alt="quail-logo" />
-              <p className="add-location-call">Know something we don't? Help a pal out!</p>
-              <Button color="#b66925ff" className="add-location-btn" onClick={this.handleClickEvent}>Add Happy Hour</Button>
+              <img
+                className="quail-logo results-logo"
+                src="/assets/images/quaillogo.png"
+                alt="quail-logo"
+              />
+              <p className="add-location-call">
+                Know something we don't? Help a pal out!
+              </p>
+              <Button
+                color="#b66925ff"
+                className="add-location-btn"
+                onClick={this.handleClickEvent}
+              >
+                Add Happy Hour
+              </Button>
             </div>
           </Col>
           <Col sm="1" md="2" lg="2"></Col>
@@ -123,4 +161,4 @@ class Results extends Component {
   }
 }
 
-export default Results; 
+export default Results;
