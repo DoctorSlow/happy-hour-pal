@@ -125,7 +125,7 @@ class EditDeal extends Component {
                   <label className="day-input gray">
                     Choose a day from this list:
                     <select
-                      className="select-day"
+                      className="select-day shadow-sm"
                       name="day"
                       id="daySelect"
                       type="select"
@@ -174,7 +174,7 @@ class EditDeal extends Component {
                   />
 
                   <Button
-                    className="btn teal-btn btn-block"
+                    className="btn teal-btn btn-block shadow"
                     onClick={this.handleFormSubmit}
                     color="#b66925ff"
                   >
