@@ -83,11 +83,11 @@ textarea.form-control {
   }
 
 /* Buttons */
-.orange-btn {
+.teal-btn {
     color: #fff;
-    background-color: #d96d28ff !important;
+    background-color: #2296a2ff !important;
     margin-bottom: 30px;
 }
-.orange-btn:hover {
-    background-color: #b66925ff !important;
+.teal-btn:hover {
+    background-color: #1f737cff !important;
 }

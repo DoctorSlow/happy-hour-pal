@@ -110,7 +110,7 @@ class EditBiz extends Component {
                 <Button
                   className="add-missing-biz-deal-btn"
                   key={business._id}
-                  color="#b66925ff"
+                  color="#2296a2ff"
                   onClick={() => this.handleAddEvent(business.googleID)}
                 >
                   Add New Deal
