@@ -95,44 +95,44 @@ class Results extends Component {
           <div className="buttons-display">
             <Button
               color="#2296a2ff"
-              className="btn filter-btn"
+              className="btn filter-btn shadow-sm"
               name="dayButton"
               onClick={this.filterDay}
               data-day-value={0}
             >Sun</Button>
             <Button
               color="#2296a2ff"
-              className="filter-btn"
+              className="filter-btn shadow-sm"
               onClick={this.filterDay}
               data-day-value={1}
             >Mon</Button>
             <Button
               color="#2296a2ff"
-              className="filter-btn"
+              className="filter-btn shadow-sm"
               onClick={this.filterDay}
               data-day-value={2}
             >Tue</Button>
             <Button
               color="#2296a2ff"
-              className="filter-btn"
+              className="filter-btn shadow-sm"
               onClick={this.filterDay}
               data-day-value={3}
             >Wed</Button>
             <Button
               color="#2296a2ff"
-              className="filter-btn"
+              className="filter-btn shadow-sm"
               onClick={this.filterDay}
               data-day-value={4}
             >Thu</Button>
             <Button
               color="#2296a2ff"
-              className="filter-btn"
+              className="filter-btn shadow-sm"
               onClick={this.filterDay}
               data-day-value={5}
             >Fri</Button>
             <Button
               color="#2296a2ff"
-              className="filter-btn"
+              className="filter-btn shadow-sm"
               onClick={this.filterDay}
               data-day-value={6}
             >Sat</Button>
