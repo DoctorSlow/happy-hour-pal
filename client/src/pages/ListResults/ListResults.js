@@ -3,6 +3,7 @@ import { Row, Col, Button } from 'reactstrap';
 import { BusinessCard, BusinessNameCard, DealCard } from "../../components/Business";
 import API from "../../utils/API";
 import SearchBar from "../../components/SearchBar";
+// import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 import "./ListResults.css";
 
@@ -82,7 +83,7 @@ class Results extends Component {
 
   render() {
     return (
-      <div className="mapHeight background">
+      <div>
         <div className="buttons-div">
           <div className="buttons-display">
 
@@ -132,7 +133,7 @@ class Results extends Component {
           </div>
         </div>
 
-        <Row>
+        <Row className="background">
           <Col sm="1" md="2" lg="2"></Col>
           <Col sm="10" md="8" lg="8">
 
@@ -169,7 +170,31 @@ class Results extends Component {
               })
             }
 
-            <div className="text-center">
+            {/* <div className="text-center crowdsource-div">
+              <img
+                className="quail-logo results-logo"
+                src="/assets/images/quaillogo.png"
+                alt="quail-logo"
+              />
+              <p className="add-location-call">
+                Know something we don't? Help a pal out!
+              </p>
+              <Button
+                color="#b66925ff"
+                className="add-location-btn"
+                onClick={this.handleClickEvent}
+              >
+                Add Happy Hour
+              </Button>
+            </div> */}
+
+          </Col>
+          <Col sm="1" md="2" lg="2"></Col>
+        </Row>
+
+        <Row>
+          <Col sm="12" md="12" lg="12">
+            <div className="text-center crowdsource-div">
               <img
                 className="quail-logo results-logo"
                 src="/assets/images/quaillogo.png"
@@ -187,8 +212,11 @@ class Results extends Component {
               </Button>
             </div>
           </Col>
-          <Col sm="1" md="2" lg="2"></Col>
         </Row>
+
+        {/* <footer className="footer">
+          <p className="copyright">&copy; Copyright 2018 HappyHourPal</p>
+        </footer> */}
       </div>
     );
   }

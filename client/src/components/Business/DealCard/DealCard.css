@@ -31,11 +31,13 @@ DEAL CARD
 
 .update-deal-btn {
     color: #fff;
-    background-color: #d96d28ff !important;
+    /* background-color: #d96d28ff !important; */
+    background-color: #2296a2ff !important;
     margin-bottom: 20px;
 }
 
 .update-deal-btn:hover {
     color: #fff;
-    background-color: #b66925ff !important;
+    /* background-color: #b66925ff !important; */
+    background-color: #1f737cff !important;
 }
