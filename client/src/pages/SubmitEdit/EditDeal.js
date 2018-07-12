@@ -174,7 +174,7 @@ class EditDeal extends Component {
                   />
 
                   <Button
-                    className="btn orange-btn btn-block"
+                    className="btn teal-btn btn-block"
                     onClick={this.handleFormSubmit}
                     color="#b66925ff"
                   >

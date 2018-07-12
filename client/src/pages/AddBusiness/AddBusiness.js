@@ -180,7 +180,7 @@ class AddBusiness extends Component {
             <Button color="#2296a2ff" className="btn orange-btn" onClick={this.toggle}>Okay</Button>
           </ModalFooter>
         </Modal>
-        <div className="form-addbusiness background">
+        <div className="form-addbusiness">
           <Container>
             <Row>
               <Col size="sm-12 md-12 lg-12">

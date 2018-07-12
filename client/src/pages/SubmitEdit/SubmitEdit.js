@@ -223,7 +223,7 @@ class AddBusiness extends Component {
               />
 
               <Button
-                className="btn-primary orange-btn btn-block"
+                className="btn-primary teal-btn btn-block"
                 onClick={this.handleFormSubmit}
               >
                 Update Happy Hour Special
