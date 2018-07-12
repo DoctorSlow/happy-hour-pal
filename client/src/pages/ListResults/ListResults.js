@@ -15,7 +15,8 @@ class Results extends Component {
       currentDeals: [],
       deals: [],
       name: "",
-      dayValue: ""
+      dayValue: "",
+      curTime: null
     };
     this.filterDay = this.filterDay.bind(this);
   }
@@ -36,6 +37,15 @@ class Results extends Component {
   //     .catch(err => console.log(err))
   // }
 
+  componentDidMount() {
+    setInterval( () => {
+      this.setState({
+        // curTime : new Date().toLocaleString()
+        curTime : new Date().getDay()
+      })
+    },4000)
+  }
+
   handleClickEvent = () => {
     if (this.props.loggedIn) {
       this.props.history.push("/addbusiness");
@@ -47,8 +57,13 @@ class Results extends Component {
   filterDay(event) {
     const dayButton = event.target;
     const dayValue = dayButton.getAttribute('data-day-value');
-    this.setState({dayValue})
-    // console.log(dayValue);
+    if (dayValue) {
+      this.setState({dayValue})
+      console.log(dayValue);
+    }
+    else {
+      this.setState({dayValue: this.state.curTime})
+    }
 
     const  businesses  = this.props.businesses;
     // console.log(businesses);
@@ -75,9 +90,10 @@ class Results extends Component {
       <div className="mapHeight background">
         <div className="buttons-div">
           <div className="buttons-display">
+
             <Button
               color="#2296a2ff"
-              className="btn filter-btn"
+              className="btn filter-btn first-btn"
               name="dayButton"
               onClick={this.filterDay}
               data-day-value={0}
@@ -138,6 +154,8 @@ class Results extends Component {
                         </Link>
                       </h5>
 
+                      {this.filterDay({})}
+
                       {business.deals
                         .filter(deals => deals.day == this.state.dayValue)
                         .map(deals => (
@@ -157,6 +175,7 @@ class Results extends Component {
                 )
               })
             }
+            <h5>Date: {this.state.curTime}</h5>
 
             <div className="text-center">
               <img
