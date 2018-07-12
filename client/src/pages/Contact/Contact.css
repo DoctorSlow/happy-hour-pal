@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
 /* Matching all parent divs to height of page */
 .mapHeight, .App {
     height: 100%;
@@ -24,6 +26,7 @@
     margin-top: 20px;
     margin-bottom: 30px;
     color: #fff;
+    font-family: 'Varela Round', sans-serif;
     /* text-decoration: underline; */
 }
 .contact-info:hover {
