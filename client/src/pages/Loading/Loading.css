@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
 /* Matching all parent divs to height of page */
 .mapHeight, .App {
     height: 100%;
@@ -22,7 +24,12 @@
 .welcome-message {
     text-align: center;
     margin-top: 20px;
+    font-size: 1.2em;
+}
+.welcome-message-name {
+    text-align: center;
     margin-bottom: 30px;
+    font-family: 'Varela Round', sans-serif;
 }
 .slogan {
     text-align: center;

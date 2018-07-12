@@ -34,7 +34,7 @@ const DisplayLinks = props => {
 	if (props.loggedIn) {
 		return (
 			<nav className="navbar shadow sticky-top navbar-expand-lg navbar-dark blue-navbar">
-				<a className="navbar-brand" href="/tabs">
+				<a className="navbar-brand app-name" href="/tabs">
 					<img className="whitelogo-img" src="/assets/images/whitelogo.png" alt="white-logo" />
 					HappyHourPal
 				</a>
@@ -88,7 +88,7 @@ const DisplayLinks = props => {
 	} else {
 		return (
 			<nav className="navbar shadow sticky-top navbar-expand-lg navbar-dark blue-navbar">
-				<a className="navbar-brand" href="/tabs">
+				<a className="navbar-brand app-name" href="/tabs">
 					<img className="whitelogo-img" src="/assets/images/whitelogo.png" alt="white-logo" />
 					HappyHourPal
 				</a>

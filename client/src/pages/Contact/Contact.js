@@ -20,7 +20,7 @@ const Contact = () => (
       </Row>
       <Row>
         <Col size="md-12">
-          <p className="slogan">Thanks for stopping by!</p>
+          <p className="thank-you-text">Thanks for stopping by!</p>
         </Col>
       </Row>
     </Container>
