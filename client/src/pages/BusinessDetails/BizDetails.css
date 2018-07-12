@@ -15,9 +15,9 @@ CROWDSOURCE REQUEST
 /* Button */
 .edit-biz-btn {
     color: #fff;
-    background-color: #d96d28ff !important;
+    background-color: #2296a2ff !important;
     margin-bottom: 100px;
 }
 .edit-biz-btn:hover, .edit-biz-btn:active, .edit-biz-btn:visited  {
-    background-color: #b66925ff !important;
+    background-color: #1f737cff !important;
 }

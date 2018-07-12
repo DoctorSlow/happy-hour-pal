@@ -118,7 +118,7 @@ class Results extends Component {
                 <Button
                   className="edit-biz-btn"
                   key={business._id}
-                  color="#b66925ff"
+                  color="#2296a2ff"
                   onClick={() => this.handleClickEvent(business.googleID)}
                 >
                   Update Happy Hour
