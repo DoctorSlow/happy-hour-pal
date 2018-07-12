@@ -16,10 +16,10 @@ import AddBusiness from "./pages/AddBusiness/AddBusiness";
 import EditBusiness from "./pages/EditBusiness/EditBusiness";
 import EditBiz from "./pages/EditBusiness/EditBiz";
 import SubmitEdit from "./pages/SubmitEdit/SubmitEdit";
-
 import AddDeal from "./pages/SubmitEdit/AddDeal";
 import EditDeal from "./pages/SubmitEdit/EditDeal";
 import Tabs from "./pages/Tabs/Tabs";
+import Contact from "./pages/Contact/Contact";
 import "./App.css";
 
 // Function for which links to display if signed in
@@ -62,6 +62,17 @@ const DisplayLinks = props => {
 								Add Happy Hour
 							</Link>
 						</li>
+						<li
+							className={
+								window.location.pathname === "/contact"
+								? "nav-item active"
+								: "nav-item"
+							}
+							>
+							<Link to="/contact" className="nav-link">
+								Contact
+							</Link>
+						</li>
 						<li className="nav-item">
 							<Link to="/tabs" className="nav-link" onClick={props._logout}>
 								Logout
@@ -93,6 +104,17 @@ const DisplayLinks = props => {
 						</li>
 						<li className="nav-item">
 							<a className="nav-link disabled" href="#">Add Happy Hour</a>
+						</li>
+						<li
+							className={
+								window.location.pathname === "/contact"
+								? "nav-item active"
+								: "nav-item"
+							}
+							>
+							<Link to="/contact" className="nav-link">
+								Contact
+							</Link>
 						</li>
 						<li
 							className={
@@ -242,6 +264,7 @@ class App extends Component {
 							<Route exact path="/submitedit" component={SubmitEdit} />
 							<Route exact path="/adddeal/:id" component={AddDeal} />
 							<Route exact path="/editdeal/:id" component={EditDeal} />
+							<Route exact path="/contact" component={Contact} />
 						</Wrapper>
 					</div>
 				</Router>

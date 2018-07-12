@@ -1,0 +1,36 @@
+/* Matching all parent divs to height of page */
+.mapHeight, .App {
+    height: 100%;
+}
+
+/* Background */
+.contact-page {
+    background-color: #2296a2ff;
+    height: 100%;
+}
+
+/* Logo */
+.quail {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
+    height: 150px;
+}
+
+/* Text */
+.contact-info {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: #fff;
+    /* text-decoration: underline; */
+}
+.contact-info:hover {
+    color: #255478ff;
+}
+.slogan {
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+}
