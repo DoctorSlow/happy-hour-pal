@@ -99,23 +99,11 @@ class EditBiz extends Component {
                   ))}
                 </div>
               ) : (
-                <h5>No current happy hour deals</h5>
+                <h3>No current happy hour deals</h3>
               )}
-
-              {this.state.currentBusinessDeals.map(business => (
-                <Button
-                  className="btn add-missing-biz-deal-btn"
-                  key={business._id}
-                  color="#b66925ff"
-                  onClick={() => this.handleAddEvent(business.googleID)}
-                >
-                  Add New Deal
-                </Button>
-              )).slice(0,1)}
-
             </BusinessCard>
 
-            {/* <div className="text-center">
+            <div className="text-center">
               <img className="quail-logo results-logo" src="/assets/images/quaillogo.png" alt="quail-logo" />
               <p className="add-location-call">Missing a deal? Help a pal out!</p>
               {this.state.currentBusinessDeals.map(business => (
@@ -128,11 +116,6 @@ class EditBiz extends Component {
                   Add New Deal
                 </Button>
               )).slice(0,1)}
-            </div> */}
-
-            <div className="text-center crowdsource-div">
-              <img className="quail-logo results-logo" src="/assets/images/quaillogo.png" alt="quail-logo" />
-              <p className="add-location-call">Thanks for the help pal!</p>
             </div>
           </Col>
           <Col sm="1" md="2" lg="2"></Col>

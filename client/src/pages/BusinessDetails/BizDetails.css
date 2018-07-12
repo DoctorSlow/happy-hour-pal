@@ -5,9 +5,6 @@ BUSINESS CARD
 .biz-deal-card {
     margin-bottom: -50px;
 }
-.add-missing-deal-btn {
-    padding-left: 20px;
-}
 
 
 
@@ -15,25 +12,12 @@ BUSINESS CARD
 CROWDSOURCE REQUEST
 ************************/
 
-.crowdsource-div {
-    /* background-color: #255478ff; */
-    /* background-color: #e9b521ff; */
-    background-color: #deeaebff;
-    margin-top: 20px;
-    padding-top: 20px;
-    margin-bottom: 0;
-    bottom:0;
-
-}
-
 /* Button */
 .edit-biz-btn {
     color: #fff;
-    background-color: #2296a2ff !important;
+    background-color: #d96d28ff !important;
     margin-bottom: 100px;
-    margin-bottom: 50px;
-
 }
 .edit-biz-btn:hover, .edit-biz-btn:active, .edit-biz-btn:visited  {
-    background-color: #1f737cff !important;
+    background-color: #b66925ff !important;
 }

@@ -21,8 +21,7 @@ FORM
     border: solid;
     border-width: 1px;
     border-color: #e6e6e6ff;
-    /* background-color: #fff; */
-    background-color: #deeaebff;
+    background-color: #fff;
 }
 
 /* Text color */
@@ -86,11 +85,9 @@ textarea.form-control {
 /* Buttons */
 .orange-btn {
     color: #fff;
-    background-color: #2296a2ff !important;
-
+    background-color: #d96d28ff !important;
     margin-bottom: 30px;
 }
 .orange-btn:hover {
-    background-color: #1f737cff !important;
-
+    background-color: #b66925ff !important;
 }
