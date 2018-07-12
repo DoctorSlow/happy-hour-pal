@@ -33,8 +33,11 @@ const DisplayLinks = props => {
 	// Navbar links display
 	if (props.loggedIn) {
 		return (
-			<nav className="navbar  sticky-top navbar-expand-lg navbar-dark blue-navbar">
-				<a className="navbar-brand" href="/tabs">HappyHourPal</a>
+			<nav className="navbar shadow sticky-top navbar-expand-lg navbar-dark blue-navbar">
+				<a className="navbar-brand" href="/tabs">
+					<img className="whitelogo-img" src="/assets/images/whitelogo.png" alt="white-logo" />
+					HappyHourPal
+				</a>
 				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>
 				</button>
@@ -84,8 +87,11 @@ const DisplayLinks = props => {
 		)
 	} else {
 		return (
-			<nav className="navbar  sticky-top navbar-expand-lg navbar-dark blue-navbar">
-				<a className="navbar-brand" href="/tabs">HappyHourPal</a>
+			<nav className="navbar shadow sticky-top navbar-expand-lg navbar-dark blue-navbar">
+				<a className="navbar-brand" href="/tabs">
+					<img className="whitelogo-img" src="/assets/images/whitelogo.png" alt="white-logo" />
+					HappyHourPal
+				</a>
 				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>
 				</button>

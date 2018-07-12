@@ -23,6 +23,11 @@ GENERAL
 NAVBAR
 ************************/
 
+.whitelogo-img {
+  width: 30px;
+  margin-right: 10px;
+}
+
 .blue-navbar {
   background-color: #255478ff !important;
 }

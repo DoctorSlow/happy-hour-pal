@@ -65,7 +65,7 @@ class SignupForm extends Component {
 					<FormGroup>
 						<Label for="email" hidden>Email</Label>
 						<Input 
-							className="email-input"
+							className="email-input shadow-sm"
 							type="text"
 							name="email"
 							placeholder="email"
@@ -77,7 +77,7 @@ class SignupForm extends Component {
 					<FormGroup>
 						<Label for="username" hidden>Username</Label>
 						<Input 
-							className="user-input"
+							className="user-input shadow-sm"
 							type="text"
 							name="username"
 							placeholder="username"
@@ -89,7 +89,7 @@ class SignupForm extends Component {
 					<FormGroup>
 						<Label for="password" hidden>Password</Label>
 						<Input
-							className="password-input"
+							className="password-input shadow-sm"
 							type="password"
 							name="password"
 							placeholder="password"
@@ -101,7 +101,7 @@ class SignupForm extends Component {
 					<FormGroup>
 						<Label for="confirmPassword" hidden>Password</Label>
 						<Input
-							className="password-input"
+							className="password-input shadow-sm"
 							type="password"
 							name="confirmPassword"
 							placeholder="password"
@@ -110,7 +110,7 @@ class SignupForm extends Component {
 						/>
 					</FormGroup>
 					{' '}
-					<Button color="#2296a2ff" className="signup-btn btn-block" onClick={this.handleSubmit}>Sign up</Button>
+					<Button color="#2296a2ff" className="signup-btn btn-block shadow" onClick={this.handleSubmit}>Sign up</Button>
 				</Form>
 				<p>Already have an account? <Link className="link" to="/login">Log in</Link></p>
 			</div>

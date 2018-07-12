@@ -186,7 +186,7 @@ class Results extends Component {
               </p>
               <Button
                 color="#b66925ff"
-                className="add-location-btn"
+                className="add-location-btn shadow"
                 onClick={this.handleClickEvent}
               >
                 Add Happy Hour

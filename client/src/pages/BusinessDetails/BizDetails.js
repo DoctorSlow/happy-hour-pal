@@ -116,7 +116,7 @@ class Results extends Component {
               <p className="add-location-call">Something looks off? Help a pal out!</p>
               {this.state.currentBusinessDeals.map(business => (
                 <Button
-                  className="edit-biz-btn"
+                  className="edit-biz-btn shadow"
                   key={business._id}
                   color="#2296a2ff"
                   onClick={() => this.handleClickEvent(business.googleID)}
