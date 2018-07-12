@@ -43,7 +43,7 @@ const DealCard = props => (
       <CardText className="text-left card-text light-gray">
         {props.info}
       </CardText>
-      <Button color="#2296a2ff" className="update-deal-btn" style={{ display: (props.showButton ? "block" : "none") }} id={props.id} onClick={props.handleClickEvent}>
+      <Button color="#2296a2ff" className="update-deal-btn shadow-sm" style={{ display: (props.showButton ? "block" : "none") }} id={props.id} onClick={props.handleClickEvent}>
         Update
       </Button>
 
