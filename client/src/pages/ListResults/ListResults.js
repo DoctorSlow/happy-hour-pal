@@ -16,34 +16,42 @@ class Results extends Component {
       deals: [],
       name: "",
       dayValue: "",
-      curTime: null
+      currentDay: null
     };
     this.filterDay = this.filterDay.bind(this);
   }
 
   // Load all businesses from the Business collection.
-  // componentDidMount() {
-  //   this.loadAllDeals()
-  //   // this.loadAllBusinesses()
-  // }
-
-  // loadAllDeals = () => {
-  //   API.getBusinesses()
-  //     .then(res => {
-  //       this.setState({ businesses: res.data });
-  //       console.log(res.data)
-  //       // console.log(this.state.businesses)
-  //     })
-  //     .catch(err => console.log(err))
-  // }
-
   componentDidMount() {
-    setInterval( () => {
-      this.setState({
-        // curTime : new Date().toLocaleString()
-        curTime : new Date().getDay()
+    let today = new Date().getDay();
+    this.setState({
+      currentDay: today,
+      dayValue: today.toString()
+    })
+    this.loadAllDeals()
+  }
+
+  loadAllDeals = () => {
+    API.getBusinesses()
+      .then(res => {
+        this.setState({ businesses: res.data });
+        // console.log(res.data)
+        // console.log(this.state.businesses)
+        const businesses = this.state.businesses;
+        // console.log(businesses)
+        const dayValue = this.state.dayValue;
+        console.log(this.dayValue);
+        businesses.forEach((business) => {
+          let hasDeal = false;
+          business.deals.forEach((deal) => {
+            if (dayValue == deal.day) {
+              hasDeal = true;
+            }
+          });
+          business.isShown = hasDeal;
+        });
       })
-    },1000)
+      .catch(err => console.log(err))
   }
 
   handleClickEvent = () => {
@@ -58,9 +66,9 @@ class Results extends Component {
     const dayButton = event.target;
     const dayValue = dayButton.getAttribute('data-day-value');
     this.setState({dayValue})
-    console.log(dayValue);
-    
-    const  businesses  = this.props.businesses;
+    // console.log(dayValue);
+
+    const businesses = this.props.businesses;
     // console.log(businesses);
     businesses.forEach((business) => {
       let hasDeal = false;
@@ -85,10 +93,9 @@ class Results extends Component {
       <div className="mapHeight background">
         <div className="buttons-div">
           <div className="buttons-display">
-
             <Button
               color="#2296a2ff"
-              className="btn filter-btn first-btn"
+              className="btn filter-btn"
               name="dayButton"
               onClick={this.filterDay}
               data-day-value={0}
@@ -135,7 +142,6 @@ class Results extends Component {
         <Row>
           <Col sm="1" md="2" lg="2"></Col>
           <Col sm="10" md="8" lg="8">
-
             {this.state.businesses
               .map(business => {
 
