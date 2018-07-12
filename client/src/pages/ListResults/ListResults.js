@@ -43,7 +43,7 @@ class Results extends Component {
         // curTime : new Date().toLocaleString()
         curTime : new Date().getDay()
       })
-    },4000)
+    },1000)
   }
 
   handleClickEvent = () => {
@@ -57,14 +57,9 @@ class Results extends Component {
   filterDay(event) {
     const dayButton = event.target;
     const dayValue = dayButton.getAttribute('data-day-value');
-    if (dayValue) {
-      this.setState({dayValue})
-      console.log(dayValue);
-    }
-    else {
-      this.setState({dayValue: this.state.curTime})
-    }
-
+    this.setState({dayValue})
+    console.log(dayValue);
+    
     const  businesses  = this.props.businesses;
     // console.log(businesses);
     businesses.forEach((business) => {
@@ -154,8 +149,6 @@ class Results extends Component {
                         </Link>
                       </h5>
 
-                      {this.filterDay({})}
-
                       {business.deals
                         .filter(deals => deals.day == this.state.dayValue)
                         .map(deals => (
@@ -175,7 +168,6 @@ class Results extends Component {
                 )
               })
             }
-            <h5>Date: {this.state.curTime}</h5>
 
             <div className="text-center">
               <img
