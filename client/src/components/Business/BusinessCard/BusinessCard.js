@@ -4,7 +4,7 @@ import "./BusinessCard.css";
 
 // Business card component 
 const BusinessCard = props => ( 
-    <div className="business-card">
+    <div className="business-card shadow-sm">
       <Card>
         {props.children}
       </ Card>

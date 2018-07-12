@@ -224,7 +224,7 @@ class AddBusiness extends Component {
                   <label className="day-input gray">
                     Choose a day from this list:
                     <select
-                      className="select-day"
+                      className="select-day shadow-sm"
                       name="day"
                       type="select"
                       id="daySelect"
@@ -298,7 +298,7 @@ class AddBusiness extends Component {
 
                   {/* ***Submit the new business into the database with its first deal*** */}
                   <Button
-                    className="btn orange-btn btn-block"
+                    className="btn orange-btn btn-block shadow"
                     onClick={this.handleFormSubmit}
                     color="#b66925ff"
                   >
