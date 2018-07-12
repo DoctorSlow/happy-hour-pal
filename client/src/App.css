@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+@import url('https://fonts.googleapis.com/css?family=Sniglet');
+
+
 /************************
 GENERAL
 ************************/
@@ -22,6 +26,12 @@ GENERAL
 /************************
 NAVBAR
 ************************/
+
+.app-name {
+  font-family: 'Varela Round', sans-serif;
+  /* font-family: 'Sniglet', cursive; */
+
+}
 
 .whitelogo-img {
   width: 30px;

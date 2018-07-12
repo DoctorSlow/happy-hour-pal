@@ -25,7 +25,8 @@ const Loading = () => (
 
           <img className="quail-logo" src={logo} alt="quail-logo" />
 
-          <h3 className="welcome-message">Hello, welcome to HappyHourPal!</h3>
+          <h3 className="welcome-message">Hello, welcome to</h3>
+          <h3 className="welcome-message-name">HappyHourPal!</h3>
         </Col>
       </Row>
       <Row>
