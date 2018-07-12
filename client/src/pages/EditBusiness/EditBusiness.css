@@ -2,21 +2,12 @@
 CROWDSOURCE REQUEST
 ************************/
 
-.add-location-call {
-    padding-bottom: 50px;
-}
-
 /* Button */
 .add-missing-biz-deal-btn {
     color: #fff;
-    /* background-color: #d96d28ff !important; */
-    background-color: #2296a2ff !important;
-    /* margin-top: 15px; */
-    margin-left: 20px;
-    margin-bottom: 30px;
-    width: 150px;
+    background-color: #d96d28ff !important;
+    margin-bottom: 100px;
 }
 .add-missing-biz-deal-btn:hover, .add-missing-biz-deal-btn:active, .add-missing-biz-deal-btn:visited  {
-    /* background-color: #b66925ff !important; */
-    background-color: #1f737cff !important;
+    background-color: #b66925ff !important;
 }
