@@ -16,34 +16,42 @@ class Results extends Component {
       deals: [],
       name: "",
       dayValue: "",
-      curTime: null
+      currentDay: null
     };
     this.filterDay = this.filterDay.bind(this);
   }
 
   // Load all businesses from the Business collection.
-  // componentDidMount() {
-  //   this.loadAllDeals()
-  //   // this.loadAllBusinesses()
-  // }
-
-  // loadAllDeals = () => {
-  //   API.getBusinesses()
-  //     .then(res => {
-  //       this.setState({ businesses: res.data });
-  //       console.log(res.data)
-  //       // console.log(this.state.businesses)
-  //     })
-  //     .catch(err => console.log(err))
-  // }
-
   componentDidMount() {
-    setInterval( () => {
-      this.setState({
-        // curTime : new Date().toLocaleString()
-        curTime : new Date().getDay()
+    let today = new Date().getDay();
+    this.setState({
+      currentDay: today,
+      dayValue: today.toString()
+    })
+    this.loadAllDeals()
+  }
+
+  loadAllDeals = () => {
+    API.getBusinesses()
+      .then(res => {
+        this.setState({ businesses: res.data });
+        // console.log(res.data)
+        // console.log(this.state.businesses)
+        const businesses = this.state.businesses;
+        // console.log(businesses)
+        const dayValue = this.state.dayValue;
+        console.log(this.dayValue);
+        businesses.forEach((business) => {
+          let hasDeal = false;
+          business.deals.forEach((deal) => {
+            if (dayValue == deal.day) {
+              hasDeal = true;
+            }
+          });
+          business.isShown = hasDeal;
+        });
       })
-    },4000)
+      .catch(err => console.log(err))
   }
 
   handleClickEvent = () => {
@@ -54,83 +62,77 @@ class Results extends Component {
     }
   }
 
-  // filterDay(event) {
-  //   const dayButton = event.target;
-  //   const dayValue = dayButton.getAttribute('data-day-value');
-  //   if (dayValue) {
-  //     this.setState({dayValue})
-  //     console.log(dayValue);
-  //   }
-  //   else {
-  //     this.setState({dayValue: this.state.curTime})
-  //   }
+  filterDay(event) {
+    const dayButton = event.target;
+    const dayValue = dayButton.getAttribute('data-day-value');
+    this.setState({ dayValue })
+    // console.log(dayValue);
 
-  //   const  businesses  = this.props.businesses;
-  //   // console.log(businesses);
-  //   businesses.forEach((business) => {
-  //     let hasDeal = false;
-  //     business.deals.forEach((deal) => {
-  //       // console.log(business);
-  //       // console.log(deal);
-  //       if (dayValue == deal.day) {
-  //         hasDeal = true;
-  //       }
-  //     });
-  //     business.isShown = hasDeal;
-  //     console.log(hasDeal)
-  //   });
-  //   const deals = businesses.deals;
-  //   this.setState({ businesses })
-  //   this.setState({ deals })
-  //   console.log(businesses);
-  // }
+    const businesses = this.props.businesses;
+    // console.log(businesses);
+    businesses.forEach((business) => {
+      let hasDeal = false;
+      business.deals.forEach((deal) => {
+        // console.log(business);
+        // console.log(deal);
+        if (dayValue == deal.day) {
+          hasDeal = true;
+        }
+      });
+      business.isShown = hasDeal;
+      console.log(hasDeal)
+    });
+    const deals = businesses.deals;
+    this.setState({ businesses })
+    this.setState({ deals })
+    console.log(businesses);
+  }
 
   render() {
     return (
       <div className="mapHeight background">
         <div className="buttons-div">
           <div className="buttons-display">
-
             <Button
               color="#2296a2ff"
-              className="btn filter-btn first-btn"
+              className="btn filter-btn shadow-sm"
               name="dayButton"
               onClick={this.filterDay}
               data-day-value={0}
             >Sun</Button>
             <Button
               color="#2296a2ff"
-              className="filter-btn"
+              className="filter-btn shadow-sm"
               onClick={this.filterDay}
               data-day-value={1}
             >Mon</Button>
             <Button
               color="#2296a2ff"
-              className="filter-btn"
+              className="filter-btn shadow-sm"
               onClick={this.filterDay}
               data-day-value={2}
             >Tue</Button>
             <Button
               color="#2296a2ff"
-              className="filter-btn"
+              className="filter-btn shadow-sm"
               onClick={this.filterDay}
               data-day-value={3}
             >Wed</Button>
             <Button
               color="#2296a2ff"
-              className="filter-btn"
+              className="filter-btn shadow-sm"
               onClick={this.filterDay}
               data-day-value={4}
             >Thu</Button>
             <Button
               color="#2296a2ff"
-              className="filter-btn"
+              className="filter-btn shadow-sm"
               onClick={this.filterDay}
               data-day-value={5}
             >Fri</Button>
             <Button
               color="#2296a2ff"
-              className="filter-btn"
+              className="filter-btn shadow-sm"
               onClick={this.filterDay}
               data-day-value={6}
             >Sat</Button>
@@ -140,7 +142,6 @@ class Results extends Component {
         <Row>
           <Col sm="1" md="2" lg="2"></Col>
           <Col sm="10" md="8" lg="8">
-
             {this.state.businesses
               .map(business => {
 
@@ -153,8 +154,6 @@ class Results extends Component {
                           {business.name}
                         </Link>
                       </h5>
-
-                      {this.filterDay({})}
 
                       {business.deals
                         .filter(deals => deals.day == this.state.dayValue)
@@ -175,7 +174,6 @@ class Results extends Component {
                 )
               })
             }
-            <h5>Date: {this.state.curTime}</h5>
 
             <div className="text-center">
               <img
@@ -188,7 +186,7 @@ class Results extends Component {
               </p>
               <Button
                 color="#b66925ff"
-                className="add-location-btn"
+                className="add-location-btn shadow"
                 onClick={this.handleClickEvent}
               >
                 Add Happy Hour

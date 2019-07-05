@@ -5,6 +5,7 @@ import Col from "../../components/Col";
 import Row from "../../components/Row";
 import { TextArea, Input } from "../../components/Form";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Link } from "react-router-dom";
 import Select from 'react-select'; // Multiselector
 import 'react-select/dist/react-select.css'; // Multiselector formatting
 import API from "../../utils/API";
@@ -30,7 +31,9 @@ class AddBusiness extends Component {
       stayOpen: true,
       selectedOption: '',
       modal: false,
-      modalMessage: ""
+      modalMessage: "",
+      modalError: "",
+      modalLink: ""
     };
     this.handleInputChange.bind(this);
     this.toggle = this.toggle.bind(this);
@@ -126,7 +129,16 @@ class AddBusiness extends Component {
         name: this.state.name,
         googleID: this.state.googleID
       })
-        .catch(err => console.log(err))
+        .catch(err =>{
+          console.log(err)
+          if (err) {
+            this.setState({
+              modal: !this.state.modal,
+              modalError: this.state.name + " already has deals!\nSee the deals or add more at: ",
+              modalLink: "/businessdetails/" + this.state.googleID
+            })
+          }
+        })
         .then(
           function (newBusiness) {
             console.log(newBusiness.data);
@@ -157,7 +169,9 @@ class AddBusiness extends Component {
           }
 
         )
-        .catch(err => console.log(err));
+        .catch(err =>
+          console.log(err)
+        );
     }
 
   };
@@ -173,14 +187,17 @@ class AddBusiness extends Component {
           {/* <ModalHeader toggle={this.toggle}>Modal title</ModalHeader> */}
           <ModalBody>
             {/* Please fill out all fields! */}
-            {this.state.modalMessage}
+            {this.state.modalMessage || this.state.modalError}
+            <Link to={this.state.modalLink}>
+              {this.state.name}
+            </Link>
           </ModalBody>
           <ModalFooter>
             {/* <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '} */}
             <Button color="#2296a2ff" className="btn orange-btn" onClick={this.toggle}>Okay</Button>
           </ModalFooter>
         </Modal>
-        <div className="form-addbusiness background">
+        <div className="form-addbusiness">
           <Container>
             <Row>
               <Col size="sm-12 md-12 lg-12">
@@ -224,7 +241,7 @@ class AddBusiness extends Component {
                   <label className="day-input gray">
                     Choose a day from this list:
                     <select
-                      className="select-day"
+                      className="select-day shadow-sm"
                       name="day"
                       type="select"
                       id="daySelect"
@@ -298,7 +315,7 @@ class AddBusiness extends Component {
 
                   {/* ***Submit the new business into the database with its first deal*** */}
                   <Button
-                    className="btn orange-btn btn-block"
+                    className="btn orange-btn btn-block shadow"
                     onClick={this.handleFormSubmit}
                     color="#b66925ff"
                   >

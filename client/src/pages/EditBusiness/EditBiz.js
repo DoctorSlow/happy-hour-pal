@@ -108,9 +108,9 @@ class EditBiz extends Component {
               <p className="add-location-call">Missing a deal? Help a pal out!</p>
               {this.state.currentBusinessDeals.map(business => (
                 <Button
-                  className="add-missing-biz-deal-btn"
+                  className="add-missing-biz-deal-btn shadow"
                   key={business._id}
-                  color="#b66925ff"
+                  color="#2296a2ff"
                   onClick={() => this.handleAddEvent(business.googleID)}
                 >
                   Add New Deal

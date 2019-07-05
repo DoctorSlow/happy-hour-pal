@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
 /************************
 GENERAL
 ************************/
@@ -35,6 +37,7 @@ FORM
 /* Margin Spacing */
 .title {
     margin-bottom: 20px;
+    font-family: 'Varela Round', sans-serif;
 }
 .business-name {
     margin-top: 20px;

@@ -41,7 +41,7 @@ class LoginForm extends Component {
                         <FormGroup>
                             <Label for="username" hidden>Username</Label>
 							<Input 
-								className="user-input"
+								className="user-input shadow-sm"
                                 type="text"
                                 name="username"
                                 placeholder="username"
@@ -53,7 +53,7 @@ class LoginForm extends Component {
                         <FormGroup>
                             <Label for="password" hidden>Password</Label>
                             <Input
-								className="password-input"
+								className="password-input shadow-sm"
                                 type="password"
                                 name="password"
                                 placeholder="password"
@@ -62,7 +62,7 @@ class LoginForm extends Component {
                             />
                         </FormGroup>
                         {' '}
-                        <Button color="#2296a2ff" className="login-btn btn-block" onClick={this.handleSubmit}>Log in</Button>
+                        <Button color="#2296a2ff" className="login-btn btn-block shadow" onClick={this.handleSubmit}>Log in</Button>
                     </Form>
                     <p>Don't have an account? <Link className="link" to="/signup">Sign up</Link></p>
 				</div>

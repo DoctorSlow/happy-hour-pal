@@ -91,7 +91,7 @@ class AddDeal extends Component {
             <Button color="#2296a2ff" className="btn orange-btn" onClick={this.toggle}>Okay</Button>
           </ModalFooter>
         </Modal>
-        <div className="form-addbusiness background">
+        <div className="form-addbusiness">
           <Container>
             <Row>
               <Col size="sm-12 md-12 lg-12">
@@ -114,7 +114,7 @@ class AddDeal extends Component {
                   <label className="day-input gray">
                     Choose a day from this list:
                     <select
-                      className="select-day"
+                      className="select-day shadow-sm"
                       name="day"
                       type="select"
                       value={this.state.day}
@@ -162,9 +162,9 @@ class AddDeal extends Component {
                   />
 
                   <Button
-                    className="btn orange-btn btn-block"
+                    className="btn teal-btn btn-block shadow"
                     onClick={this.handleFormSubmit}
-                    color="#b66925ff"
+                    color="#2296a2ff"
                   >
                     Submit New Happy Hour
                   </Button>
