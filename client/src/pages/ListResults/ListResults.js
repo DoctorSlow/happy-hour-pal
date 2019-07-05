@@ -54,36 +54,36 @@ class Results extends Component {
     }
   }
 
-  filterDay(event) {
-    const dayButton = event.target;
-    const dayValue = dayButton.getAttribute('data-day-value');
-    if (dayValue) {
-      this.setState({dayValue})
-      console.log(dayValue);
-    }
-    else {
-      this.setState({dayValue: this.state.curTime})
-    }
+  // filterDay(event) {
+  //   const dayButton = event.target;
+  //   const dayValue = dayButton.getAttribute('data-day-value');
+  //   if (dayValue) {
+  //     this.setState({dayValue})
+  //     console.log(dayValue);
+  //   }
+  //   else {
+  //     this.setState({dayValue: this.state.curTime})
+  //   }
 
-    const  businesses  = this.props.businesses;
-    // console.log(businesses);
-    businesses.forEach((business) => {
-      let hasDeal = false;
-      business.deals.forEach((deal) => {
-        // console.log(business);
-        // console.log(deal);
-        if (dayValue == deal.day) {
-          hasDeal = true;
-        }
-      });
-      business.isShown = hasDeal;
-      console.log(hasDeal)
-    });
-    const deals = businesses.deals;
-    this.setState({ businesses })
-    this.setState({ deals })
-    console.log(businesses);
-  }
+  //   const  businesses  = this.props.businesses;
+  //   // console.log(businesses);
+  //   businesses.forEach((business) => {
+  //     let hasDeal = false;
+  //     business.deals.forEach((deal) => {
+  //       // console.log(business);
+  //       // console.log(deal);
+  //       if (dayValue == deal.day) {
+  //         hasDeal = true;
+  //       }
+  //     });
+  //     business.isShown = hasDeal;
+  //     console.log(hasDeal)
+  //   });
+  //   const deals = businesses.deals;
+  //   this.setState({ businesses })
+  //   this.setState({ deals })
+  //   console.log(businesses);
+  // }
 
   render() {
     return (
