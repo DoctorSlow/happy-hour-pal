@@ -27,6 +27,7 @@
     "express": "^4.15.4",
     "express-session": "^1.15.6",
     "if-env": "^1.0.4",
+    "lodash.at": "^4.6.0",
     "mongoose": "^5.0.17",
     "morgan": "^1.9.0",
     "nodemon": "^1.17.5",
