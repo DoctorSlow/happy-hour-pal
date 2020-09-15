@@ -147,8 +147,8 @@ binary-extensions@^1.0.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-1.11.0.tgz#46aa1751fb6a2f93ee5e689bb1087d4b14c6c205"
 
-bl@^2.2.0:
-  version "2.2.0"
+bl@2.2.1:
+  version "2.2.1"
   resolved "https://registry.yarnpkg.com/bl/-/bl-2.2.0.tgz#e1a574cdf528e4053019bb800b041c0ac88da493"
   dependencies:
     readable-stream "^2.3.5"
@@ -1267,8 +1267,8 @@ mongodb-core@2.1.19:
     bson "~1.0.4"
     require_optional "~1.0.0"
 
-mongodb@3.5.9:
-  version "3.5.9"
+mongodb@3.1.13:
+  version "3.1.13"
   resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.5.9.tgz#799b72be8110b7e71a882bb7ce0d84d05429f772"
   dependencies:
     bl "^2.2.0"
@@ -1279,8 +1279,8 @@ mongodb@3.5.9:
   optionalDependencies:
     saslprep "^1.0.0"
 
-mongodb@^2.0.36:
-  version "2.2.35"
+mongodb@3.1.13:
+  version "3.1.13"
   resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-2.2.35.tgz#cd1b5af8a9463e3f9a787fa5b3d05565579730f9"
   dependencies:
     es6-promise "3.2.1"
@@ -2188,8 +2188,8 @@ touch@^3.1.0:
   dependencies:
     nopt "~1.0.10"
 
-tree-kill@^1.1.0:
-  version "1.2.0"
+tree-kill@1.2.2:
+  version "1.2.2"
   resolved "https://registry.yarnpkg.com/tree-kill/-/tree-kill-1.2.0.tgz#5846786237b4239014f05db156b643212d4c6f36"
 
 type-is@~1.6.15, type-is@~1.6.16:
